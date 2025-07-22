@@ -37,7 +37,6 @@
   <meta name="apple-mobile-web-app-title" content="Melio Web" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -70,327 +69,396 @@
   }
   </script>
 
-  
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Animations personnalisées */
-    @keyframes fadeIn {
+    /* Custom Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    /* Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0A0A0A;
+      color: #FFFFFF;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .animate-fade-in { animation: fadeIn 2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-    .bg-blob {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, rgba(17, 24, 39, 0.9) 80%);
-      filter: blur(60px);
-      z-index: 0;
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
-    .dropdown-menu {
+
+    .animate-fade-in {
+      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .animate-scale-in {
+      animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    /* Floating Navigation Styles */
+    nav {
       position: fixed;
-      top: 72px;
-      left: 0;
-      right: 0;
-      background-color: #1f2937;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 0;
-      overflow: hidden;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      max-width: 900px;
+      background: rgba(26, 26, 26, 0.9);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      z-index: 50;
+      padding: 0.5rem 1rem;
       transition: all 0.3s ease;
-      opacity: 0;
-      transform: translateY(-10px);
-      visibility: hidden;
-      z-index: 40;
-      max-height: 0;
     }
-    .dropdown-menu.show {
-      opacity: 1;
-      transform: translateY(0);
-      visibility: visible;
-      max-height: 400px;
-    }
-    .dropdown-menu a {
-      display: block;
-      padding: 1rem 1.5rem;
-      color: #ffffff;
-      text-decoration: none;
-      transition: background-color 0.2s;
-      border-bottom: 1px solid #374151;
-    }
-    .dropdown-menu a:last-child {
-      border-bottom: none;
-    }
-    .dropdown-menu a:hover {
-      background-color: #374151;
-      color: #f59e0b;
-    }
-    .hamburger {
+
+    .nav-container {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: space-between;
+      width: 100%;
+    }
+
+    .nav-logo {
+      height: 32px;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .desktop-menu {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .desktop-menu a {
+      position: relative;
+      color: #FFFFFF;
+      font-weight: 600;
+      padding: 0.5rem 0.75rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .desktop-menu a:hover {
+      color: #F97316;
+    }
+
+    .desktop-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #F97316;
+      transition: width 0.3s ease;
+    }
+
+    .desktop-menu a:hover::after {
+      width: 80%;
+    }
+
+    /* Mobile Menu */
+    .hamburger {
       width: 24px;
       height: 18px;
       cursor: pointer;
-      padding: 0;
       background: none;
       border: none;
+      display: none;
     }
+
     .hamburger span {
-      display: block;
-      width: 100%;
+      background-color: #FFFFFF;
       height: 2px;
-      background-color: #ffffff;
+      display: block;
+      margin-bottom: 4px;
       transition: all 0.3s ease;
-      transform-origin: center;
     }
+
     .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 6px);
+      transform: rotate(45deg) translate(5px, 5px);
     }
+
     .hamburger.active span:nth-child(2) {
       opacity: 0;
     }
+
     .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
+      transform: rotate(-45deg) translate(5px, -5px);
     }
-    .interactive-img {
+
+    .dropdown-menu {
+      position: fixed;
+      top: 4.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      max-width: 350px;
+      background: rgba(26, 26, 26, 0.9);
+      backdrop-filter: blur(12px);
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+    }
+
+    .dropdown-menu.show {
+      max-height: 400px;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      color: #FFFFFF;
+      padding: 0.8rem 1.2rem;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
     }
-    .interactive-img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+    .dropdown-menu a:last-child {
+      border-bottom: none;
     }
-    .interactive-img:active {
-      animation: pulse 0.3s ease;
+
+    .dropdown-menu a:hover {
+      background: #F97316;
+      color: #0A0A0A;
     }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-    .btn-filled {
-      border: 2px solid #f59e0b;
-      transition: background 0.2s ease-out, color 0.2s ease-out;
-    }
-    .btn-filled:hover {
-      background: transparent;
-      color: #f59e0b;
-    }
-    .btn-outlined {
-      border: 2px solid #f59e0b;
-      transition: background 0.2s ease-out, color 0.2s ease-out;
-    }
-    .btn-outlined:hover {
-      background: linear-gradient(to right, #f59e0b, #facc15);
-      color: #1f2937;
-    }
-    /* Correction pour éviter le scroll horizontal */
-    html, body {
-      overflow-x: hidden;
-      max-width: 100%;
-    }
-    
-    * {
-      box-sizing: border-box;
-    }
-    
-    /* Navigation responsive améliorée */
-    .nav-container {
-      width: 100%;
-      max-width: 100%;
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-    
-    .nav-logo {
-      height: 32px;
-      width: auto;
-      max-width: 150px;
-    }
-    
-    /* Menu desktop */
-    .desktop-menu {
-      display: none;
-    }
-    
-    @media (min-width: 768px) {
-      .desktop-menu {
-        display: flex !important;
-        align-items: center;
-        gap: 1.5rem;
-      }
-      .mobile-menu-container {
-        display: none !important;
-      }
-      .nav-container {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .nav-container {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding-left: 2rem;
-        padding-right: 2rem;
-      }
-      .desktop-menu {
-        gap: 2rem;
-      }
-    }
-    
-    /* Menu mobile */
-    .mobile-menu-container {
-      display: flex;
-      align-items: center;
-    }
-    
-    @media (max-width: 767px) {
-      .desktop-menu {
-        display: none !important;
-      }
-      
-      .nav-container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-      
-      .nav-logo {
-        height: 28px;
-      }
-    }
-    
-    /* Overlay pour fermer le menu mobile */
+
     .menu-overlay {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 30;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 40;
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
     }
-    
+
     .menu-overlay.show {
       opacity: 1;
       visibility: visible;
     }
-    
-    /* Corrections pour les sections */
+
+    /* Responsive Navigation */
+    @media (max-width: 768px) {
+      .desktop-menu {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      nav {
+        width: 90%;
+        padding: 0.5rem 0.75rem;
+      }
+      .nav-logo {
+        height: 28px;
+      }
+      .dropdown-menu {
+        width: 90%;
+        max-width: 350px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .mobile-menu-container {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      nav {
+        width: 80%;
+        max-width: 900px;
+      }
+      .desktop-menu {
+        gap: 1.5rem;
+      }
+      .desktop-menu a {
+        font-size: 1rem;
+      }
+    }
+
+    /* Section Styles */
     .section-container {
-      width: 100%;
-      max-width: 100%;
+      max-width: 1400px;
       margin: 0 auto;
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-    
-    @media (min-width: 640px) {
-      .section-container {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .section-container {
-        max-width: 1280px;
-        padding-left: 2rem;
-        padding-right: 2rem;
-      }
+      padding: 2rem;
     }
 
-    /* Amélioration du carousel */
-    .swiper-container {
-      padding: 0 10px;
-      overflow: hidden;
-    }
-    
-    .swiper-slide {
-      width: 280px !important;
-      flex-shrink: 0;
-    }
-    
-    @media (min-width: 640px) {
-      .swiper-slide {
-        width: 300px !important;
-      }
-    }
-    
-    @media (min-width: 768px) {
-      .swiper-slide {
-        width: 320px !important;
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .swiper-slide {
-        width: 340px !important;
-      }
-    }
-    
-    @media (min-width: 1280px) {
-      .swiper-slide {
-        width: 360px !important;
-      }
+    /* Hero Section */
+    #hero {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, #0A0A0A 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 8rem;
     }
 
-    /* Styles pour les réseaux sociaux */
-    .social-icons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    
-    .social-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 128px;
-      height: 128px;
+    .hero-image {
+      max-width: 80%;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease;
     }
-    
-    .social-icon:hover {
-      transform: scale(1.1);
+
+    .hero-image:hover {
+      transform: translateY(-8px);
     }
-    
+
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(90deg, #F97316, #FB923C);
+      color: #0A0A0A;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #FB923C, #F97316);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+    }
+
+    .btn-secondary {
+      border: 2px solid #F97316;
+      color: #F97316;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #F97316;
+      color: #0A0A0A;
+      transform: translateY(-2px);
+    }
+
+    /* Features Section */
+    .feature-card {
+      background: #1A1A1A;
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      border-color: #F97316;
+    }
+
+    /* Carousel */
+    .swiper-container {
+      padding: 1rem;
+    }
+
+    .swiper-slide {
+      width: 240px !important;
+      transition: transform 0.3s ease;
+    }
+
+    .swiper-slide img {
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .swiper-slide:hover {
+      transform: scale(1.05);
+    }
+
+    @media (min-width: 640px) { .swiper-slide { width: 260px !important; } }
+    @media (min-width: 768px) { .swiper-slide { width: 280px !important; } }
+    @media (min-width: 1024px) { .swiper-slide { width: 300px !important; } }
+
+    /* Testimonials */
+    .testimonial-card {
+      background: #1A1A1A;
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      border-color: #F97316;
+      transform: translateY(-4px);
+    }
+
+    /* Social Icons */
+    .social-icon {
+      width: 48px;
+      height: 48px;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      transform: translateY(-4px);
+      filter: brightness(1.2);
+    }
+
     .social-icon img {
-      width: 64px;
-      height: 64px;
+      width: 32px;
+      height: 32px;
     }
   </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
-  <!-- Overlay pour menu mobile -->
+<body>
+  <!-- Overlay for Mobile Menu -->
   <div class="menu-overlay" id="menu-overlay"></div>
-  
-  <!-- BARRE DE NAVIGATION RESPONSIVE -->
-  <nav class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-md z-50 border-b border-gray-800" role="navigation" aria-label="Navigation principale">
-    <div class="nav-container py-4 flex justify-between items-center">
-      <a href="#" class="flex-shrink-0" aria-label="Retour à l'accueil">
-        <img src="MelioLogo.png" alt="Logo Melio Tasks - Gestionnaire de tâches" class="nav-logo">
+
+  <!-- Navigation -->
+  <nav role="navigation" aria-label="Navigation principale">
+    <div class="nav-container">
+      <a href="#" aria-label="Retour à l'accueil">
+        <img src="MelioLogo.png" alt="Logo Melio Tasks" class="nav-logo">
       </a>
-      
-      <!-- MENU DESKTOP -->
       <div class="desktop-menu">
-        <a href="#hero" class="text-white hover:text-amber-400 transition-colors duration-200">Accueil</a>
-        <a href="#features" class="text-white hover:text-amber-400 transition-colors duration-200">Fonctionnalités</a>
-        <a href="#action" class="text-white hover:text-amber-400 transition-colors duration-200">En action</a>
-        <a href="#testimonials" class="text-white hover:text-amber-400 transition-colors duration-200">Avis</a>
-        <a href="#download" class="text-white hover:text-amber-400 transition-colors duration-200">Télécharger</a>
-        <a href="#contact" class="text-white hover:text-amber-400 transition-colors duration-200">Nous contacter</a>
+        <a href="#hero">Accueil</a>
+        <a href="#features">Fonctionnalités</a>
+        <a href="#action">En action</a>
+        <a href="#testimonials">Avis</a>
+        <a href="#download">Télécharger</a>
+        <a href="#contact">Nous contacter</a>
       </div>
-      
-      <!-- MENU MOBILE (hamburger) -->
       <div class="mobile-menu-container">
         <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
           <span></span>
@@ -399,8 +467,6 @@
         </button>
       </div>
     </div>
-    
-    <!-- Menu déroulant mobile -->
     <div class="dropdown-menu" id="dropdown-menu" role="menu">
       <a href="#hero" role="menuitem">Accueil</a>
       <a href="#features" role="menuitem">Fonctionnalités</a>
@@ -410,200 +476,177 @@
       <a href="#contact" role="menuitem">Nous contacter</a>
     </div>
   </nav>
-  
-  <!-- Section Hero -->
-  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" role="banner">
-    <div class="bg-blob" aria-hidden="true"></div>
-    <div class="relative z-10 section-container">
-      <div class="grid md:grid-cols-2 gap-8 items-center">
-        <div class="text-center md:text-left">
-          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold animate-fade-in">Melio Tasks</h1>
-          <p class="text-lg sm:text-xl md:text-2xl mt-4 animate-fade-in" style="animation-delay: 0.2s;">Organisez vos tâches, donnez des ailes à vos projets.</p>
-          <p class="text-base sm:text-lg mt-2 text-gray-300 animate-fade-in" style="animation-delay: 0.3s;">L'application gratuite de gestion de tâches qui booste votre productivité.</p>
-          <div class="mt-8 flex flex-col sm:flex-row gap-4 animate-fade-in" style="animation-delay: 0.4s;">
-            <a href="https://apps.apple.com/fr/app/melio-tasks/id6747993532" class="btn-filled bg-gradient-to-r from-amber-500 to-yellow-400 text-gray-900 px-6 py-3 rounded-full font-semibold text-center" aria-label="Télécharger Melio Tasks sur l'App Store iOS">Télécharger sur iOS</a>
-            <a href="https://forms.gle/inECG8AANBGwDrvy9" class="btn-outlined bg-transparent text-amber-500 px-6 py-3 rounded-full font-semibold text-center" aria-label="Rejoindre la liste d'attente pour la version Android">Rejoindre la liste d'attente Android</a>
-          </div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="pt-24">
+    <div class="section-container grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-center lg:text-left">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">Melio Tasks</h1>
+        <p class="text-xl md:text-2xl mb-4 animate-fade-in" style="animation-delay: 0.2s;">Organisez vos projets avec fluidité et efficacité</p>
+        <p class="text-base md:text-lg text-gray-300 mb-8 animate-fade-in" style="animation-delay: 0.3s;">Une application intuitive pour gérer vos tâches et booster votre productivité.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in" style="animation-delay: 0.4s;">
+          <a href="https://apps.apple.com/fr/app/melio-tasks/id6747993532" class="btn-primary" aria-label="Télécharger sur iOS">Télécharger sur iOS</a>
+          <a href="https://forms.gle/inECG8AANBGwDrvy9" class="btn-secondary" aria-label="Rejoindre la liste d'attente Android">Liste d'attente Android</a>
         </div>
-        <div class="flex justify-center md:justify-end">
-          <img src="VisuelAccueil.png" alt="Interface de l'application Melio Tasks sur smartphone montrant la gestion de tâches" class="rounded-lg shadow-lg max-w-full h-auto animate-fade-in md:w-[120%]" style="animation-delay: 0.6s;" width="400" height="600">
+      </div>
+      <div class="flex justify-center">
+        <img src="VisuelAccueil.png" alt="Interface de Melio Tasks" class="hero-image animate-scale-in" style="animation-delay: 0.5s;" width="320" height="480">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20">
+    <div class="section-container">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fade-in">Pourquoi choisir Melio Tasks ?</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="feature-card animate-fade-in" style="animation-delay: 0.2s;">
+          <h3 class="text-xl font-semibold text-orange-500 mb-4">Gestion intuitive</h3>
+          <p>Créez et organisez vos tâches en un clin d'œil avec une interface épurée et fluide.</p>
+        </div>
+        <div class="feature-card animate-fade-in" style="animation-delay: 0.4s;">
+          <h3 class="text-xl font-semibold text-orange-500 mb-4">Rappels intelligents</h3>
+          <p>Restez à jour avec des notifications personnalisées qui s'adaptent à votre rythme.</p>
+        </div>
+        <div class="feature-card animate-fade-in" style="animation-delay: 0.6s;">
+          <h3 class="text-xl font-semibold text-orange-500 mb-4">Collaboration fluide</h3>
+          <p>Partagez vos projets avec votre équipe pour une coordination sans effort.</p>
+        </div>
+        <div class="feature-card animate-fade-in" style="animation-delay: 0.8s;">
+          <h3 class="text-xl font-semibold text-orange-500 mb-4">Suivi des progrès</h3>
+          <p>Visualisez vos performances grâce à des statistiques claires et motivantes.</p>
         </div>
       </div>
     </div>
   </section>
-  
-  <!-- Section Fonctionnalités -->
-  <section id="features" class="py-16" role="main">
+
+  <!-- Action Section -->
+  <section id="action" class="py-20 bg-gray-900/30">
     <div class="section-container">
-      <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 animate-fade-in">Pourquoi Melio Tasks ?</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-        <article class="p-6 rounded-lg bg-gray-800 hover:bg-gray-700 transition animate-fade-in" style="animation-delay: 0.2s;">
-          <h3 class="text-xl sm:text-2xl font-semibold text-amber-500">Gestion des tâches</h3>
-          <p class="mt-2">Ajoutez, modifiez et complétez vos tâches en quelques clics grâce à une interface intuitive.</p>
-        </article>
-        <article class="p-6 rounded-lg bg-gray-800 hover:bg-gray-700 transition animate-fade-in" style="animation-delay: 0.4s;">
-          <h3 class="text-xl sm:text-2xl font-semibold text-amber-500">Notifications</h3>
-          <p class="mt-2">Ne manquez jamais une échéance grâce à des rappels intelligents et personnalisables.</p>
-        </article>
-        <article class="p-6 rounded-lg bg-gray-800 hover:bg-gray-700 transition animate-fade-in" style="animation-delay: 0.6s;">
-          <h3 class="text-xl sm:text-2xl font-semibold text-amber-500">Partage des tâches</h3>
-          <p class="mt-2">Collaborez facilement en partageant vos tâches avec votre équipe ou vos proches.</p>
-        </article>
-        <article class="p-6 rounded-lg bg-gray-800 hover:bg-gray-700 transition animate-fade-in" style="animation-delay: 0.8s;">
-          <h3 class="text-xl sm:text-2xl font-semibold text-amber-500">Statistiques</h3>
-          <p class="mt-2">Suivez vos progrès avec des analyses détaillées pour booster votre productivité.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Section En action -->
-  <section id="action" class="py-16 bg-gray-800">
-    <div class="section-container">
-      <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 animate-fade-in">Découvrez-le en action</h2>
-      <div class="swiper-container overflow-visible" role="region" aria-label="Captures d'écran de l'application">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fade-in">Melio Tasks en action</h2>
+      <div class="swiper-container" role="region" aria-label="Captures d'écran de l'application">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="1.png" alt="Capture d'écran de l'écran d'accueil de Melio Tasks" class="rounded-lg shadow-lg interactive-img w-full h-auto" loading="lazy"></div>
-          <div class="swiper-slide"><img src="2.png" alt="Capture d'écran de la création de tâches dans Melio Tasks" class="rounded-lg shadow-lg interactive-img w-full h-auto" loading="lazy"></div>
-          <div class="swiper-slide"><img src="3.png" alt="Capture d'écran des notifications dans Melio Tasks" class="rounded-lg shadow-lg interactive-img w-full h-auto" loading="lazy"></div>
-          <div class="swiper-slide"><img src="4.png" alt="Capture d'écran du partage de tâches dans Melio Tasks" class="rounded-lg shadow-lg interactive-img w-full h-auto" loading="lazy"></div>
-          <div class="swiper-slide"><img src="5.png" alt="Capture d'écran des statistiques dans Melio Tasks" class="rounded-lg shadow-lg interactive-img w-full h-auto" loading="lazy"></div>
-          <div class="swiper-slide"><img src="6.png" alt="Capture d'écran des paramètres dans Melio Tasks" class="rounded-lg shadow-lg interactive-img w-full h-auto" loading="lazy"></div>
+          <div class="swiper-slide"><img src="1.png" alt="Écran d'accueil" class="w-full h-auto" loading="lazy"></div>
+          <div class="swiper-slide"><img src="2.png" alt="Création de tâches" class="w-full h-auto" loading="lazy"></div>
+          <div class="swiper-slide"><img src="3.png" alt="Notifications" class="w-full h-auto" loading="lazy"></div>
+          <div class="swiper-slide"><img src="4.png" alt="Partage de tâches" class="w-full h-auto" loading="lazy"></div>
+          <div class="swiper-slide"><img src="5.png" alt="Statistiques" class="w-full h-auto" loading="lazy"></div>
+          <div class="swiper-slide"><img src="6.png" alt="Paramètres" class="w-full h-auto" loading="lazy"></div>
         </div>
       </div>
     </div>
   </section>
-  
-  <!-- Section Témoignages -->
-  <section id="testimonials" class="py-16">
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-20">
     <div class="section-container">
-      <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 animate-fade-in">Ce que disent nos utilisateurs</h2>
-      <div class="grid sm:grid-cols-2 gap-6 lg:gap-8">
-        <blockquote class="p-6 rounded-lg bg-gray-800 animate-fade-in" style="animation-delay: 0.2s;">
-          <p class="italic">"Melio Tasks me garde sur la bonne voie tous les jours !"</p>
-          <cite class="mt-2 font-semibold text-amber-500 not-italic">- Sarah K.</cite>
-        </blockquote>
-        <blockquote class="p-6 rounded-lg bg-gray-800 animate-fade-in" style="animation-delay: 0.4s;">
-          <p class="italic">"La meilleure application gratuite pour gérer mes projets."</p>
-          <cite class="mt-2 font-semibold text-amber-500 not-italic">- James L.</cite>
-        </blockquote>
-        <blockquote class="p-6 rounded-lg bg-gray-800 animate-fade-in" style="animation-delay: 0.6s;">
-          <p class="italic">"Une interface intuitive et des fonctionnalités puissantes."</p>
-          <cite class="mt-2 font-semibold text-amber-500 not-italic">- Marie D.</cite>
-        </blockquote>
-        <blockquote class="p-6 rounded-lg bg-gray-800 animate-fade-in" style="animation-delay: 0.8s;">
-          <p class="italic">"Je ne peux plus imaginer ma vie sans Melio Tasks."</p>
-          <cite class="mt-2 font-semibold text-amber-500 not-italic">- Thomas P.</cite>
-        </blockquote>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fade-in">L'avis de nos utilisateurs</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="testimonial-card animate-fade-in" style="animation-delay: 0.2s;">
+          <p class="italic mb-4">"Melio Tasks a transformé ma gestion quotidienne. L'interface est intuitive et les rappels m'aident à rester concentré."</p>
+          <cite class="font-semibold text-orange-500 not-italic">— Sophie M., Designer</cite>
+        </div>
+        <div class="testimonial-card animate-fade-in" style="animation-delay: 0.4s;">
+          <p class="italic mb-4">"Une application essentielle pour coordonner mes projets d'équipe. Le partage de tâches est un vrai gain de temps."</p>
+          <cite class="font-semibold text-orange-500 not-italic">— Julien T., Manager</cite>
+        </div>
+        <div class="testimonial-card animate-fade-in" style="animation-delay: 0.6s;">
+          <p class="italic mb-4">"Les statistiques me motivent à atteindre mes objectifs. Melio Tasks est simple et puissant à la fois."</p>
+          <cite class="font-semibold text-orange-500 not-italic">— Emma L., Étudiante</cite>
+        </div>
+        <div class="testimonial-card animate-fade-in" style="animation-delay: 0.8s;">
+          <p class="italic mb-4">"Enfin une app gratuite qui allie design moderne et fonctionnalités pratiques. Je l'utilise tous les jours !"</p>
+          <cite class="font-semibold text-orange-500 not-italic">— Lucas R., Entrepreneur</cite>
+        </div>
       </div>
     </div>
   </section>
-  
-  <!-- Section Appel à l'action final -->
-  <section id="download" class="py-16 bg-gradient-to-b from-gray-900 to-gray-800 text-center">
+
+  <!-- Download Section -->
+  <section id="download" class="py-20 bg-gradient-to-b from-gray-900 to-black text-center">
     <div class="section-container">
-      <h2 class="text-3xl sm:text-4xl font-bold mb-6 animate-fade-in">Prêt à commencer ?</h2>
-      <p class="text-lg sm:text-xl mb-8 animate-fade-in" style="animation-delay: 0.2s;">Téléchargez Melio Tasks maintenant et prenez le contrôle de votre journée.</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 animate-fade-in">Commencez dès aujourd'hui</h2>
+      <p class="text-lg md:text-xl mb-10 animate-fade-in" style="animation-delay: 0.2s;">Téléchargez Melio Tasks et révolutionnez votre organisation.</p>
       <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style="animation-delay: 0.4s;">
-        <a href="https://apps.apple.com/fr/app/melio-tasks/id6747993532" class="btn-filled bg-gradient-to-r from-amber-500 to-yellow-400 text-gray-900 px-8 py-4 rounded-full font-semibold" aria-label="Télécharger gratuitement Melio Tasks sur iOS">Obtenez-le gratuitement</a>
-        <a href="https://forms.gle/inECG8AANBGwDrvy9" class="btn-outlined bg-transparent text-amber-500 px-8 py-4 rounded-full font-semibold" aria-label="S'inscrire à la liste d'attente Android">Rejoindre la liste d'attente Android</a>
+        <a href="https://apps.apple.com/fr/app/melio-tasks/id6747993532" class="btn-primary" aria-label="Télécharger gratuitement sur iOS">Obtenez-le gratuitement</a>
+        <a href="https://forms.gle/inECG8AANBGwDrvy9" class="btn-secondary" aria-label="Rejoindre la liste d'attente Android">Liste d'attente Android</a>
       </div>
     </div>
   </section>
-  
-  <!-- Section Nous contacter -->
-  <section id="contact" class="py-16">
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20">
     <div class="section-container">
-      <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 animate-fade-in">Nous contacter</h2>
-      <div class="max-w-lg mx-auto bg-gray-800 p-8 rounded-lg shadow-lg animate-fade-in" style="animation-delay: 0.2s;">
-        <p class="text-center text-lg mb-6">Vous avez une question ou une suggestion ? Contactez-nous via le formulaire ci-dessous.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fade-in">Nous contacter</h2>
+      <div class="max-w-md mx-auto bg-gray-900/50 p-8 rounded-xl border border-gray-800 animate-fade-in" style="animation-delay: 0.2s;">
+        <p class="text-center mb-6">Des questions ou des idées ? Contactez-nous !</p>
         <div class="flex justify-center">
-          <a href="https://forms.gle/YfuMiS13g96Wwx1Z7" class="btn-filled bg-gradient-to-r from-amber-500 to-yellow-400 text-gray-900 px-8 py-3 rounded-full font-semibold" aria-label="Ouvrir le formulaire de contact">Remplir le formulaire</a>
+          <a href="https://forms.gle/YfuMiS13g96Wwx1Z7" class="btn-primary" aria-label="Ouvrir le formulaire de contact">Envoyer un message</a>
         </div>
       </div>
     </div>
   </section>
-  
-  <!-- Pied de page -->
-  <footer class="py-8 bg-gray-900" role="contentinfo">
+
+  <!-- Footer -->
+  <footer class="py-12 bg-black" role="contentinfo">
     <div class="section-container">
-      <div class="text-center mb-6">
-        <h3 class="text-lg font-semibold mb-4 text-amber-500">Suivez-nous</h3>
-        <div class="social-icons">
-          <a href="https://linkedin.com/company/melio.tasks.app" class="social-icon" aria-label="Suivre Melio Tasks sur LinkedIn" target="_blank" rel="noopener">
-            <img src="linkedin-icon.png" alt="LinkedIn" class="w-8 h-8">
+      <div class="text-center mb-8">
+        <h3 class="text-lg font-semibold text-orange-500 mb-6">Suivez-nous</h3>
+        <div class="flex justify-center gap-6">
+          <a href="https://linkedin.com/company/melio.tasks.app" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <img src="linkedin-icon.png" alt="LinkedIn">
           </a>
-          <a href="https://twitter.com/melio_tasks_app" class="social-icon" aria-label="Suivre Melio Tasks sur Twitter/X" target="_blank" rel="noopener">
-            <img src="twitter-icon.png" alt="Twitter" class="w-8 h-8">
+          <a href="https://twitter.com/melio_tasks_app" class="social-icon" aria-label="Twitter/X" target="_blank" rel="noopener">
+            <img src="twitter-icon.png" alt="Twitter">
           </a>
-          <a href="https://instagram.com/melio.tasks.app" class="social-icon" aria-label="Suivre Melio Tasks sur Instagram" target="_blank" rel="noopener">
-            <img src="instagram-icon.png" alt="Instagram" class="w-8 h-8">
+          <a href="https://instagram.com/melio.tasks.app" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener">
+            <img src="instagram-icon.png" alt="Instagram">
           </a>
-          <a href="https://tiktok.com/@melio.tasks.app" class="social-icon" aria-label="Suivre Melio Tasks sur TikTok" target="_blank" rel="noopener">
-            <img src="tiktok-icon.png" alt="TikTok" class="w-8 h-8">
+          <a href="https://tiktok.com/@melio.tasks.app" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener">
+            <img src="tiktok-icon.png" alt="TikTok">
           </a>
         </div>
       </div>
-      
-      <div class="text-center border-t border-gray-700 pt-6">
-        <p class="mb-2">© 2025 Melio Tasks. Tous droits réservés.</p>
-        <div class="flex justify-center items-center gap-4 text-sm">
-          <a href="https://meliotasks.my.canva.site/privacy-policy" class="text-amber-500 hover:underline" target="_blank" rel="noopener">Politique de confidentialité</a>
-        </div>
+      <div class="text-center border-t border-gray-800 pt-6">
+        <p class="mb-4">© 2025 Melio Tasks. Tous droits réservés.</p>
+        <a href="https://meliotasks.my.canva.site/privacy-policy" class="text-orange-500 hover:underline" target="_blank" rel="noopener">Politique de confidentialité</a>
       </div>
     </div>
   </footer>
-  
+
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
-    // Initialiser Swiper pour le carrousel
+    // Swiper Initialization
     const swiper = new Swiper('.swiper-container', {
       loop: true,
       autoplay: {
-        delay: 2500,
+        delay: 3000,
         disableOnInteraction: false,
       },
       slidesPerView: 'auto',
-      spaceBetween: 20,
+      spaceBetween: 16,
       centeredSlides: false,
-      watchSlidesProgress: true,
-      freeMode: false,
-      allowTouchMove: true,
       breakpoints: {
-        640: {
-          slidesPerView: 'auto',
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 'auto',
-          spaceBetween: 25,
-        },
-        1024: {
-          slidesPerView: 'auto',
-          spaceBetween: 30,
-        },
-        1280: {
-          slidesPerView: 'auto',
-          spaceBetween: 35,
-        },
+        640: { spaceBetween: 20 },
+        768: { spaceBetween: 24 },
+        1024: { spaceBetween: 28 },
       },
     });
-    
-    // Menu hamburger et overlay
+
+    // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
     const dropdownMenu = document.getElementById('dropdown-menu');
     const menuOverlay = document.getElementById('menu-overlay');
-    
+
     function toggleMenu() {
       const isOpen = hamburger.classList.contains('active');
-      
       if (isOpen) {
         closeMenu();
       } else {
         openMenu();
       }
     }
-    
+
     function openMenu() {
       hamburger.classList.add('active');
       dropdownMenu.classList.add('show');
@@ -611,7 +654,7 @@
       hamburger.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
     }
-    
+
     function closeMenu() {
       hamburger.classList.remove('active');
       dropdownMenu.classList.remove('show');
@@ -619,68 +662,53 @@
       hamburger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = 'auto';
     }
-    
+
     hamburger.addEventListener('click', toggleMenu);
-    
-    // Fermer le menu lorsqu'on clique sur l'overlay
     menuOverlay.addEventListener('click', closeMenu);
-    
-    // Fermer le menu lorsqu'on clique sur un lien
     dropdownMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', closeMenu);
     });
-    
-    // Fermer le menu lors du redimensionnement vers desktop
+
     window.addEventListener('resize', () => {
-      if (window.innerWidth >= 768) {
-        closeMenu();
-      }
-    });
-    
-    // Fermer le menu avec la touche Échap
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeMenu();
-      }
+      if (window.innerWidth >= 769) closeMenu();
     });
 
-    // Gestion du scroll fluide pour les ancres
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+      anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
 
-    // Lazy loading des images
+    // Lazy Loading
     const images = document.querySelectorAll('img[loading="lazy"]');
     const imageObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const img = entry.target;
           img.src = img.src;
-          img.classList.remove('lazy');
           observer.unobserve(img);
         }
       });
     });
-
     images.forEach(img => imageObserver.observe(img));
 
-    // Analytics et tracking (Google Analytics 4)
+    // Google Analytics
     gtag('config', 'G-94XB9SJ9BJ', {
       page_title: 'Melio Tasks - Gestionnaire de tâches',
       page_location: window.location.href
     });
   </script>
-  
-  <!-- Google tag (gtag.js) -->
+
+  <!-- Google Tag Manager -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-94XB9SJ9BJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
