@@ -186,6 +186,9 @@
       background: none;
       border: none;
       display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 60;
     }
 
     .hamburger span {
@@ -194,6 +197,7 @@
       display: block;
       margin-bottom: 4px;
       transition: all 0.3s ease;
+      width: 100%;
     }
 
     .hamburger.active span:nth-child(1) {
@@ -234,7 +238,7 @@
 
     .dropdown-menu a {
       display: block;
-      color: #FFFFFF;
+     /&nbsp; color: #FFFFFF;
       padding: 0.8rem 1.2rem;
       text-decoration: none;
       text-align: center;
@@ -278,8 +282,6 @@
       }
       .hamburger {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
       }
       nav {
         width: 90%;
@@ -322,7 +324,7 @@
 
     /* Hero Section */
     #hero {
-      background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(10, 10, 10, 0.95) 100%);
+      background: linear-gradient(135deg, rgba(200, 80, 15, 0.1) 0%, #0A0A0A 100%);
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -340,7 +342,7 @@
     }
 
     .hero-image {
-      max-width: 90%;
+      max-width: 95%;
       border-radius: 16px;
       transition: transform 0.3s ease;
     }
@@ -362,7 +364,7 @@
     .btn-primary:hover {
       background: linear-gradient(90deg, #FB923C, #F97316);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+      box-shadow: 0 4px 12px rgba(200, 80, 15, 0.3);
     }
 
     .btn-secondary {
@@ -397,7 +399,7 @@
 
     /* Action Section */
     #action {
-      background: linear-gradient(180deg, rgba(249, 115, 22, 0.1) 0%, #0A0A0A 100%);
+      background: linear-gradient(180deg, rgba(200, 80, 15, 0.1) 0%, #0A0A0A 100%);
       padding: 5rem 0;
     }
 
@@ -440,7 +442,7 @@
 
     /* Download Section */
     #download {
-      background: linear-gradient(180deg, rgba(249, 115, 22, 0.1) 0%, #0A0A0A 100%);
+      background: linear-gradient(180deg, rgba(200, 80, 15, 0.1) 0%, #0A0A0A 100%);
       padding: 5rem 0;
       text-align: center;
     }
@@ -512,7 +514,7 @@
         </div>
       </div>
       <div class="flex justify-center">
-        <img src="VisuelAccueil.png" alt="Interface de Melio Tasks" class="hero-image animate-scale-in" style="animation-delay: 0.5s;" width="360" height="540">
+        <img src="VisuelAccueil.png" alt="Interface de Melio Tasks" class="hero-image animate-scale-in" style="animation-delay: 0.5s;" width="400" height="600">
       </div>
     </div>
   </section>
