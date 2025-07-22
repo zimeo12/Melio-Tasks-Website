@@ -116,8 +116,8 @@
       left: 50%;
       transform: translateX(-50%);
       width: 85%;
-      max-width: 900px;
-      background: rgba(26, 26, 26, 0.9);
+      max-width: 1000px;
+      background: rgba(26, 26, 26, 0.85);
       backdrop-filter: blur(12px);
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
@@ -214,7 +214,7 @@
       left: 50%;
       transform: translateX(-50%);
       width: 85%;
-      max-width: 350px;
+      max-width: 400px;
       background: rgba(26, 26, 26, 0.9);
       backdrop-filter: blur(12px);
       border-radius: 10px;
@@ -322,17 +322,26 @@
 
     /* Hero Section */
     #hero {
-      background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, #0A0A0A 100%);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(10, 10, 10, 0.95) 100%);
       min-height: 100vh;
       display: flex;
       align-items: center;
       padding-top: 8rem;
     }
 
+    .hero-text {
+      padding-left: 0;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-text {
+        padding-left: 3rem;
+      }
+    }
+
     .hero-image {
-      max-width: 80%;
+      max-width: 90%;
       border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease;
     }
 
@@ -386,6 +395,12 @@
       border-color: #F97316;
     }
 
+    /* Action Section */
+    #action {
+      background: linear-gradient(180deg, rgba(249, 115, 22, 0.1) 0%, #0A0A0A 100%);
+      padding: 5rem 0;
+    }
+
     /* Carousel */
     .swiper-container {
       padding: 1rem;
@@ -421,6 +436,13 @@
     .testimonial-card:hover {
       border-color: #F97316;
       transform: translateY(-4px);
+    }
+
+    /* Download Section */
+    #download {
+      background: linear-gradient(180deg, rgba(249, 115, 22, 0.1) 0%, #0A0A0A 100%);
+      padding: 5rem 0;
+      text-align: center;
     }
 
     /* Social Icons */
@@ -480,7 +502,7 @@
   <!-- Hero Section -->
   <section id="hero" class="pt-24">
     <div class="section-container grid lg:grid-cols-2 gap-12 items-center">
-      <div class="text-center lg:text-left">
+      <div class="hero-text text-center lg:text-left">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">Melio Tasks</h1>
         <p class="text-xl md:text-2xl mb-4 animate-fade-in" style="animation-delay: 0.2s;">Organisez vos projets avec fluidité et efficacité</p>
         <p class="text-base md:text-lg text-gray-300 mb-8 animate-fade-in" style="animation-delay: 0.3s;">Une application intuitive pour gérer vos tâches et booster votre productivité.</p>
@@ -490,7 +512,7 @@
         </div>
       </div>
       <div class="flex justify-center">
-        <img src="VisuelAccueil.png" alt="Interface de Melio Tasks" class="hero-image animate-scale-in" style="animation-delay: 0.5s;" width="320" height="480">
+        <img src="VisuelAccueil.png" alt="Interface de Melio Tasks" class="hero-image animate-scale-in" style="animation-delay: 0.5s;" width="360" height="540">
       </div>
     </div>
   </section>
@@ -521,7 +543,7 @@
   </section>
 
   <!-- Action Section -->
-  <section id="action" class="py-20 bg-gray-900/30">
+  <section id="action" class="py-20">
     <div class="section-container">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fade-in">Melio Tasks en action</h2>
       <div class="swiper-container" role="region" aria-label="Captures d'écran de l'application">
@@ -563,7 +585,7 @@
   </section>
 
   <!-- Download Section -->
-  <section id="download" class="py-20 bg-gradient-to-b from-gray-900 to-black text-center">
+  <section id="download" class="py-20 text-center">
     <div class="section-container">
       <h2 class="text-3xl md:text-4xl font-bold mb-8 animate-fade-in">Commencez dès aujourd'hui</h2>
       <p class="text-lg md:text-xl mb-10 animate-fade-in" style="animation-delay: 0.2s;">Téléchargez Melio Tasks et révolutionnez votre organisation.</p>
