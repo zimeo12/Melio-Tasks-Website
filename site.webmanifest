@@ -1,6 +1,6 @@
 {
-  "name": "Melio Web",
-  "short_name": "Melio Tasks",
+  "name": "Melio Tasks",
+  "short_name": "Melio",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#FF6C37",
+  "background_color": "#FF6C37",
   "display": "standalone"
 }
