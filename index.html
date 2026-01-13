@@ -241,144 +241,6 @@
       color: #FFA500;
     }
 
-    .early-adopter-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(15, 15, 15, 0.95);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-top: 1px solid rgba(255, 165, 0, 0.3);
-      padding: 1rem 2rem;
-      transform: translateY(100%);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 999;
-      box-shadow: 0 -10px 40px rgba(255, 165, 0, 0.2);
-    }
-
-    .early-adopter-banner.visible {
-      transform: translateY(0);
-    }
-
-    .early-adopter-banner-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-
-    .banner-text-content {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex: 1;
-    }
-
-    .banner-icon {
-      flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .banner-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .banner-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    .banner-title {
-      font-weight: 600;
-      font-size: 1rem;
-      color: #FFFFFF;
-    }
-
-    .banner-subtitle {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .banner-button {
-      flex-shrink: 0;
-    }
-
-    .banner-buttons-container {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-shrink: 0;
-    }
-
-    .banner-close {
-      background: none;
-      border: none;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 1.25rem;
-      cursor: pointer;
-      padding: 0.5rem;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-    }
-
-    .banner-close:hover {
-      color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    @media (max-width: 768px) {
-      .early-adopter-banner-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-      }
-
-      .banner-text-content {
-        flex-direction: row;
-        text-align: left;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .banner-buttons-container {
-        display: flex;
-        width: 100%;
-        gap: 0.5rem;
-        align-items: center;
-      }
-
-      .banner-button {
-        flex: 1;
-      }
-
-      .banner-button .btn-gradient {
-        width: 100%;
-        text-align: center;
-      }
-
-      .banner-close {
-        flex-shrink: 0;
-        width: 40px;
-        height: 40px;
-      }
-    }
-
 
     .btn-gradient {
       position: relative;
@@ -1067,61 +929,109 @@
     }
 
     .cc-window {
-      border-radius: 32px !important;
-      background: rgba(15, 15, 15, 0.95) !important;
-      backdrop-filter: blur(20px) !important;
-      border: 1px solid rgba(255, 165, 0, 0.3) !important;
-      padding: 1.5rem !important;
-      max-width: 400px !important;
-      box-shadow: 0 10px 40px rgba(255, 165, 0, 0.2) !important;
+      border-radius: 24px !important;
+      background: rgba(10, 10, 10, 0.95) !important;
+      backdrop-filter: blur(40px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      padding: 2rem !important;
+      max-width: 450px !important;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+      font-family: 'Inter', sans-serif !important;
     }
     .cc-message {
-      font-size: 0.9rem !important;
-      margin-bottom: 1rem !important;
-      line-height: 1.5 !important;
+      font-size: 0.95rem !important;
+      margin-bottom: 1.5rem !important;
+      line-height: 1.6 !important;
+      color: rgba(255, 255, 255, 0.9) !important;
     }
     .cc-link {
       color: #FFA500 !important;
+      text-decoration: none !important;
+      font-weight: 600 !important;
+      transition: all 0.3s ease !important;
+    }
+    .cc-link:hover {
+      color: #FF5537 !important;
       text-decoration: underline !important;
     }
     .cc-compliance {
       display: flex !important;
-      gap: 1rem !important;
+      gap: 0.75rem !important;
       justify-content: flex-end !important;
+      flex-wrap: wrap !important;
     }
     .cc-btn {
+      position: relative !important;
       border-radius: 50px !important;
-      padding: 0.75rem 1.5rem !important;
+      padding: 0.85rem 2rem !important;
       font-weight: 600 !important;
+      font-size: 0.9rem !important;
       min-width: 110px !important;
       text-align: center !important;
       transition: all 0.4s ease !important;
+      cursor: pointer !important;
+      overflow: hidden !important;
+      border: none !important;
     }
-    /* Accept = btn-gradient */
+
+    /* Accept Button = btn-gradient style */
     .cc-btn.cc-dismiss {
       background: linear-gradient(135deg, #FFA500, #FF5537) !important;
       color: #000 !important;
       box-shadow: 0 10px 30px rgba(255, 165, 0, 0.3) !important;
     }
+    .cc-btn.cc-dismiss::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: -100% !important;
+      width: 100% !important;
+      height: 100% !important;
+      background: linear-gradient(135deg, #FF5537, #FFA500) !important;
+      transition: left 0.4s ease !important;
+      z-index: 0 !important;
+    }
     .cc-btn.cc-dismiss:hover {
       transform: translateY(-3px) !important;
       box-shadow: 0 15px 40px rgba(255, 165, 0, 0.5) !important;
-      animation: pulse 2s infinite !important;
     }
-    /* Reject = btn-outline */
+    .cc-btn.cc-dismiss:hover::before {
+      left: 0 !important;
+    }
+
+    /* Reject Button = btn-outline style */
     .cc-btn.cc-deny {
-      background: transparent !important;
+      background: linear-gradient(#000, #000) padding-box, linear-gradient(135deg, #FFA500, #FF5537) border-box !important;
+      border: 2px solid transparent !important;
       color: #FFA500 !important;
-      border: 2px solid #FFA500 !important;
+      position: relative !important;
+    }
+    .cc-btn.cc-deny::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      background: linear-gradient(135deg, #FFA500, #FF5537) !important;
+      opacity: 0 !important;
+      transition: opacity 0.4s ease !important;
+      z-index: 0 !important;
+      border-radius: 50px !important;
     }
     .cc-btn.cc-deny:hover {
-      background: #FFA500 !important;
-      color: #000 !important;
       transform: translateY(-3px) !important;
     }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 10px 30px rgba(255, 165, 0, 0.3); }
-      50% { box-shadow: 0 15px 50px rgba(255, 165, 0, 0.6); }
+    .cc-btn.cc-deny:hover::before {
+      opacity: 1 !important;
+    }
+    .cc-btn.cc-deny span {
+      position: relative !important;
+      z-index: 1 !important;
+    }
+    .cc-btn.cc-deny:hover {
+      color: #000 !important;
     }
   </style>
 
@@ -1136,10 +1046,11 @@
         "button": { "background": "transparent" }
       },
       "theme": "edgeless",
+      "type": "opt-in",
       "position": "bottom-right",
       "content": {
-        "message": "This site uses cookies to analyze traffic and improve your experience.",
-        "dismiss": "Accept",
+        "message": "We use cookies to analyze traffic and improve your experience.",
+        "dismiss": "Accept All",
         "deny": "Reject",
         "link": "Learn More",
         "href": "/privacy-policy/"
@@ -1148,6 +1059,11 @@
         if (this.hasConsented()) {
           gtag('consent', 'update', {'analytics_storage': 'granted'});
         } else {
+          gtag('consent', 'update', {'analytics_storage': 'denied'});
+        }
+      },
+      onInitialise: function(status) {
+        if (status === 'deny') {
           gtag('consent', 'update', {'analytics_storage': 'denied'});
         }
       }
@@ -1219,28 +1135,6 @@
     <a href="#download-section">Download</a>
   </div>
 
-  <!-- Early Adopter Banner -->
-  <div class="early-adopter-banner" id="earlyAdopterBanner">
-    <div class="early-adopter-banner-content">
-      <div class="banner-text-content">
-        <div class="banner-icon">
-          <img src="MelioLogo.png" alt="Melio Tasks Logo">
-        </div>
-        <div class="banner-text">
-          <div class="banner-title">Limited Time: Early Adopter Special Pricing</div>
-          <div class="banner-subtitle">Lock in exclusive rates before prices increase</div>
-        </div>
-      </div>
-      <div class="banner-buttons-container">
-        <div class="banner-button">
-          <a href="#pricing" class="btn-gradient text-black text-sm px-6 py-2">
-            <span>View Pricing</span>
-          </a>
-        </div>
-        <button class="banner-close" id="closeBanner" aria-label="Close banner">✕</button>
-      </div>
-    </div>
-  </div>
 
   <!-- Hero Section -->
   <section id="hero" class="min-h-screen flex items-center justify-center px-4 pt-32 pb-16" style="position: relative; z-index: 1;">
@@ -1668,7 +1562,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-16 px-4 border-t border-gray-900 pb-40" style="position: relative; z-index: 1;">
+  <footer class="py-16 px-4 border-t border-gray-900" style="position: relative; z-index: 1;">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-center gap-8">
         <div class="flex items-center gap-4">
@@ -1872,62 +1766,12 @@
 
     statsObserver.observe(statsSection);
 
-    // Early Adopter Banner
-    const earlyAdopterBanner = document.getElementById('earlyAdopterBanner');
-    const closeBannerBtn = document.getElementById('closeBanner');
-    let lastScrollY = window.scrollY;
-    let scrollDirection = 'down';
-    let bannerClosed = false;
-    const SCROLL_THRESHOLD = 300;
-
-    function closeBanner() {
-      bannerClosed = true;
-      earlyAdopterBanner.classList.remove('visible');
-    }
-
-    if (closeBannerBtn) {
-      closeBannerBtn.addEventListener('click', closeBanner);
-    }
-
-    function handleBannerVisibility() {
-      if (bannerClosed) {
-        return;
-      }
-
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY > lastScrollY) {
-        scrollDirection = 'down';
-      } else if (currentScrollY < lastScrollY) {
-        scrollDirection = 'up';
-      }
-      
-      lastScrollY = currentScrollY;
-
-      if (currentScrollY > SCROLL_THRESHOLD && scrollDirection === 'down') {
-        earlyAdopterBanner.classList.add('visible');
-      } else {
-        earlyAdopterBanner.classList.remove('visible');
-      }
-    }
-
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-      scrollTimeout = setTimeout(handleBannerVisibility, 10);
-    });
-
     // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          if (this.getAttribute('href') === '#pricing') {
-            earlyAdopterBanner.classList.remove('visible');
-          }
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
