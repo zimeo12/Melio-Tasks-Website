@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>Our Story - Melio Tasks | Building a Better Way to Get Things Done</title>
+  <meta name="description" content="Learn about the story behind Melio Tasks, our mission to help people achieve more with less stress, and the values that drive us forward.">
+  <meta name="keywords" content="melio tasks story, about melio tasks, task manager mission, productivity app story">
+  <meta name="author" content="Melio Tasks">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://meliotasks.com/our-story/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://meliotasks.com/our-story/">
+  <meta property="og:title" content="Our Story - Melio Tasks">
+  <meta property="og:description" content="Discover the mission and values behind Melio Tasks.">
+  <meta property="og:image" content="/VisuelAccueil.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://meliotasks.com/our-story/">
+  <meta name="twitter:title" content="Our Story - Melio Tasks">
+  <meta name="twitter:description" content="Discover the mission and values behind Melio Tasks.">
+  <meta name="twitter:image" content="/VisuelAccueil.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Melio Tasks" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000000;
+      color: #FFFFFF;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Dot Pattern Background - MORE VISIBLE */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.22) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Subtle gradient overlays */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 165, 0, 0.015) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 85, 55, 0.015) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation - More Transparent */
+    nav {
+      position: fixed;
+      top: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1200px;
+      background: rgba(10, 10, 10, 0.3);
+      backdrop-filter: blur(20px) saturate(120%);
+      -webkit-backdrop-filter: blur(20px) saturate(120%);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 40px;
+      padding: 0.875rem 2rem;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .logo-link {
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 0.5rem 1rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .nav-link:hover {
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      width: 24px;
+      height: 18px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 60;
+      position: relative;
+    }
+
+    .hamburger span {
+      background-color: #FFFFFF;
+      height: 2px;
+      display: block;
+      transition: all 0.3s ease;
+      width: 100%;
+      position: absolute;
+      left: 0;
+    }
+
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 8px; }
+    .hamburger span:nth-child(3) { top: 16px; }
+
+    .hamburger.active span:nth-child(1) {
+      top: 8px;
+      transform: rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+
+    .hamburger.active span:nth-child(3) {
+      top: 8px;
+      transform: rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 400px;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .mobile-menu.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 1rem;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #FFFFFF;
+    }
+
+    /* Primary Button - ULTRA SMOOTH */
+    .btn-primary {
+      position: relative;
+      background: linear-gradient(135deg, #FFA500, #FF5537);
+      padding: 0.875rem 2.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(255, 165, 0, 0.25);
+      display: inline-block;
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 40px rgba(255, 165, 0, 0.4);
+    }
+
+    /* Secondary Button - ULTRA SMOOTH */
+    .btn-secondary {
+      position: relative;
+      padding: 0.875rem 2.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-block;
+      color: #FFFFFF;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Section Title with gradient - FIX CLIPPING */
+    .section-title {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+      padding-bottom: 0.1em;
+    }
+
+    /* Fade In Animation - ULTRA SMOOTH & ELEGANT */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px) scale(0.96);
+      filter: blur(4px);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Animation only for fade-in, not for hover interactions */
+    .fade-in.animating {
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Stagger delays only during initial animation */
+    .fade-in.animating:nth-child(1) { transition-delay: 0s; }
+    .fade-in.animating:nth-child(2) { transition-delay: 0.15s; }
+    .fade-in.animating:nth-child(3) { transition-delay: 0.3s; }
+    .fade-in.animating:nth-child(4) { transition-delay: 0.45s; }
+    .fade-in.animating:nth-child(5) { transition-delay: 0.6s; }
+    .fade-in.animating:nth-child(6) { transition-delay: 0.75s; }
+
+    /* Story Cards - ULTRA SMOOTH */
+    .story-card {
+      background: rgba(26, 26, 26, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .story-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(26, 26, 26, 0.6);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Value Cards - ULTRA SMOOTH */
+    .value-card {
+      background: rgba(26, 26, 26, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+    }
+
+    .value-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(26, 26, 26, 0.6);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .value-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+      padding-bottom: 0.1em;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Timeline - ULTRA SMOOTH */
+    .timeline-item {
+      position: relative;
+      padding-left: 3rem;
+      padding-bottom: 3rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(255, 165, 0, 0.5), rgba(255, 165, 0, 0.1));
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 0;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FFA500, #FF5537);
+      box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item:last-child::before {
+      display: none;
+    }
+
+    /* Footer - Clean & Professional */
+    footer {
+      background: rgba(10, 10, 10, 0.8);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-column h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      font-size: 0.95rem;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: #FFFFFF;
+      transform: translateX(4px);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-copyright {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.875rem;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .social-icon:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+    }
+
+    .social-icon img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .timeline-item {
+        padding-left: 2rem;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .hamburger {
+        display: flex !important;
+      }
+
+      nav .hidden {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 1201px) {
+      .hamburger {
+        display: none;
+      }
+    }
+  </style>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EK1HGFJYE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+
+    gtag('js', new Date());
+    gtag('config', 'G-0EK1HGFJYE', {
+      anonymize_ip: true
+    });
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "uzfroeajti");
+  </script>
+
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="flex items-center justify-between">
+      <a href="/" class="logo-link">
+        <img src="/MelioLogo.png" alt="Melio Tasks" class="h-8">
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/#features" class="nav-link">Features</a>
+        <a href="/#testimonials" class="nav-link">Reviews</a>
+        <a href="/#comparison" class="nav-link">Comparison</a>
+        <a href="/pricing/" class="nav-link">Pricing</a>
+        <a href="/our-story/" class="nav-link">Our Story</a>
+        <a href="/#download-section" class="btn-primary text-sm px-6 py-2.5">Download</a>
+      </div>
+      <button class="hamburger md:hidden" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/#features">Features</a>
+    <a href="/#testimonials">Reviews</a>
+    <a href="/#comparison">Comparison</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/our-story/">Our Story</a>
+    <a href="/#download-section">Download</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center px-4 pt-32 pb-8" style="position: relative; z-index: 1;">
+    <div class="max-w-5xl mx-auto w-full text-center">
+      <div class="fade-in">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full text-sm font-medium text-orange-500 mb-6">
+          Our Mission
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 section-title">
+          Building a Better Way to Get Things Done
+        </h1>
+
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+          We believe productivity should bring peace, not pressure. That's why we built Melio Tasks.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem Section -->
+  <section class="py-12 px-4" style="position: relative; z-index: 1;">
+    <div class="max-w-4xl mx-auto">
+      <div class="story-card fade-in">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 section-title">
+          The Problem We Saw
+        </h2>
+        <p class="text-lg text-gray-400 leading-relaxed mb-4">
+          Most task management apps today make you feel more stressed, not less. They overwhelm you with complexity, notifications, and endless features you don't need. They turn something simple into something complicated.
+        </p>
+        <p class="text-lg text-gray-400 leading-relaxed">
+          We realized there was a better way. A way to help people organize their lives without the anxiety. A way to feel accomplished instead of overwhelmed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Solution Section -->
+  <section class="py-12 px-4" style="position: relative; z-index: 1;">
+    <div class="max-w-4xl mx-auto">
+      <div class="story-card fade-in">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 section-title">
+          Our Solution
+        </h2>
+        <p class="text-lg text-gray-400 leading-relaxed mb-4">
+          Melio Tasks is designed from the ground up to be different. We focus on what matters: helping you clear your mind, organize your thoughts, and achieve your goals with clarity and calm.
+        </p>
+        <p class="text-lg text-gray-400 leading-relaxed">
+          Every feature, every interaction, every design decision is made with one question in mind: "Does this make the user feel more in control?" If the answer is no, we don't build it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Values Section -->
+  <section class="py-20 px-4" style="position: relative; z-index: 1;">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
+          What We Believe In
+        </h2>
+        <p class="text-xl text-gray-400">The principles that guide everything we do</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="value-card fade-in">
+          <h3 class="value-title">Simplicity First</h3>
+          <p class="text-gray-400">
+            Complexity is easy. Simplicity takes work. We work hard so you don't have to.
+          </p>
+        </div>
+
+        <div class="value-card fade-in">
+          <h3 class="value-title">Quality Over Quantity</h3>
+          <p class="text-gray-400">
+            We'd rather have 10 features that work beautifully than 100 that barely work.
+          </p>
+        </div>
+
+        <div class="value-card fade-in">
+          <h3 class="value-title">User-Centric Design</h3>
+          <p class="text-gray-400">
+            Every decision we make starts with you. Your feedback shapes our product.
+          </p>
+        </div>
+
+        <div class="value-card fade-in">
+          <h3 class="value-title">Continuous Improvement</h3>
+          <p class="text-gray-400">
+            We're never done. There's always a better way, and we're always looking for it.
+          </p>
+        </div>
+
+        <div class="value-card fade-in">
+          <h3 class="value-title">Privacy Matters</h3>
+          <p class="text-gray-400">
+            Your tasks are yours. We don't sell your data. We don't share your information.
+          </p>
+        </div>
+
+        <div class="value-card fade-in">
+          <h3 class="value-title">Thoughtful Details</h3>
+          <p class="text-gray-400">
+            The little things matter. Every animation, color, and interaction is intentional.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="py-20 px-4" style="position: relative; z-index: 1;">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
+          Our Journey
+        </h2>
+        <p class="text-xl text-gray-400">From idea to reality</p>
+      </div>
+
+      <div class="space-y-0">
+        <div class="timeline-item fade-in">
+          <div class="story-card">
+            <div class="text-sm text-orange-500 font-semibold mb-2">2025 Q1</div>
+            <h3 class="text-2xl font-bold mb-3">The Idea</h3>
+            <p class="text-gray-400">
+              After years of using task management apps that added stress instead of reducing it, we decided to build something better. Something that prioritizes your peace of mind.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="story-card">
+            <div class="text-sm text-orange-500 font-semibold mb-2">2025 Q2</div>
+            <h3 class="text-2xl font-bold mb-3">Building & Testing</h3>
+            <p class="text-gray-400">
+              We spent months testing with early users, iterating on design, and refining every interaction. We learned what works and what doesn't.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="story-card">
+            <div class="text-sm text-orange-500 font-semibold mb-2">2025 Q3</div>
+            <h3 class="text-2xl font-bold mb-3">Beta Launch</h3>
+            <p class="text-gray-400">
+              We opened up to a small group of beta testers. Their feedback was invaluable in shaping the product into what it is today.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="story-card">
+            <div class="text-sm text-orange-500 font-semibold mb-2">2025 Q4</div>
+            <h3 class="text-2xl font-bold mb-3">Public Launch</h3>
+            <p class="text-gray-400">
+              After months of refinement, we launched Melio Tasks to the world. The response has been incredible, with users reporting less stress and more accomplishments.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <div class="story-card">
+            <div class="text-sm text-orange-500 font-semibold mb-2">2026 & Beyond</div>
+            <h3 class="text-2xl font-bold mb-3">The Future</h3>
+            <p class="text-gray-400">
+              We're just getting started. With new features, platforms, and improvements on the horizon, we're committed to making Melio Tasks the best productivity tool you'll ever use.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-4" style="position: relative; z-index: 1;">
+    <div class="max-w-4xl mx-auto text-center fade-in">
+      <div class="story-card" style="padding: 4rem 3rem;">
+        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
+          Join Us on This Journey
+        </h2>
+        <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+          Become part of a community that values peace of mind, productivity, and progress.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://apps.apple.com/fr/app/melio-tasks-task-management/id6757226707"
+            class="btn-primary"
+            onclick="gtag('event', 'click_download', {'platform': 'iOS', 'source': 'our_story'});">
+            Download for iOS
+          </a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSer5ArfpOluq_lj1_E1lvtwoV4fVtpYF06hsm3RLUE22queqA/viewform?usp=publish-editor"
+            class="btn-secondary"
+            onclick="gtag('event', 'click_download', {'platform': 'Android_waitlist', 'source': 'our_story'});">
+            Join Android Waitlist
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer - Clean & Professional -->
+  <footer style="position: relative; z-index: 1;">
+    <div class="footer-main">
+      <div class="footer-column">
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/#features">Features</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/our-story/">Our Story</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <div class="footer-links">
+          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/terms-of-use/">Terms of Use</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpQc-CVeX4ISTjQtTAvkw0olq1p1eplgRwo0QD_Y0nUD8Sg/viewform?usp=dialog" target="_blank">Contact Us</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Social</h4>
+        <div class="flex gap-3 mb-4">
+          <a href="https://twitter.com/melio_tasks_app" class="social-icon" target="_blank">
+            <img src="/twitter-icon.png" alt="Twitter">
+          </a>
+          <a href="https://instagram.com/melio.tasks.app" class="social-icon" target="_blank">
+            <img src="/instagram-icon.png" alt="Instagram">
+          </a>
+          <a href="https://tiktok.com/@melio.tasks.app" class="social-icon" target="_blank">
+            <img src="/tiktok-icon.png" alt="TikTok">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="flex items-center gap-4">
+        <img src="/MelioLogo.png" alt="Melio Tasks" class="h-8">
+        <span class="footer-copyright">© 2025 Melio Tasks. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      mobileMenu.classList.toggle('show');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuBtn.classList.remove('active');
+        mobileMenu.classList.remove('show');
+      });
+    });
+
+    // Scroll Animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible', 'animating');
+          // Remove animating class after animation completes to avoid affecting hover
+          setTimeout(() => {
+            entry.target.classList.remove('animating');
+          }, 2000);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

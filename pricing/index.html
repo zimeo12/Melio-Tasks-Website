@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>Pricing - Melio Tasks | Simple, Transparent Pricing for Everyone</title>
+  <meta name="description" content="Affordable pricing for Melio Tasks. Choose the plan that fits your needs. Free tier available, premium features to boost your productivity.">
+  <meta name="keywords" content="melio tasks pricing, task manager pricing, productivity app cost, task management subscription">
+  <meta name="author" content="Melio Tasks">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://meliotasks.com/pricing/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://meliotasks.com/pricing/">
+  <meta property="og:title" content="Pricing - Melio Tasks">
+  <meta property="og:description" content="Simple, transparent pricing. Choose the plan that works for you.">
+  <meta property="og:image" content="/VisuelAccueil.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://meliotasks.com/pricing/">
+  <meta name="twitter:title" content="Pricing - Melio Tasks">
+  <meta name="twitter:description" content="Simple, transparent pricing. Choose the plan that works for you.">
+  <meta name="twitter:image" content="/VisuelAccueil.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Melio Tasks" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000000;
+      color: #FFFFFF;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Dot Pattern Background - MORE VISIBLE */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.22) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Subtle gradient overlays */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 165, 0, 0.015) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 85, 55, 0.015) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation - More Transparent */
+    nav {
+      position: fixed;
+      top: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1200px;
+      background: rgba(10, 10, 10, 0.3);
+      backdrop-filter: blur(20px) saturate(120%);
+      -webkit-backdrop-filter: blur(20px) saturate(120%);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 40px;
+      padding: 0.875rem 2rem;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .logo-link {
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .nav-link:hover {
+      color: #FFFFFF;
+    }
+
+    .hamburger {
+      width: 24px;
+      height: 18px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 60;
+      position: relative;
+    }
+
+    .hamburger span {
+      background-color: #FFFFFF;
+      height: 2px;
+      display: block;
+      transition: all 0.3s ease;
+      width: 100%;
+      position: absolute;
+      left: 0;
+    }
+
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 8px; }
+    .hamburger span:nth-child(3) { top: 16px; }
+
+    .hamburger.active span:nth-child(1) {
+      top: 8px;
+      transform: rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+
+    .hamburger.active span:nth-child(3) {
+      top: 8px;
+      transform: rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 400px;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .mobile-menu.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 1rem;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #FFFFFF;
+    }
+
+    /* Primary Button - Ultra smooth */
+    .btn-primary {
+      position: relative;
+      background: linear-gradient(135deg, #FFA500, #FF5537);
+      padding: 0.875rem 2.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(255, 165, 0, 0.25);
+      display: inline-block;
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 40px rgba(255, 165, 0, 0.4);
+    }
+
+    /* Secondary Button - Ultra smooth */
+    .btn-secondary {
+      position: relative;
+      padding: 0.875rem 2.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-block;
+      color: #FFFFFF;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    /* Section Title with gradient - FIX CLIPPING */
+    .section-title {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+      padding-bottom: 0.1em;
+    }
+
+    /* Fade In Animation - ULTRA SMOOTH & ELEGANT */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px) scale(0.96);
+      filter: blur(4px);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Animation only for fade-in, not for hover interactions */
+    .fade-in.animating {
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Stagger delays only during initial animation */
+    .fade-in.animating:nth-child(1) { transition-delay: 0s; }
+    .fade-in.animating:nth-child(2) { transition-delay: 0.15s; }
+    .fade-in.animating:nth-child(3) { transition-delay: 0.3s; }
+    .fade-in.animating:nth-child(4) { transition-delay: 0.45s; }
+    .fade-in.animating:nth-child(5) { transition-delay: 0.6s; }
+
+    /* Pricing Cards - Ultra smooth */
+    .pricing-card {
+      background: rgba(26, 26, 26, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(26, 26, 26, 0.6);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .pricing-card.featured {
+      border: 2px solid rgba(255, 165, 0, 0.3);
+      background: rgba(26, 26, 26, 0.6);
+    }
+
+    .pricing-card.featured::before {
+      content: 'BEST VALUE';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #FFA500, #FF5537);
+      padding: 0.375rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #000;
+    }
+
+    .price-tag {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.6) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 1rem 0;
+    }
+
+    .price-period {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 500;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin: 2rem 0;
+      flex-grow: 1;
+    }
+
+    .feature-list li {
+      padding: 0.75rem 0;
+      color: rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: #00C95A;
+      font-weight: 700;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    /* FAQ Section - Ultra smooth */
+    .faq-item {
+      background: rgba(26, 26, 26, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(26, 26, 26, 0.6);
+      transform: translateX(4px);
+    }
+
+    .faq-question {
+      font-weight: 600;
+      font-size: 1.125rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, margin-top 0.5s ease;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      margin-top: 1rem;
+    }
+
+    .faq-toggle {
+      font-size: 1.25rem;
+      transition: transform 0.5s ease;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .faq-item.active .faq-toggle {
+      transform: rotate(180deg);
+    }
+
+    /* Footer - Clean & Professional */
+    footer {
+      background: rgba(10, 10, 10, 0.8);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-column h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      color: #FFFFFF;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-copyright {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.875rem;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .social-icon img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .hamburger {
+        display: flex !important;
+      }
+
+      nav .hidden {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 1201px) {
+      .hamburger {
+        display: none;
+      }
+    }
+  </style>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EK1HGFJYE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+
+    gtag('js', new Date());
+    gtag('config', 'G-0EK1HGFJYE', {
+      anonymize_ip: true
+    });
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "uzfroeajti");
+  </script>
+
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="flex items-center justify-between">
+      <a href="/" class="logo-link">
+        <img src="/MelioLogo.png" alt="Melio Tasks" class="h-8">
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/#features" class="nav-link">Features</a>
+        <a href="/#testimonials" class="nav-link">Reviews</a>
+        <a href="/#comparison" class="nav-link">Comparison</a>
+        <a href="/pricing/" class="nav-link">Pricing</a>
+        <a href="/our-story/" class="nav-link">Our Story</a>
+        <a href="/#download-section" class="btn-primary text-sm px-6 py-2.5">Download</a>
+      </div>
+      <button class="hamburger md:hidden" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/#features">Features</a>
+    <a href="/#testimonials">Reviews</a>
+    <a href="/#comparison">Comparison</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/our-story/">Our Story</a>
+    <a href="/#download-section">Download</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center px-4 pt-32 pb-8" style="position: relative; z-index: 1;">
+    <div class="max-w-5xl mx-auto w-full text-center">
+      <div class="fade-in">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full text-sm font-medium text-orange-500 mb-6">
+          Limited offer for early adopters
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 section-title">
+          Simple, Transparent Pricing
+        </h1>
+
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+          Choose the plan that fits your needs. No hidden fees, cancel anytime.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="py-8 px-4" style="position: relative; z-index: 1;">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-8 pricing-grid">
+
+        <!-- Premium Monthly Plan -->
+        <div class="pricing-card fade-in">
+          <h3 class="text-2xl font-bold mb-2">Premium Monthly</h3>
+          <p class="text-gray-500 mb-4">Best for individuals</p>
+          <div class="price-tag">$4.99</div>
+          <div class="price-period">per month</div>
+
+          <ul class="feature-list">
+            <li>Unlimited tasks</li>
+            <li>Advanced task organization</li>
+            <li>Mobile app access</li>
+            <li>Smart reminders</li>
+            <li>Custom categories</li>
+            <li>Priority support</li>
+            <li>Cloud sync across devices</li>
+            <li>Advanced statistics</li>
+          </ul>
+
+          <a href="https://apps.apple.com/fr/app/melio-tasks-task-management/id6757226707" class="btn-primary w-full text-center">
+            Download for iOS
+          </a>
+        </div>
+
+        <!-- Premium Yearly Plan (Featured) -->
+        <div class="pricing-card featured fade-in">
+          <h3 class="text-2xl font-bold mb-2">Premium Yearly</h3>
+          <p class="text-gray-500 mb-4">For power users and teams</p>
+          <div class="price-tag">$49.90</div>
+          <div class="price-period">per year</div>
+
+          <ul class="feature-list">
+            <li>Everything in Premium Monthly</li>
+            <li>Team collaboration</li>
+            <li>Shared workspaces</li>
+            <li>Team analytics</li>
+            <li>Admin controls</li>
+            <li>Dedicated support</li>
+            <li>Custom integrations</li>
+            <li>Priority updates</li>
+          </ul>
+
+          <a href="https://apps.apple.com/fr/app/melio-tasks-task-management/id6757226707" class="btn-primary w-full text-center">
+            Download for iOS
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-32 px-4" style="position: relative; z-index: 1;">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-xl text-gray-400">Everything you need to know about pricing</p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <span>Is there a free trial?</span>
+            <span class="faq-toggle">↓</span>
+          </div>
+          <div class="faq-answer">
+            Yes! We offer a 7-day free trial for all plans. A credit card is required to start the trial, but you can cancel anytime before the trial ends with no charges.
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <span>What payment methods do you accept?</span>
+            <span class="faq-toggle">↓</span>
+          </div>
+          <div class="faq-answer">
+            We accept all major credit cards, Apple Pay, and Google Pay through the App Store and Google Play Store.
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <span>How do I cancel my subscription?</span>
+            <span class="faq-toggle">↓</span>
+          </div>
+          <div class="faq-answer">
+            You can cancel your subscription anytime through the App Store or Google Play Store settings.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-32 px-4" style="position: relative; z-index: 1;">
+    <div class="max-w-4xl mx-auto text-center fade-in">
+      <div class="pricing-card" style="padding: 4rem 3rem;">
+        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
+          Ready to get started?
+        </h2>
+        <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+          Join thousands who've transformed their productivity with Melio Tasks
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://apps.apple.com/fr/app/melio-tasks-task-management/id6757226707"
+            class="btn-primary"
+            onclick="gtag('event', 'click_download', {'platform': 'iOS', 'source': 'pricing'});">
+            Download for iOS
+          </a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSer5ArfpOluq_lj1_E1lvtwoV4fVtpYF06hsm3RLUE22queqA/viewform?usp=publish-editor"
+            class="btn-secondary"
+            onclick="gtag('event', 'click_download', {'platform': 'Android_waitlist', 'source': 'pricing'});">
+            Join Android Waitlist
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer - Clean & Professional -->
+  <footer style="position: relative; z-index: 1;">
+    <div class="footer-main">
+      <div class="footer-column">
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/#features">Features</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/our-story/">Our Story</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <div class="footer-links">
+          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/terms-of-use/">Terms of Use</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpQc-CVeX4ISTjQtTAvkw0olq1p1eplgRwo0QD_Y0nUD8Sg/viewform?usp=dialog" target="_blank">Contact Us</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Social</h4>
+        <div class="flex gap-3 mb-4">
+          <a href="https://twitter.com/melio_tasks_app" class="social-icon" target="_blank">
+            <img src="/twitter-icon.png" alt="Twitter">
+          </a>
+          <a href="https://instagram.com/melio.tasks.app" class="social-icon" target="_blank">
+            <img src="/instagram-icon.png" alt="Instagram">
+          </a>
+          <a href="https://tiktok.com/@melio.tasks.app" class="social-icon" target="_blank">
+            <img src="/tiktok-icon.png" alt="TikTok">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="flex items-center gap-4">
+        <img src="/MelioLogo.png" alt="Melio Tasks" class="h-8">
+        <span class="footer-copyright">© 2025 Melio Tasks. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('active');
+      mobileMenu.classList.toggle('show');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuBtn.classList.remove('active');
+        mobileMenu.classList.remove('show');
+      });
+    });
+
+    // Scroll Animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible', 'animating');
+          // Remove animating class after animation completes to avoid affecting hover
+          setTimeout(() => {
+            entry.target.classList.remove('animating');
+          }, 2000);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // FAQ Accordion - SMOOTH
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const wasActive = item.classList.contains('active');
+
+        // Close all other items
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+
+        // Toggle current item
+        if (!wasActive) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    });
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

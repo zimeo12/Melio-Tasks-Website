@@ -4,7 +4,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- SEO Meta Tags -->
   <title>Melio Tasks - Best Task Manager App for iOS & Android | Boost Your Productivity</title>
   <meta name="description" content="Melio Tasks is the ultimate task management and productivity app. Organize projects, get smart notifications, collaborate with teams, and achieve more. Download on iOS & Android now!">
@@ -12,7 +12,7 @@
   <meta name="author" content="Melio Tasks">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://meliotasks.com">
-  
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://meliotasks.com">
@@ -22,14 +22,14 @@
   <meta property="og:image:alt" content="Melio Tasks App Interface - Task Management Made Simple">
   <meta property="og:site_name" content="Melio Tasks">
   <meta property="og:locale" content="en_US">
-  
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://meliotasks.com">
   <meta name="twitter:title" content="Melio Tasks - Best Task Manager App for iOS & Android">
   <meta name="twitter:description" content="Transform your productivity with Melio Tasks. The most intuitive task management app. Organize tasks, track progress, achieve your goals.">
   <meta name="twitter:image" content="/VisuelAccueil.png">
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -86,21 +86,36 @@
       position: relative;
     }
 
+    /* Dot Pattern Background - MORE VISIBLE */
     body::before {
       content: '';
       position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(255, 165, 0, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(255, 85, 55, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(255, 165, 0, 0.02) 0%, transparent 60%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.22) 1px, transparent 1px);
+      background-size: 28px 28px;
       pointer-events: none;
       z-index: 0;
     }
 
+    /* Subtle gradient overlays */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 165, 0, 0.015) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 85, 55, 0.015) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation - More Transparent */
     nav {
       position: fixed;
       top: 1.5rem;
@@ -108,52 +123,35 @@
       transform: translateX(-50%);
       width: 90%;
       max-width: 1200px;
-      background: rgba(10, 10, 10, 0.4);
-      backdrop-filter: blur(40px) saturate(180%);
-      -webkit-backdrop-filter: blur(40px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(10, 10, 10, 0.3);
+      backdrop-filter: blur(20px) saturate(120%);
+      -webkit-backdrop-filter: blur(20px) saturate(120%);
+      border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: 40px;
-      padding: 1rem 2rem;
+      padding: 0.875rem 2rem;
       z-index: 1000;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 
-                  inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
-    nav:hover {
-      background: rgba(10, 10, 10, 0.55);
-      backdrop-filter: blur(50px) saturate(200%);
-      -webkit-backdrop-filter: blur(50px) saturate(200%);
-      border-color: rgba(255, 165, 0, 0.3);
-      box-shadow: 0 12px 48px rgba(255, 165, 0, 0.2),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    .logo-link {
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
     }
 
     .nav-link {
       position: relative;
       padding: 0.5rem 1rem;
-      transition: all 0.3s ease;
+      transition: color 0.3s ease;
       font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .nav-link:hover {
-      color: #FFA500;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #FFA500, #FF5537);
-      transform: translateX(-50%);
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after {
-      width: 80%;
+      color: #FFFFFF;
     }
 
     .hamburger {
@@ -179,26 +177,16 @@
       left: 0;
     }
 
-    .hamburger span:nth-child(1) {
-      top: 0;
-    }
-
-    .hamburger span:nth-child(2) {
-      top: 8px;
-    }
-
-    .hamburger span:nth-child(3) {
-      top: 16px;
-    }
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 8px; }
+    .hamburger span:nth-child(3) { top: 16px; }
 
     .hamburger.active span:nth-child(1) {
       top: 8px;
       transform: rotate(45deg);
     }
 
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
 
     .hamburger.active span:nth-child(3) {
       top: 8px;
@@ -214,7 +202,7 @@
       max-width: 400px;
       background: rgba(15, 15, 15, 0.95);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 20px;
       padding: 1rem;
       opacity: 0;
@@ -232,340 +220,403 @@
       display: block;
       padding: 1rem;
       border-radius: 12px;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
       text-align: center;
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .mobile-menu a:hover {
-      background: rgba(255, 165, 0, 0.1);
-      color: #FFA500;
+      background: rgba(255, 255, 255, 0.05);
+      color: #FFFFFF;
     }
 
-
-    .btn-gradient {
+    /* Primary Button - Ultra smooth */
+    .btn-primary {
       position: relative;
       background: linear-gradient(135deg, #FFA500, #FF5537);
-      padding: 1rem 2.5rem;
+      padding: 0.875rem 2.25rem;
       border-radius: 50px;
       font-weight: 600;
-      transition: all 0.4s ease;
+      font-size: 1rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(255, 165, 0, 0.3);
+      box-shadow: 0 4px 20px rgba(255, 165, 0, 0.25);
       display: inline-block;
+      color: #000;
     }
 
-    .btn-gradient::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #FF5537, #FFA500);
-      transition: left 0.4s ease;
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 40px rgba(255, 165, 0, 0.4);
     }
 
-    .btn-gradient:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(255, 165, 0, 0.5);
-    }
-
-    .btn-gradient:hover::before {
-      left: 0;
-    }
-
-    .btn-gradient span {
+    /* Secondary Button - Ultra smooth */
+    .btn-secondary {
       position: relative;
-      z-index: 1;
-    }
-
-    .btn-pulse {
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 10px 30px rgba(255, 165, 0, 0.3); }
-      50% { box-shadow: 0 15px 50px rgba(255, 165, 0, 0.6); }
-    }
-
-    .btn-outline {
-      position: relative;
-      padding: 1rem 2.5rem;
-      border: 2px solid transparent;
-      background: linear-gradient(#000, #000) padding-box,
-                  linear-gradient(135deg, #FFA500, #FF5537) border-box;
+      padding: 0.875rem 2.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
       border-radius: 50px;
       font-weight: 600;
-      transition: all 0.4s ease;
-      overflow: hidden;
+      font-size: 1rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       display: inline-block;
+      color: #FFFFFF;
     }
 
-    .btn-outline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #FFA500, #FF5537);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 0;
+    .btn-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-3px) scale(1.02);
     }
 
-    .btn-outline:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn-outline:hover::before {
-      opacity: 1;
-    }
-
-    .btn-outline span {
-      position: relative;
-      z-index: 1;
-      background: linear-gradient(135deg, #FFA500, #FF5537);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      transition: all 0.4s ease;
-    }
-
-    .btn-outline:hover span {
-      -webkit-text-fill-color: #000;
-    }
-
+    /* Feature Card - Ultra smooth hover */
     .feature-card {
-      background: rgba(26, 26, 26, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
+      background: rgba(26, 26, 26, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
       padding: 2.5rem;
-      transition: all 0.4s ease;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
-    }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(255, 165, 0, 0.05), rgba(255, 85, 55, 0.05));
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      border-radius: 24px;
     }
 
     .feature-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(255, 165, 0, 0.3);
-      box-shadow: 0 20px 60px rgba(255, 165, 0, 0.2);
+      transform: translateY(-8px);
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(26, 26, 26, 0.6);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     }
 
-    .feature-card:hover::before {
-      opacity: 1;
-    }
-
-    .video-container {
-      position: relative;
-      width: 100%;
-      max-width: 300px;
-      aspect-ratio: 9/16;
-      border-radius: 32px;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(255, 85, 55, 0.1));
-      border: 2px solid rgba(255, 165, 0, 0.2);
-      box-shadow: 0 30px 80px rgba(255, 165, 0, 0.3);
-      transition: all 0.4s ease;
-    }
-
-    .video-container:hover {
-      transform: scale(1.02);
-      box-shadow: 0 40px 100px rgba(255, 165, 0, 0.4);
-      border-color: rgba(255, 165, 0, 0.4);
-    }
-
+    /* Hero Image */
     .hero-image {
-      max-width: 400px;
+      max-width: 500px;
       width: 100%;
       height: auto;
-      transition: transform 0.4s ease;
-      cursor: pointer;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .hero-image:hover {
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
 
-    .video-container video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .video-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
-    }
-
+    /* Stats - White with gradient */
     .stat-number {
       font-size: 2.5rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #FFA500, #FF5537);
+      font-weight: 700;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.6) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
+    /* Fade In Animation - ULTRA SMOOTH & ELEGANT */
     .fade-in {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
+      transform: translateY(40px) scale(0.96);
+      filter: blur(4px);
     }
 
     .fade-in.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
+      filter: blur(0);
     }
 
-    .feature-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 20px;
+    /* Animation only for fade-in, not for hover interactions */
+    .fade-in.animating {
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Stagger delays only during initial animation */
+    .fade-in.animating:nth-child(1) { transition-delay: 0s; }
+    .fade-in.animating:nth-child(2) { transition-delay: 0.15s; }
+    .fade-in.animating:nth-child(3) { transition-delay: 0.3s; }
+    .fade-in.animating:nth-child(4) { transition-delay: 0.45s; }
+    .fade-in.animating:nth-child(5) { transition-delay: 0.6s; }
+
+    /* Progressive Text Section - OPTIMIZED */
+    .progressive-text-wrapper {
+      min-height: 300vh;
+      position: relative;
+      margin-top: 16rem;
+      margin-bottom: -16rem;
+    }
+
+    .progressive-text-section {
+      position: sticky;
+      top: 50%;
+      transform: translateY(-50%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, rgba(255, 165, 0, 0.2), rgba(255, 85, 55, 0.2));
-      border: 1px solid rgba(255, 165, 0, 0.3);
-      transition: all 0.4s ease;
+      padding: 4rem 2rem;
     }
 
-    .feature-card:hover .feature-icon {
-      transform: scale(1.1) rotate(5deg);
-      background: linear-gradient(135deg, rgba(255, 165, 0, 0.3), rgba(255, 85, 55, 0.3));
+    .progressive-text {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 600;
+      line-height: 1.4;
+      max-width: 900px;
+      text-align: center;
     }
 
-    .testimonial-card {
-      background: rgba(26, 26, 26, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      padding: 2rem;
-      transition: all 0.4s ease;
+    .progressive-text .word {
+      color: rgba(255, 255, 255, 0.2);
+      transition: color 0.5s ease;
+      display: inline-block;
+      margin: 0 0.2em;
     }
 
-    .testimonial-card:hover {
-      border-color: rgba(255, 165, 0, 0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(255, 165, 0, 0.2);
+    .progressive-text .word.active {
+      color: rgba(255, 255, 255, 1);
     }
 
-    .screenshot-container {
-      display: flex;
-      gap: 2rem;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-behavior: auto;
-      padding: 2rem 0;
-      scrollbar-width: none;
+    /* Stats Counter Section - Optimized */
+    .stats-counter-section {
+      min-height: 650vh;
       position: relative;
-      cursor: grab;
-      -webkit-overflow-scrolling: touch;
+      margin-top: 8rem;
+      margin-bottom: 4rem;
     }
 
-    .screenshot-container::-webkit-scrollbar {
-      display: none;
+    .stats-counter-sticky {
+      position: sticky;
+      top: 7%;
+      text-align: center;
+      padding: 6rem 2rem;
     }
 
-    .screenshot-container:active {
-      cursor: grabbing;
+    .stats-counter-content {
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    .screenshot-wrapper {
+    .stats-counter-label {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .stats-counter-title {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 2rem;
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+
+    .stats-counter-value {
+      font-size: clamp(4rem, 12vw, 9rem);
+      font-weight: 800;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.3) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.3;
+      padding-bottom: 0.2em;
+      margin-bottom: 1rem;
+      transition: opacity 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .stats-counter-description {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.5);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+      transition: opacity 0.2s ease;
+    }
+
+    /* Mini Stats Grid - Enhanced with cards */
+    .mini-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding-top: 3rem;
+    }
+
+    .mini-stat {
+      text-align: center;
+      background: rgba(26, 26, 26, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .mini-stat:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-3px);
+    }
+
+    .mini-stat-value {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+
+    .mini-stat-label {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .mini-stat-description {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 0.5rem;
+      line-height: 1.4;
+    }
+
+    /* Feature Showcase - Alternating Layout */
+    .feature-showcase {
+      margin: 8rem 0;
+    }
+
+    .feature-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 4rem;
+      padding: 2rem 0;
+    }
+
+    .feature-item:nth-child(even) .feature-content {
+      order: 2;
+    }
+
+    .feature-item:nth-child(even) .feature-visual {
+      order: 1;
+    }
+
+    .feature-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 85, 0, 0.1);
+      border: 1px solid rgba(255, 85, 0, 0.2);
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #FF5500;
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+      padding-bottom: 0.1em;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .feature-description {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .feature-visual {
       position: relative;
       overflow: hidden;
+      border-radius: 20px;
     }
 
-    .screenshot-wrapper::before,
-    .screenshot-wrapper::after {
+    .feature-visual img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 20px;
+      display: block;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(60px) scale(0.94);
+      filter: blur(8px);
+      transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .feature-visual img.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Testimonials Carousel - IMPROVED WITH FADE */
+    .testimonials-carousel {
+      position: relative;
+      overflow: hidden;
+      padding: 2rem 0;
+    }
+
+    /* Fade effect on edges */
+    .testimonials-carousel::before,
+    .testimonials-carousel::after {
       content: '';
       position: absolute;
       top: 0;
       bottom: 0;
       width: 150px;
       pointer-events: none;
-      z-index: 10;
+      z-index: 2;
     }
 
-    .screenshot-wrapper::before {
+    .testimonials-carousel::before {
       left: 0;
-      background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+      background: linear-gradient(to right, #000000 0%, transparent 100%);
     }
 
-    .screenshot-wrapper::after {
+    .testimonials-carousel::after {
       right: 0;
-      background: linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+      background: linear-gradient(to left, #000000 0%, transparent 100%);
     }
 
-    .screenshot {
-      min-width: 200px;
-      max-width: 200px;
-      height: auto;
-      border-radius: 24px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-      user-select: none;
-      pointer-events: none;
+    .testimonials-track {
+      display: flex;
+      gap: 2rem;
+      will-change: transform;
+    }
+
+    .testimonial-card {
+      background: rgba(26, 26, 26, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      min-width: 420px;
+      max-width: 420px;
       flex-shrink: 0;
     }
 
-    .screenshot:hover {
-      transform: scale(1.05) translateY(-10px);
-      box-shadow: 0 20px 60px rgba(255, 165, 0, 0.3);
+    .testimonial-card:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-6px);
+      background: rgba(26, 26, 26, 0.6);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
     }
 
-    .success-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(255, 165, 0, 0.1);
-      border: 1px solid rgba(255, 165, 0, 0.3);
-      padding: 0.5rem 1.5rem;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #FFA500;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      animation: badge-pulse 2s infinite;
-    }
-
-    .success-badge:hover {
-      background: rgba(255, 165, 0, 0.2);
-      border-color: rgba(255, 165, 0, 0.5);
-      transform: translateY(-2px);
-    }
-
-    @keyframes badge-pulse {
-      0%, 100% { 
-        box-shadow: 0 0 15px rgba(255, 165, 0, 0.3);
-      }
-      50% { 
-        box-shadow: 0 0 25px rgba(255, 165, 0, 0.6);
-      }
-    }
-
+    /* Comparison Table */
     .comparison-table {
-      background: rgba(26, 26, 26, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
+      background: rgba(26, 26, 26, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
       overflow: hidden;
-      position: relative;
     }
 
     .comparison-row {
@@ -573,14 +624,12 @@
       grid-template-columns: 2fr repeat(4, 1fr);
       gap: 1rem;
       padding: 1.5rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      transition: background 0.3s ease;
-      position: relative;
-      z-index: 2;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: background 0.2s ease;
     }
 
     .comparison-row:hover {
-      background: rgba(255, 165, 0, 0.05);
+      background: rgba(255, 255, 255, 0.02);
     }
 
     .comparison-row:last-child {
@@ -589,7 +638,7 @@
 
     .comparison-header {
       font-weight: 700;
-      background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(255, 85, 55, 0.1));
+      background: rgba(26, 26, 26, 0.6);
     }
 
     .comparison-cell {
@@ -610,7 +659,7 @@
     }
 
     .cross-icon {
-      color: rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.15);
       font-size: 1.5rem;
     }
 
@@ -621,6 +670,16 @@
       font-weight: 700;
     }
 
+    /* Section Title with gradient - FIX CLIPPING */
+    .section-title {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+      padding-bottom: 0.1em;
+    }
+
+    /* Social Icons */
     .social-icon {
       width: 40px;
       height: 40px;
@@ -628,319 +687,92 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       transition: all 0.3s ease;
     }
 
     .social-icon:hover {
-      background: linear-gradient(135deg, #FFA500, #FF5537);
-      border-color: transparent;
-      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
     }
 
     .social-icon img {
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       object-fit: contain;
     }
 
-    .pricing-card {
-      background: rgba(26, 26, 26, 0.9);
-      border: 2px solid rgba(255, 165, 0, 0.3);
-      border-radius: 24px;
-      padding: 1.5rem;
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: visible;
+    /* Footer - Clean & Professional */
+    footer {
+      background: rgba(10, 10, 10, 0.8);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4rem 2rem 2rem;
     }
 
-    .pricing-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(255, 85, 55, 0.1));
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      border-radius: 24px;
-      z-index: 0;
+    .footer-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .pricing-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(255, 165, 0, 0.6);
-      box-shadow: 0 30px 80px rgba(255, 165, 0, 0.3);
-    }
-
-    .pricing-card:hover::before {
-      opacity: 1;
-    }
-
-    .price-tag {
-      font-size: 3rem;
-      font-weight: 900;
-      background: linear-gradient(135deg, #FFA500, #FF5537);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 0.5rem 0;
-    }
-
-    .price-original {
-      font-size: 2rem;
+    .footer-column h4 {
+      font-size: 0.875rem;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.4);
-      text-decoration: line-through;
-      margin-right: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .price-container {
+    .footer-links {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .price-yearly-detail {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.6);
-      margin-top: 0.25rem;
-    }
-
-    .feature-list {
-      list-style: none;
-      padding: 0;
-      margin: 1rem 0;
-    }
-
-    .feature-list li {
-      padding: 0.4rem 0;
-      display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 0.75rem;
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.85rem;
     }
 
-    .feature-list li::before {
-      content: '✓';
-      color: #FFA500;
-      font-weight: bold;
-      font-size: 1.1rem;
-      flex-shrink: 0;
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
     }
 
-    .early-adopter-badge {
-      display: inline-flex;
+    .footer-links a:hover {
+      color: #FFFFFF;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
-      background: linear-gradient(135deg, rgba(255, 165, 0, 0.2), rgba(255, 85, 55, 0.2));
-      border: 1px solid rgba(255, 165, 0, 0.5);
-      padding: 0.5rem 1.2rem;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #FFA500;
-      margin-bottom: 1rem;
-      animation: pulse-glow 2s infinite;
+      flex-wrap: wrap;
+      gap: 2rem;
     }
 
-    @keyframes pulse-glow {
-      0%, 100% { 
-        box-shadow: 0 0 15px rgba(255, 165, 0, 0.3);
-      }
-      50% { 
-        box-shadow: 0 0 25px rgba(255, 165, 0, 0.6);
-      }
+    .footer-copyright {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.875rem;
     }
 
-    .pricing-notice {
-      background: rgba(255, 165, 0, 0.08);
-      border: 1px solid rgba(255, 165, 0, 0.3);
-      border-radius: 16px;
-      padding: 1rem 1.5rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .pricing-notice-title {
-      font-weight: 700;
-      color: #FFA500;
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
-    }
-
-    .pricing-notice-text {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .savings-badge {
-      position: absolute;
-      top: -10px;
-      right: 20px;
-      background: linear-gradient(135deg, #FF5537, #FFA500);
-      color: #000;
-      padding: 0.35rem 0.9rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.75rem;
-      box-shadow: 0 5px 20px rgba(255, 165, 0, 0.4);
-      z-index: 10;
-    }
-
-    @media (max-width: 1200px) {
-      .hamburger {
-        display: flex !important;
-      }
-
-      nav .hidden {
-        display: none !important;
-      }
-    }
-
-    @media (max-width: 1024px) {
-      .stat-number {
-        font-size: 2rem;
-      }
-      
-      nav {
-        width: 95%;
-        padding: 0.75rem 1rem;
-      }
-
-      .video-container {
-        max-width: 280px;
-      }
-
-      .hero-image {
-        max-width: 350px;
-      }
-
-      .comparison-row {
-        grid-template-columns: 1.5fr repeat(4, 1fr);
-        gap: 0.5rem;
-        font-size: 0.85rem;
-        padding: 1rem;
-      }
-
-      .feature-card {
-        padding: 2rem;
-      }
-
-      h1 {
-        font-size: 3rem !important;
-      }
-
-      h2 {
-        font-size: 2.5rem !important;
-      }
-
-      .text-xl {
-        font-size: 1.15rem;
-      }
-
-      .pricing-card {
-        padding: 1.5rem;
-      }
-
-      .price-tag {
-        font-size: 2.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .btn-gradient, .btn-outline {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.9rem;
-      }
-
-      h1 {
-        font-size: 2.5rem !important;
-      }
-
-      h2 {
-        font-size: 2rem !important;
-      }
-
-      .text-xl {
-        font-size: 1.05rem;
-      }
-
-      .price-tag {
-        font-size: 2.2rem;
-      }
-
-      .video-container {
-        max-width: 260px;
-      }
-
-      .hero-image {
-        max-width: 280px;
-      }
-
-      .pricing-card {
-        padding: 1.5rem;
-      }
-
-      .feature-list li {
-        font-size: 0.8rem;
-      }
-    }
-
-    @media (min-width: 1025px) and (max-width: 1400px) {
-      h1 {
-        font-size: 3.5rem !important;
-      }
-
-      h2 {
-        font-size: 3rem !important;
-      }
-
-      .text-xl {
-        font-size: 1.2rem;
-      }
-    }
-
-    @media (min-width: 1201px) and (max-width: 1350px) {
-      nav {
-        padding: 0.75rem 1.5rem;
-      }
-
-      .nav-link {
-        padding: 0.5rem 0.65rem;
-        font-size: 0.88rem;
-      }
-
-      .btn-gradient.text-sm {
-        padding: 0.5rem 1.1rem;
-        font-size: 0.82rem;
-      }
-    }
-
-    @media (min-width: 1201px) {
-      .hamburger {
-        display: none;
-      }
-    }
-
-    /* Custom Cookie Banner */
+    /* Cookie Banner */
     .custom-cookie-banner {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
       max-width: 420px;
       background: rgba(10, 10, 10, 0.95);
-      backdrop-filter: blur(40px) saturate(180%);
-      -webkit-backdrop-filter: blur(40px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(40px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 24px;
       padding: 2rem;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       z-index: 9999;
       opacity: 0;
       transform: translateY(20px);
@@ -954,152 +786,86 @@
       pointer-events: auto;
     }
 
-    .custom-cookie-banner.hide {
-      opacity: 0;
-      transform: translateY(20px);
-      pointer-events: none;
-    }
-
     .cookie-message {
       font-size: 0.95rem;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.8);
       margin-bottom: 1.5rem;
-      text-align: left;
-      max-width: 350px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .cookie-message a {
       color: #FFA500;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .cookie-message a:hover {
-      color: #FF5537;
-      text-decoration: underline;
     }
 
     .cookie-buttons {
       display: flex;
-      flex-direction: row-reverse;
       gap: 0.75rem;
-      justify-content: center;
-      align-items: center;
     }
 
-    /* Accept button - exactly like Download for iOS */
     .cookie-accept {
-      position: relative;
+      flex: 1;
       background: linear-gradient(135deg, #FFA500, #FF5537);
-      padding: 1rem 2.5rem;
+      padding: 0.875rem 1.5rem;
       border-radius: 50px;
       font-weight: 600;
-      transition: all 0.4s ease;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(255, 165, 0, 0.3);
-      display: inline-block;
       border: none;
       cursor: pointer;
       color: #000;
       font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      min-width: 150px;
-      text-align: center;
-    }
-
-    .cookie-accept::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #FF5537, #FFA500);
-      transition: left 0.4s ease;
+      transition: all 0.3s ease;
     }
 
     .cookie-accept:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(255, 165, 0, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(255, 165, 0, 0.3);
     }
 
-    .cookie-accept:hover::before {
-      left: 0;
-    }
-
-    .cookie-accept span {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Reject button - exactly like Join Android Waitlist */
     .cookie-reject {
-      position: relative;
-      padding: 1rem 2.5rem;
-      border: 2px solid transparent;
-      background: linear-gradient(#000, #000) padding-box, linear-gradient(135deg, #FFA500, #FF5537) border-box;
+      flex: 1;
+      padding: 0.875rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
       border-radius: 50px;
       font-weight: 600;
-      transition: all 0.4s ease;
-      overflow: hidden;
-      display: inline-block;
       cursor: pointer;
+      color: #FFFFFF;
       font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      min-width: 150px;
-      text-align: center;
-    }
-
-    .cookie-reject::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #FFA500, #FF5537);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 0;
+      transition: all 0.3s ease;
     }
 
     .cookie-reject:hover {
-      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.03);
     }
 
-    .cookie-reject:hover::before {
-      opacity: 1;
-    }
-
-    .cookie-reject span {
-      position: relative;
-      z-index: 1;
-      background: linear-gradient(135deg, #FFA500, #FF5537);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      transition: all 0.4s ease;
-    }
-
-    .cookie-reject:hover span {
-      -webkit-text-fill-color: #000;
-    }
-
-    /* Cookie Settings Link in Footer */
-    .cookie-settings-link {
-      display: none;
-    }
-
-    @media (min-width: 769px) {
-      .cookie-settings-link {
-        display: inline-block;
-      }
-    }
-
+    /* Responsive */
     @media (max-width: 768px) {
+      .feature-item {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .feature-content {
+        order: 2;
+        text-align: center;
+      }
+
+      .feature-visual {
+        order: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .comparison-row {
+        grid-template-columns: 1.5fr repeat(4, 1fr);
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        padding: 1rem;
+      }
+
       .custom-cookie-banner {
         bottom: 1rem;
         right: 1rem;
@@ -1108,27 +874,48 @@
       }
 
       .cookie-buttons {
-        flex-direction: column-reverse;
+        flex-direction: column;
       }
 
-      .cookie-accept,
-      .cookie-reject {
-        width: 100%;
-        text-align: center;
-        min-width: auto;
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .testimonial-card {
+        min-width: 340px;
+        max-width: 340px;
+      }
+
+      .mini-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .hamburger {
+        display: flex !important;
+      }
+
+      nav .hidden {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 1201px) {
+      .hamburger {
+        display: none;
       }
     }
   </style>
 
-
-
-  <!-- Google Analytics 4 avec Consent Mode (RGPD) -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EK1HGFJYE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
 
-    // Consent Mode v2 : par défaut refusé (obligatoire RGPD)
     gtag('consent', 'default', {
       'analytics_storage': 'denied',
       'wait_for_update': 500
@@ -1140,7 +927,7 @@
     });
   </script>
 
-  <!-- Microsoft Clarity (pas de cookies → toujours activé) -->
+  <!-- Microsoft Clarity -->
   <script type="text/javascript">
       (function(c,l,a,r,i,t,y){
           c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -1154,16 +941,17 @@
   <!-- Navigation -->
   <nav>
     <div class="flex items-center justify-between">
-      <img src="MelioLogo.png" alt="Melio Tasks - Best Task Manager App" class="h-8 cursor-pointer">
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#hero" class="nav-link">Home</a>
+      <a href="#hero" class="logo-link">
+        <img src="MelioLogo.png" alt="Melio Tasks" class="h-8">
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="/" class="nav-link">Home</a>
         <a href="#features" class="nav-link">Features</a>
-        <a href="#screenshots" class="nav-link">Screenshots</a>
         <a href="#testimonials" class="nav-link">Reviews</a>
         <a href="#comparison" class="nav-link">Comparison</a>
-        <a href="#pricing" class="nav-link">Pricing</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <a href="#download-section" class="btn-gradient btn-pulse text-black text-sm px-6 py-2"><span>Download</span></a>
+        <a href="/pricing/" class="nav-link">Pricing</a>
+        <a href="/our-story/" class="nav-link">Our Story</a>
+        <a href="#download-section" class="btn-primary text-sm px-6 py-2.5">Download</a>
       </div>
       <button class="hamburger md:hidden" id="menuBtn">
         <span></span>
@@ -1175,29 +963,24 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#hero">Home</a>
+    <a href="/">Home</a>
     <a href="#features">Features</a>
-    <a href="#screenshots">Screenshots</a>
     <a href="#testimonials">Reviews</a>
     <a href="#comparison">Comparison</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#contact">Contact</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/our-story/">Our Story</a>
     <a href="#download-section">Download</a>
   </div>
 
-  <!-- Custom Cookie Banner -->
+  <!-- Cookie Banner -->
   <div class="custom-cookie-banner" id="cookieBanner">
     <div class="cookie-message">
       We use cookies to analyze traffic and improve your experience.
       <a href="/privacy-policy/">Learn More</a>
     </div>
     <div class="cookie-buttons">
-      <button class="cookie-accept" id="acceptCookies">
-        <span>Accept All</span>
-      </button>
-      <button class="cookie-reject" id="rejectCookies">
-        <span>Reject</span>
-      </button>
+      <button class="cookie-accept" id="acceptCookies">Accept All</button>
+      <button class="cookie-reject" id="rejectCookies">Reject</button>
     </div>
   </div>
 
@@ -1205,200 +988,284 @@
   <section id="hero" class="min-h-screen flex items-center justify-center px-4 pt-32 pb-16" style="position: relative; z-index: 1;">
     <div class="max-w-7xl mx-auto w-full">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <!-- Text Content -->
         <div class="text-center lg:text-left fade-in">
-          <a href="#pricing" class="success-badge mb-6">
-            <span>🔥  Limited offer for early Adopters</span>
-          </a>
-          
-          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full text-sm font-medium text-orange-500 mb-6">
+            Limited offer for early adopters
+          </div>
+
+          <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
             <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Clear</span> your Mind<br>
             Get things <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Done</span>
           </h1>
-          
+
           <p class="text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 mb-10">
-            Stop feeling overwhelmed. Start feeling accomplished. 
+            Stop feeling overwhelmed. Start feeling accomplished.
             The simple, powerful way to turn your goals into reality.
           </p>
 
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-6">
-            <a href="https://apps.apple.com/fr/app/melio-tasks-task-management/id6757226707" 
-              class="btn-gradient btn-pulse text-black"
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+            <a href="https://apps.apple.com/fr/app/melio-tasks-task-management/id6757226707"
+              class="btn-primary"
               onclick="gtag('event', 'click_download', {'platform': 'iOS'});">
-              <span>Download for iOS</span>
+              Download for iOS
             </a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSer5ArfpOluq_lj1_E1lvtwoV4fVtpYF06hsm3RLUE22queqA/viewform?usp=publish-editor" 
-              class="btn-outline"
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSer5ArfpOluq_lj1_E1lvtwoV4fVtpYF06hsm3RLUE22queqA/viewform?usp=publish-editor"
+              class="btn-secondary"
               onclick="gtag('event', 'click_download', {'platform': 'Android_waitlist'});">
-              <span>Join Android Waitlist</span>
+              Join Android Waitlist
             </a>
           </div>
 
-          <!-- Stats -->
-          <div class="grid grid-cols-3 gap-4 pt-6">
+          <div class="grid grid-cols-3 gap-6 pt-8">
             <div class="text-center">
               <div class="stat-number" data-target="210">0</div>
-              <div class="text-sm text-gray-400">Early Adopters</div>
+              <div class="text-sm text-gray-500">Early Adopters</div>
             </div>
             <div class="text-center">
               <div class="stat-number" data-target="4.8">0</div>
-              <div class="text-sm text-gray-400">Rating</div>
+              <div class="text-sm text-gray-500">Rating</div>
             </div>
             <div class="text-center">
               <div class="stat-number" data-target="21735">0</div>
-              <div class="text-sm text-gray-400">Tasks Created</div>
+              <div class="text-sm text-gray-500">Tasks Created</div>
             </div>
           </div>
         </div>
 
-        <!-- Image Section -->
         <div class="flex justify-center fade-in" style="animation-delay: 0.2s;">
-          <img src="VisuelAccueil.png" alt="Melio Tasks App Preview" class="hero-image">
+          <img src="VisuelAccueil.png" alt="Melio Tasks App" class="hero-image">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section id="features" class="py-32 px-4" style="position: relative; z-index: 1;">
+  <!-- Progressive Text Section - LONGER -->
+  <div class="progressive-text-wrapper" style="position: relative; z-index: 1;">
+    <div class="progressive-text-section">
+      <div class="progressive-text" id="progressiveText">
+        <span class="word">Most</span>
+        <span class="word">task</span>
+        <span class="word">apps</span>
+        <span class="word">make</span>
+        <span class="word">you</span>
+        <span class="word">feel</span>
+        <span class="word">more</span>
+        <span class="word">stressed.</span>
+        <span class="word">Melio</span>
+        <span class="word">Tasks</span>
+        <span class="word">brings</span>
+        <span class="word">you</span>
+        <span class="word">peace</span>
+        <span class="word">of</span>
+        <span class="word">mind.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature Showcase -->
+  <section id="features" class="feature-showcase px-4" style="position: relative; z-index: 1;">
+    <div class="max-w-6xl mx-auto">
+      <!-- Feature 1 -->
+      <div class="feature-item fade-in">
+        <div class="feature-content">
+          <span class="feature-badge">Smart Organization</span>
+          <h2 class="feature-title">Find Your Flow</h2>
+          <p class="feature-description">
+            Stop wasting mental energy remembering tasks. Free your mind to focus on what truly matters and achieve more with less stress.
+          </p>
+          <a href="#download-section" class="btn-primary">Get Started</a>
+        </div>
+        <div class="feature-visual">
+          <img src="1.png" alt="Smart Organization">
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-item fade-in">
+        <div class="feature-content">
+          <span class="feature-badge">Smart Reminders</span>
+          <h2 class="feature-title">Never Miss What Matters</h2>
+          <p class="feature-description">
+            Smart reminders that understand your rhythm, so you stay on track without feeling overwhelmed or nagged.
+          </p>
+          <a href="#download-section" class="btn-primary">Learn More</a>
+        </div>
+        <div class="feature-visual">
+          <img src="2.png" alt="Smart Reminders">
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-item fade-in">
+        <div class="feature-content">
+          <span class="feature-badge">Team Collaboration</span>
+          <h2 class="feature-title">Achieve Together</h2>
+          <p class="feature-description">
+            Turn individual goals into team victories. Share progress, celebrate wins, and build momentum with those who matter most.
+          </p>
+          <a href="#download-section" class="btn-primary">Start Now</a>
+        </div>
+        <div class="feature-visual">
+          <img src="3.png" alt="Team Collaboration">
+        </div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-item fade-in">
+        <div class="feature-content">
+          <span class="feature-badge">Advanced Statistics</span>
+          <h2 class="feature-title">Track your Progress</h2>
+          <p class="feature-description">
+            See your progress in real-time. Get insights into your productivity and see how you can improve.
+          </p>
+          <a href="#download-section" class="btn-primary">Learn More</a>
+        </div>
+        <div class="feature-visual">
+          <img src="4.png" alt="Advanced Statistics">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Counter Section - Longer -->
+  <section class="stats-counter-section" style="position: relative; z-index: 1;">
+    <div class="stats-counter-sticky" id="statsCounter">
+      <div class="stats-counter-content">
+        <div class="stats-counter-label">IMPACT</div>
+        <div class="stats-counter-title" id="statsTitle">Tasks completed daily</div>
+        <div class="stats-counter-value" id="statsValue">1 task</div>
+        <div class="stats-counter-description" id="statsDescription">
+          One small win every day builds unstoppable momentum
+        </div>
+
+        <div class="mini-stats-grid">
+          <div class="mini-stat">
+            <div class="mini-stat-value">87%</div>
+            <div class="mini-stat-label">Less Stressed</div>
+            <div class="mini-stat-description">Feel more in control of your tasks</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-value">92%</div>
+            <div class="mini-stat-label">More Productive</div>
+            <div class="mini-stat-description">Accomplish more in less time</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-value">85%</div>
+            <div class="mini-stat-label">Better Balance</div>
+            <div class="mini-stat-description">Work and life in harmony</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Carousel -->
+  <section id="testimonials" class="py-8 px-4" style="position: relative; z-index: 1;">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-20 fade-in">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6">
-          Transform your <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">daily life</span>
+        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
+          What our users say
         </h2>
-        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-          Experience the peace of mind that comes from knowing everything is organized and nothing is forgotten
-        </p>
+        <p class="text-xl text-gray-400">Rated 4.8 stars by our community</p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="feature-card fade-in" style="animation-delay: 0.1s;">
-          <div class="feature-icon">⚡</div>
-          <h3 class="text-2xl font-bold mb-4">Find Your Flow</h3>
-          <p class="text-gray-400">Stop wasting mental energy remembering tasks. Free your mind to focus on what truly matters and achieve more with less stress.</p>
-        </div>
-
-        <div class="feature-card fade-in" style="animation-delay: 0.2s;">
-          <div class="feature-icon">🔔</div>
-          <h3 class="text-2xl font-bold mb-4">Never Miss What Matters</h3>
-          <p class="text-gray-400">Smart reminders that understand your rhythm, so you stay on track without feeling overwhelmed or nagged.</p>
-        </div>
-
-        <div class="feature-card fade-in" style="animation-delay: 0.3s;">
-          <div class="feature-icon">👥</div>
-          <h3 class="text-2xl font-bold mb-4">Achieve Together</h3>
-          <p class="text-gray-400">Turn individual goals into team victories. Share progress, celebrate wins, and build momentum with those who matter most.</p>
-        </div>
-
-        <div class="feature-card fade-in" style="animation-delay: 0.4s;">
-          <div class="feature-icon">📊</div>
-          <h3 class="text-2xl font-bold mb-4">See Your Growth</h3>
-          <p class="text-gray-400">Watch your productivity transform into real results. Visualize your progress and feel the satisfaction of consistent achievement.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Screenshots Section -->
-  <section id="screenshots" class="py-32 px-4" style="position: relative; z-index: 1;">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 fade-in">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6">
-          See it in <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">action</span>
-        </h2>
-        <p class="text-xl text-gray-400">Discover how effortless task management can transform your daily routine</p>
-      </div>
-
-      <div class="screenshot-wrapper">
-        <div class="screenshot-container" id="screenshotCarousel">
-          <img src="1.png" alt="Melio Tasks - Task List View" class="screenshot" draggable="false">
-          <img src="2.png" alt="Melio Tasks - Project Dashboard" class="screenshot" draggable="false">
-          <img src="3.png" alt="Melio Tasks - Smart Reminders" class="screenshot" draggable="false">
-          <img src="4.png" alt="Melio Tasks - Team Collaboration" class="screenshot" draggable="false">
-          <img src="5.png" alt="Melio Tasks - Progress Tracking" class="screenshot" draggable="false">
-          <img src="6.png" alt="Melio Tasks - Calendar View" class="screenshot" draggable="false">
-          <img src="1.png" alt="Melio Tasks - Task List View" class="screenshot" draggable="false">
-          <img src="2.png" alt="Melio Tasks - Project Dashboard" class="screenshot" draggable="false">
-          <img src="3.png" alt="Melio Tasks - Smart Reminders" class="screenshot" draggable="false">
-          <img src="4.png" alt="Melio Tasks - Team Collaboration" class="screenshot" draggable="false">
-          <img src="5.png" alt="Melio Tasks - Progress Tracking" class="screenshot" draggable="false">
-          <img src="6.png" alt="Melio Tasks - Calendar View" class="screenshot" draggable="false">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="py-32 px-4" style="position: relative; z-index: 1;">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 fade-in">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6">
-          What our users <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">say</span>
-        </h2>
-        <p class="text-xl text-gray-400">Join a lot of satisfied users with 4.8⭐ rating</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="testimonial-card fade-in">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-2xl">⭐⭐⭐⭐⭐</span>
-          </div>
-          <p class="text-gray-300 mb-6 italic">
-            "This app is amazing! It helps me manage all my tasks and daily projects. Since using it, I never forget anything and complete everything I plan. Best productivity app!"
-          </p>
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500"></div>
-            <div>
-              <div class="font-semibold">Nathalie A.</div>
-              <div class="text-sm text-gray-400">Designer</div>
+      <div class="testimonials-carousel">
+        <div class="testimonials-track" id="testimonialsTrack">
+          <!-- First set of testimonials -->
+          <div class="testimonial-card">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-lg">⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="text-gray-300 mb-4 text-sm">
+              "This app is amazing! It helps me manage all my tasks and daily projects. Since using it, I never forget anything."
+            </p>
+            <div class="text-sm text-gray-400">
+              - Nathalie A., Designer
             </div>
           </div>
-        </div>
 
-        <div class="testimonial-card fade-in" style="animation-delay: 0.1s;">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-2xl">⭐⭐⭐⭐⭐</span>
-          </div>
-          <p class="text-gray-300 mb-6 italic">
-            "Since using this app, I've been able to organize myself so much better. The interface is simple, pleasant, and everything is very easy to use. Highly recommend!"
-          </p>
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500"></div>
-            <div>
-              <div class="font-semibold">Julien S.</div>
-              <div class="text-sm text-gray-400">Video Editor</div>
+          <div class="testimonial-card">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-lg">⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="text-gray-300 mb-4 text-sm">
+              "Excellent application that allows you to manage your days well and complete all the tasks you had planned."
+            </p>
+            <div class="text-sm text-gray-400">
+              - Alex J., Student
             </div>
           </div>
-        </div>
 
-        <div class="testimonial-card fade-in" style="animation-delay: 0.2s;">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-2xl">⭐⭐⭐⭐⭐</span>
-          </div>
-          <p class="text-gray-300 mb-6 italic">
-            "I've tested many task management apps, but none were as clear and easy to use as this one. The premium features are totally worth it!"
-          </p>
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500"></div>
-            <div>
-              <div class="font-semibold">Emma L.</div>
-              <div class="text-sm text-gray-400">Student</div>
+          <div class="testimonial-card">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-lg">⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="text-gray-300 mb-4 text-sm">
+              "Great app! Very easy to use and really helpful for remembering things on a daily basis. I use it every day, I highly recommend it!"
+            </p>
+            <div class="text-sm text-gray-400">
+              - Julien S., Video Editor
             </div>
           </div>
-        </div>
 
-        <div class="testimonial-card fade-in" style="animation-delay: 0.3s;">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-2xl">⭐⭐⭐⭐⭐</span>
+          <div class="testimonial-card">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-lg">⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="text-gray-300 mb-4 text-sm">
+              "I've been using Melio Task since its first version and it's truly the best in productivity; it's helped me tremendously on all my projects."
+            </p>
+            <div class="text-sm text-gray-400">
+              - Lucas R., Entrepreneur
+            </div>
           </div>
-          <p class="text-gray-300 mb-6 italic">
-            "Incredibly well-made app and extremely useful in daily life. The productivity boost alone makes it worthwhile. Love it!"
-          </p>
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500"></div>
-            <div>
-              <div class="font-semibold">Lucas R.</div>
-              <div class="text-sm text-gray-400">Entrepreneur</div>
+
+          <!-- Duplicate set for seamless infinite loop -->
+          <div class="testimonial-card">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-lg">⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="text-gray-300 mb-4 text-sm">
+              "This app is amazing! It helps me manage all my tasks and daily projects. Since using it, I never forget anything."
+            </p>
+            <div class="text-sm text-gray-400">
+              - Nathalie A., Designer
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-lg">⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="text-gray-300 mb-4 text-sm">
+              "Excellent application that allows you to manage your days well and complete all the tasks you had planned."
+            </p>
+            <div class="text-sm text-gray-400">
+              - Alex J., Student
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-lg">⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="text-gray-300 mb-4 text-sm">
+              "Great app! Very easy to use and really helpful for remembering things on a daily basis. I use it every day, I highly recommend it!"
+            </p>
+            <div class="text-sm text-gray-400">
+              - Julien S., Video Editor
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-lg">⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="text-gray-300 mb-4 text-sm">
+              "I've been using Melio Task since its first version and it's truly the best in productivity; it's helped me tremendously on all my projects."
+            </p>
+            <div class="text-sm text-gray-400">
+              - Lucas R., Entrepreneur
             </div>
           </div>
         </div>
@@ -1406,22 +1273,20 @@
     </div>
   </section>
 
-  
-
-  <!-- Comparison Section -->
+  <!-- Comparison -->
   <section id="comparison" class="py-32 px-4" style="position: relative; z-index: 1;">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 fade-in">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6">
-          Why choose <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Melio Tasks</span>?
+      <div class="text-center mb-20 fade-in">
+        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
+          Why choose <span class="melio-highlight">Melio Tasks</span>?
         </h2>
-        <p class="text-xl text-gray-400">Experience the difference that comes from an app built for real results, not just features</p>
+        <p class="text-xl text-gray-400">Built for results, not just features</p>
       </div>
 
       <div class="comparison-table fade-in">
         <div class="comparison-row comparison-header">
           <div class="comparison-cell comparison-feature">Features</div>
-          <div class="comparison-cell"><span class="melio-highlight">Melio Tasks</span></div>
+          <div class="comparison-cell"><span class="melio-highlight">Melio</span></div>
           <div class="comparison-cell">Todoist</div>
           <div class="comparison-cell">Things 3</div>
           <div class="comparison-cell">Any.do</div>
@@ -1436,26 +1301,10 @@
         </div>
 
         <div class="comparison-row">
-          <div class="comparison-cell comparison-feature">Recurring Tasks</div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-        </div>
-
-        <div class="comparison-row">
-          <div class="comparison-cell comparison-feature">Real-time Collaboration</div>
+          <div class="comparison-cell comparison-feature">Team Collaboration</div>
           <div class="comparison-cell"><span class="check-icon">✓</span></div>
           <div class="comparison-cell"><span class="check-icon">✓</span></div>
           <div class="comparison-cell"><span class="cross-icon">✕</span></div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-        </div>
-
-        <div class="comparison-row">
-          <div class="comparison-cell comparison-feature">Smart Reminders</div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
           <div class="comparison-cell"><span class="check-icon">✓</span></div>
         </div>
 
@@ -1464,14 +1313,6 @@
           <div class="comparison-cell"><span class="check-icon">✓</span></div>
           <div class="comparison-cell"><span class="cross-icon">✕</span></div>
           <div class="comparison-cell"><span class="cross-icon">✕</span></div>
-          <div class="comparison-cell"><span class="cross-icon">✕</span></div>
-        </div>
-
-        <div class="comparison-row">
-          <div class="comparison-cell comparison-feature">Clean & Intuitive Design</div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-          <div class="comparison-cell"><span class="cross-icon">✕</span></div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
           <div class="comparison-cell"><span class="cross-icon">✕</span></div>
         </div>
 
@@ -1494,181 +1335,85 @@
     </div>
   </section>
 
-  <!-- Pricing Section -->
-  <section id="pricing" class="py-32 px-4" style="position: relative; z-index: 1;">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16 fade-in">
-        <div class="early-adopter-badge inline-flex mb-4">
-          🔥 EARLY ADOPTER SPECIAL PRICING
-        </div>
-        <h2 class="text-4xl md:text-6xl font-bold mb-6">
-          Simple <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Pricing</span>
-        </h2>
-        <p class="text-xl text-gray-400 mb-4">Lock in exclusive early adopter rates - Limited time offer!</p>
-        
-        <!-- Pricing Notice Above Plans -->
-        <div class="pricing-notice fade-in max-w-3xl mx-auto" style="animation-delay: 0.1s;">
-          <div class="pricing-notice-title">⏰ Limited Time Offer</div>
-          <div class="pricing-notice-text">
-            Price will increase when we add new features. Subscribe now and <strong>lock in this price forever!</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Monthly Plan -->
-        <div class="pricing-card fade-in" style="animation-delay: 0.1s;">
-          <div class="text-center" style="position: relative; z-index: 1;">
-            <h3 class="text-xl font-bold mb-1">Monthly</h3>
-            <div class="price-container" style="flex-direction: column; align-items: center;">
-              <span class="price-original" style="margin: 0;">$9.99<span style="font-size: 0.75rem;">/mo</span></span>
-              <div class="price-tag" style="margin: 0.25rem 0;">$4.99<span style="font-size: 1rem; color: rgba(255,255,255,0.6);">/mo</span></div>
-            </div>
-            <p class="text-gray-400 mb-3 text-xs">Best value</p>
-            
-            <ul class="feature-list text-left max-w-md mx-auto">
-              <li>Unlimited tasks & projects</li>
-              <li>Smart notifications</li>
-              <li>Team collaboration</li>
-              <li>Progress tracking</li>
-              <li>Cloud sync</li>
-              <li>Priority support</li>
-            </ul>
-
-            <div class="mt-4">
-              <a href="#download-section" class="btn-gradient text-black w-full inline-block text-sm py-3"
-                onclick="gtag('event', 'click_pricing', {'plan': 'monthly'});">
-                <span>Start Now</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Yearly Plan -->
-        <div class="pricing-card fade-in" style="animation-delay: 0.1s;">
-          <div class="savings-badge">SAVE 2 MONTHS</div>
-          <div class="text-center" style="position: relative; z-index: 1;">
-            <h3 class="text-xl font-bold mb-1">Yearly</h3>
-            <div class="price-container" style="flex-direction: column; align-items: center;">
-              <span class="price-original" style="margin: 0;">$8.32<span style="font-size: 0.75rem;">/mo</span></span>
-              <div class="price-tag" style="margin: 0.25rem 0;">$4.16<span style="font-size: 1rem; color: rgba(255,255,255,0.6);">/mo</span></div>
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
-                <span style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.4); text-decoration: line-through;">$99.90</span>
-                <span class="price-yearly-detail" style="margin: 0;">$49.90 billed annually</span>
-              </div>
-            </div>
-            <p class="text-gray-400 mb-3 text-xs">Best value</p>
-            
-            <ul class="feature-list text-left max-w-md mx-auto">
-              <li>Unlimited tasks & projects</li>
-              <li>Smart notifications</li>
-              <li>Team collaboration</li>
-              <li>Progress tracking</li>
-              <li>Cloud sync</li>
-              <li>Priority support</li>
-            </ul>
-
-            <div class="mt-4">
-              <a href="#download-section" class="btn-gradient text-black w-full inline-block text-sm py-3"
-                onclick="gtag('event', 'click_pricing', {'plan': 'yearly'});">
-                <span>Get Started</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact CTA Section -->
-  <section id="contact" class="py-32 px-4" style="position: relative; z-index: 1;">
-    <div class="max-w-4xl mx-auto text-center fade-in">
-      <div class="feature-card">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6">
-          We're here to <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">help you succeed</span>
-        </h2>
-        <p class="text-xl text-gray-400 mb-8">Have questions? Our team is ready to support your journey</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpQc-CVeX4ISTjQtTAvkw0olq1p1eplgRwo0QD_Y0nUD8Sg/viewform?usp=dialog" class="btn-gradient text-black inline-block">
-          <span>Contact Us</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- Download Section -->
   <section id="download-section" class="py-32 px-4" style="position: relative; z-index: 1;">
     <div class="max-w-4xl mx-auto text-center fade-in">
       <div class="feature-card">
-        <div class="mb-8">
-          <h2 class="text-4xl md:text-6xl font-bold mb-6">
-            Start your <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">transformation</span> today
-          </h2>
-          <p class="text-xl text-gray-400 mb-4">
-            Join thousands who've discovered the peace of mind that comes from true organization
-          </p>
-        </div>
+        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
+          Start your transformation today
+        </h2>
+        <p class="text-xl text-gray-400 mb-8">
+          Join thousands who've discovered the peace of mind
+        </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          <a href="https://apps.apple.com/fr/app/melio-tasks-task-management/id6757226707" 
-            class="btn-gradient btn-pulse text-black"
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+          <a href="https://apps.apple.com/fr/app/melio-tasks-task-management/id6757226707"
+            class="btn-primary"
             onclick="gtag('event', 'click_download', {'platform': 'iOS'});">
-            <span>Download for iOS</span>
+            Download for iOS
           </a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSer5ArfpOluq_lj1_E1lvtwoV4fVtpYF06hsm3RLUE22queqA/viewform?usp=publish-editor" 
-            class="btn-outline"
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSer5ArfpOluq_lj1_E1lvtwoV4fVtpYF06hsm3RLUE22queqA/viewform?usp=publish-editor"
+            class="btn-secondary"
             onclick="gtag('event', 'click_download', {'platform': 'Android_waitlist'});">
-            <span>Join Android Waitlist</span>
+            Join Android Waitlist
           </a>
-        </div>
-
-        <div class="text-sm text-gray-400">
-          <p>✓ Real-time Collaboration • ✓ Cloud Sync • ✓ Advanced Statistics</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="py-16 px-4 border-t border-gray-900" style="position: relative; z-index: 1;">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-        <div class="flex items-center gap-4">
-          <img src="MelioLogo.png" alt="Melio Tasks Logo" class="h-8">
-          <span class="text-gray-400">© 2025 Melio Tasks</span>
+  <!-- Footer - Clean & Professional -->
+  <footer style="position: relative; z-index: 1;">
+    <div class="footer-main">
+      <div class="footer-column">
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="#features">Features</a>
+          <a href="/pricing/">Pricing</a>
+          <a href="/our-story/">Our Story</a>
         </div>
-        
-        <div class="flex gap-3">
-          <a href="https://twitter.com/melio_tasks_app" class="social-icon" target="_blank" rel="noopener" aria-label="Follow us on Twitter">
+      </div>
+
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <div class="footer-links">
+          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/terms-of-use/">Terms of Use</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpQc-CVeX4ISTjQtTAvkw0olq1p1eplgRwo0QD_Y0nUD8Sg/viewform?usp=dialog" target="_blank">Contact Us</a>
+          <a href="#" id="cookieSettingsFooter">Cookie Settings</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Social</h4>
+        <div class="flex gap-3 mb-4">
+          <a href="https://twitter.com/melio_tasks_app" class="social-icon" target="_blank">
             <img src="twitter-icon.png" alt="Twitter">
           </a>
-          <a href="https://instagram.com/melio.tasks.app" class="social-icon" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+          <a href="https://instagram.com/melio.tasks.app" class="social-icon" target="_blank">
             <img src="instagram-icon.png" alt="Instagram">
           </a>
-          <a href="https://tiktok.com/@melio.tasks.app" class="social-icon" target="_blank" rel="noopener" aria-label="Follow us on TikTok">
+          <a href="https://tiktok.com/@melio.tasks.app" class="social-icon" target="_blank">
             <img src="tiktok-icon.png" alt="TikTok">
           </a>
         </div>
-        
-        <div class="flex gap-6">
-          <a href="/privacy-policy/" class="text-gray-400 hover:text-orange-400 transition-colors">
-            Privacy Policy
-          </a>
-          <a href="/terms-of-use/" class="text-gray-400 hover:text-orange-400 transition-colors">
-            Terms of Use
-          </a>
-          <a class="cookie-settings-link text-gray-400 hover:text-orange-400 transition-colors" id="cookieSettingsLink">
-            Cookie Settings
-          </a>
-        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="flex items-center gap-4">
+        <img src="MelioLogo.png" alt="Melio Tasks" class="h-8">
+        <span class="footer-copyright">© 2025 Melio Tasks. All rights reserved.</span>
       </div>
     </div>
   </footer>
 
   <script>
-    // Mobile Menu Toggle
+    // Mobile Menu
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    
+
     menuBtn.addEventListener('click', () => {
       menuBtn.classList.toggle('active');
       mobileMenu.classList.toggle('show');
@@ -1681,109 +1426,6 @@
       });
     });
 
-    // Screenshot Carousel
-    const screenshotCarousel = document.getElementById('screenshotCarousel');
-    if (screenshotCarousel) {
-      let isDragging = false;
-      let startX;
-      let scrollLeft;
-      let pauseUntil = 0;
-
-      const AUTO_SCROLL_SPEED = 1;
-      const PAUSE_AFTER_INTERACTION = 2000;
-
-      function autoScroll() {
-        const now = Date.now();
-        
-        if (!isDragging && now > pauseUntil) {
-          screenshotCarousel.scrollLeft += AUTO_SCROLL_SPEED;
-          
-          const halfWidth = screenshotCarousel.scrollWidth / 2;
-          if (screenshotCarousel.scrollLeft >= halfWidth) {
-            screenshotCarousel.scrollLeft = 0;
-          }
-        }
-        
-        requestAnimationFrame(autoScroll);
-      }
-
-      screenshotCarousel.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        screenshotCarousel.style.cursor = 'grabbing';
-        startX = e.pageX - screenshotCarousel.offsetLeft;
-        scrollLeft = screenshotCarousel.scrollLeft;
-        pauseUntil = Date.now() + PAUSE_AFTER_INTERACTION;
-      });
-
-      document.addEventListener('mouseup', () => {
-        if (isDragging) {
-          isDragging = false;
-          screenshotCarousel.style.cursor = 'grab';
-        }
-      });
-
-      screenshotCarousel.addEventListener('mouseleave', () => {
-        if (isDragging) {
-          isDragging = false;
-          screenshotCarousel.style.cursor = 'grab';
-        }
-      });
-
-      screenshotCarousel.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        
-        const x = e.pageX - screenshotCarousel.offsetLeft;
-        const walk = (x - startX) * 1.2;
-        screenshotCarousel.scrollLeft = scrollLeft - walk;
-        
-        const halfWidth = screenshotCarousel.scrollWidth / 2;
-        if (screenshotCarousel.scrollLeft >= halfWidth) {
-          screenshotCarousel.scrollLeft -= halfWidth;
-          scrollLeft -= halfWidth;
-        } else if (screenshotCarousel.scrollLeft < 0) {
-          screenshotCarousel.scrollLeft += halfWidth;
-          scrollLeft += halfWidth;
-        }
-      });
-
-      let touchStartX = 0;
-      let touchScrollLeft = 0;
-
-      screenshotCarousel.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        touchStartX = e.touches[0].pageX;
-        touchScrollLeft = screenshotCarousel.scrollLeft;
-        pauseUntil = Date.now() + PAUSE_AFTER_INTERACTION;
-      });
-
-      screenshotCarousel.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        const x = e.touches[0].pageX;
-        const walk = (touchStartX - x);
-        screenshotCarousel.scrollLeft = touchScrollLeft + walk;
-        
-        const halfWidth = screenshotCarousel.scrollWidth / 2;
-        if (screenshotCarousel.scrollLeft >= halfWidth) {
-          screenshotCarousel.scrollLeft -= halfWidth;
-          touchScrollLeft -= halfWidth;
-        } else if (screenshotCarousel.scrollLeft < 0) {
-          screenshotCarousel.scrollLeft += halfWidth;
-          touchScrollLeft += halfWidth;
-        }
-      });
-
-      screenshotCarousel.addEventListener('touchend', () => {
-        isDragging = false;
-      });
-
-      screenshotCarousel.addEventListener('wheel', () => {
-        pauseUntil = Date.now() + PAUSE_AFTER_INTERACTION;
-      });
-
-      autoScroll();
-    }
-
     // Scroll Animations
     const observerOptions = {
       threshold: 0.1,
@@ -1793,26 +1435,33 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add('visible', 'animating');
+          // Remove animating class after animation completes to avoid affecting hover
+          setTimeout(() => {
+            entry.target.classList.remove('animating');
+          }, 2000);
         }
       });
     }, observerOptions);
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+    // Observe feature images for smooth animation
+    document.querySelectorAll('.feature-visual img').forEach(img => observer.observe(img));
+
     // Stats Counter
     function animateValue(element, start, end, duration) {
       const range = end - start;
       const increment = range / (duration / 16);
       let current = start;
-      
+
       const timer = setInterval(() => {
         current += increment;
         if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
           current = end;
           clearInterval(timer);
         }
-        
+
         if (end < 100) {
           element.textContent = current.toFixed(1);
         } else {
@@ -1836,63 +1485,200 @@
 
     statsObserver.observe(statsSection);
 
+    // Progressive Text Animation - START EARLIER
+    const progressiveTextWrapper = document.querySelector('.progressive-text-wrapper');
+    const progressiveText = document.getElementById('progressiveText');
+    const words = progressiveText.querySelectorAll('.word');
+
+    window.addEventListener('scroll', () => {
+      const wrapperTop = progressiveTextWrapper.offsetTop;
+      const wrapperHeight = progressiveTextWrapper.offsetHeight;
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition > wrapperTop && scrollPosition < wrapperTop + wrapperHeight) {
+        // Start coloring immediately when entering the section
+        const progress = Math.max(0, (scrollPosition - wrapperTop) / (wrapperHeight * 0.5));
+        const activeIndex = Math.floor(progress * words.length);
+
+        words.forEach((word, index) => {
+          if (index <= activeIndex) {
+            word.classList.add('active');
+          } else {
+            word.classList.remove('active');
+          }
+        });
+      }
+    });
+
+    // Stats Counter Section Animation - 100% RELIABLE
+    const statsCounterSection = document.querySelector('.stats-counter-section');
+    const statsTitle = document.getElementById('statsTitle');
+    const statsValue = document.getElementById('statsValue');
+    const statsDescription = document.getElementById('statsDescription');
+
+    const statsStages = [
+      {
+        title: 'Tasks completed daily',
+        value: '1 task',
+        description: 'One small win every day builds unstoppable momentum'
+      },
+      {
+        title: 'Tasks completed monthly',
+        value: '30 tasks',
+        description: 'Thirty accomplishments each month add up to real progress'
+      },
+      {
+        title: 'Tasks completed yearly',
+        value: '365 tasks',
+        description: 'Three hundred sixty-five goals achieved - imagine the transformation'
+      },
+      {
+        title: 'Tasks completed over 50 years',
+        value: '18,250 tasks',
+        description: 'Small daily actions compound into extraordinary lifetime achievements'
+      }
+    ];
+
+    let currentStatsStage = -1;
+    let isTransitioning = false;
+
+    window.addEventListener('scroll', () => {
+      const sectionTop = statsCounterSection.offsetTop;
+      const sectionHeight = statsCounterSection.offsetHeight;
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      if (scrollPosition > sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        // Stages happen in first 70% of section, leaving 30% to view last stage
+        const progress = (scrollPosition - sectionTop) / (sectionHeight * 0.7);
+        const stageIndex = Math.min(Math.floor(progress * 4), statsStages.length - 1);
+
+        if (stageIndex !== currentStatsStage && stageIndex >= 0 && !isTransitioning) {
+          isTransitioning = true;
+          currentStatsStage = stageIndex;
+
+          // Step 1: Hide completely with visibility
+          statsTitle.style.opacity = '0';
+          statsValue.style.opacity = '0';
+          statsDescription.style.opacity = '0';
+          statsTitle.style.visibility = 'hidden';
+          statsValue.style.visibility = 'hidden';
+          statsDescription.style.visibility = 'hidden';
+
+          setTimeout(() => {
+            // Step 2: Update content while hidden
+            statsTitle.textContent = statsStages[stageIndex].title;
+            statsValue.textContent = statsStages[stageIndex].value;
+            statsDescription.textContent = statsStages[stageIndex].description;
+
+            // Step 3: Show new content
+            statsTitle.style.visibility = 'visible';
+            statsValue.style.visibility = 'visible';
+            statsDescription.style.visibility = 'visible';
+
+            // Force reflow
+            statsTitle.offsetHeight;
+            statsValue.offsetHeight;
+            statsDescription.offsetHeight;
+
+            statsTitle.style.opacity = '1';
+            statsValue.style.opacity = '1';
+            statsDescription.style.opacity = '1';
+
+            setTimeout(() => {
+              isTransitioning = false;
+            }, 250);
+          }, 250);
+        }
+      }
+    });
+
+    // Infinite Testimonials Carousel
+    const testimonialsTrack = document.getElementById('testimonialsTrack');
+    let scrollPosition = 0;
+    let isPaused = false;
+    let animationId = null;
+
+    function scrollTestimonials() {
+      if (!isPaused) {
+        scrollPosition -= 0.5; // Speed of scroll
+
+        // Get the width of one card + gap
+        const cardWidth = 420 + 32; // 420px card + 2rem gap (32px)
+        const totalCards = testimonialsTrack.children.length / 2; // We have duplicates
+        const resetPoint = -(cardWidth * totalCards);
+
+        // Reset position seamlessly when we've scrolled through the first set
+        if (scrollPosition <= resetPoint) {
+          scrollPosition = 0;
+        }
+
+        testimonialsTrack.style.transform = `translateX(${scrollPosition}px)`;
+      }
+
+      animationId = requestAnimationFrame(scrollTestimonials);
+    }
+
+    // Start animation
+    scrollTestimonials();
+
+    // Pause on hover
+    testimonialsTrack.addEventListener('mouseenter', () => {
+      isPaused = true;
+    });
+
+    testimonialsTrack.addEventListener('mouseleave', () => {
+      isPaused = false;
+    });
+
     // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const href = this.getAttribute('href');
+        if (href === '#hero') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
       });
     });
 
-    // Custom Cookie Banner Management
+    // Cookie Banner
     const cookieBanner = document.getElementById('cookieBanner');
     const acceptBtn = document.getElementById('acceptCookies');
     const rejectBtn = document.getElementById('rejectCookies');
-    const cookieSettingsLink = document.getElementById('cookieSettingsLink');
+    const cookieSettingsFooter = document.getElementById('cookieSettingsFooter');
 
-    // Check if user has already made a choice
     const cookieConsent = localStorage.getItem('cookieConsent');
 
     if (!cookieConsent) {
-      // Show banner after a short delay
       setTimeout(() => {
         cookieBanner.classList.add('show');
       }, 1000);
     }
 
-    // Accept cookies
     acceptBtn.addEventListener('click', () => {
       localStorage.setItem('cookieConsent', 'accepted');
       cookieBanner.classList.remove('show');
-      cookieBanner.classList.add('hide');
-
-      // Enable Google Analytics
       gtag('consent', 'update', {
         'analytics_storage': 'granted'
       });
     });
 
-    // Reject cookies
     rejectBtn.addEventListener('click', () => {
       localStorage.setItem('cookieConsent', 'rejected');
       cookieBanner.classList.remove('show');
-      cookieBanner.classList.add('hide');
-
-      // Disable Google Analytics
       gtag('consent', 'update', {
         'analytics_storage': 'denied'
       });
     });
 
-    // Reopen cookie settings from footer link
-    cookieSettingsLink.addEventListener('click', (e) => {
+    cookieSettingsFooter.addEventListener('click', (e) => {
       e.preventDefault();
-      cookieBanner.classList.remove('hide');
       cookieBanner.classList.add('show');
-      // Scroll to bottom to show banner
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     });
   </script>
