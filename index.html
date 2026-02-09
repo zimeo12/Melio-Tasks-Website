@@ -198,8 +198,8 @@
       top: 6rem;
       left: 50%;
       transform: translateX(-50%);
-      width: 90%;
-      max-width: 400px;
+      width: 85%;
+      max-width: 380px;
       background: rgba(15, 15, 15, 0.95);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -993,7 +993,7 @@
             Limited offer for early adopters
           </div>
 
-          <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+          <h1 class="text-4xl md:text-7xl font-bold leading-tight mb-6">
             <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Clear</span> your Mind<br>
             Get things <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Done</span>
           </h1>
@@ -1569,6 +1569,13 @@
             statsTitle.textContent = statsStages[stageIndex].title;
             statsValue.textContent = statsStages[stageIndex].value;
             statsDescription.textContent = statsStages[stageIndex].description;
+
+            // Adjust font size for the large number
+            if (stageIndex === 3) {
+              statsValue.style.setProperty('font-size', 'clamp(2.5rem, 8vw, 5.5rem)', 'important');
+            } else {
+              statsValue.style.removeProperty('font-size');
+            }
 
             // Step 3: Show new content
             statsTitle.style.visibility = 'visible';
