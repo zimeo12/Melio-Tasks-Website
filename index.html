@@ -160,7 +160,7 @@
       cursor: pointer;
       background: none;
       border: none;
-      display: flex;
+      display: none;
       flex-direction: column;
       justify-content: space-between;
       z-index: 60;
@@ -198,8 +198,8 @@
       top: 6rem;
       left: 50%;
       transform: translateX(-50%);
-      width: 85%;
-      max-width: 380px;
+      width: 80%;
+      max-width: 360px;
       background: rgba(15, 15, 15, 0.95);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -301,11 +301,17 @@
 
     /* Stats - White with gradient */
     .stat-number {
-      font-size: 2.5rem;
+      font-size: 1.75rem;
       font-weight: 700;
       background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.6) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    @media (min-width: 768px) {
+      .stat-number {
+        font-size: 2.5rem;
+      }
     }
 
     /* Fade In Animation - ULTRA SMOOTH & ELEGANT */
@@ -374,7 +380,7 @@
 
     /* Stats Counter Section - Optimized */
     .stats-counter-section {
-      min-height: 650vh;
+      min-height: 350vh;
       position: relative;
       margin-top: 8rem;
       margin-bottom: 4rem;
@@ -1026,7 +1032,7 @@
               <div class="text-sm text-gray-500">Rating</div>
             </div>
             <div class="text-center">
-              <div class="stat-number" data-target="21735">0</div>
+              <div class="stat-number" data-target="9347">0</div>
               <div class="text-sm text-gray-500">Tasks Created</div>
             </div>
           </div>
@@ -1572,7 +1578,7 @@
 
             // Adjust font size for the large number
             if (stageIndex === 3) {
-              statsValue.style.setProperty('font-size', 'clamp(2.5rem, 8vw, 5.5rem)', 'important');
+              statsValue.style.setProperty('font-size', 'clamp(3.5rem, 10vw, 6.5rem)', 'important');
             } else {
               statsValue.style.removeProperty('font-size');
             }
