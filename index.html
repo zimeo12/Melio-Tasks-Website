@@ -78,10 +78,6 @@
       box-sizing: border-box;
     }
 
-    html {
-      overflow-x: hidden;
-    }
-
     body {
       font-family: 'Inter', sans-serif;
       background: #000000;
@@ -927,6 +923,22 @@
       .mini-stats-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+      }
+
+      nav {
+        width: calc(100vw - 2rem);
+        left: 1rem;
+        transform: none;
+      }
+
+      .mobile-menu {
+        width: calc(100vw - 2rem);
+        left: 1rem;
+        transform: none;
+      }
+
+      .mobile-menu a {
+        font-size: 1.05rem;
       }
     }
 
