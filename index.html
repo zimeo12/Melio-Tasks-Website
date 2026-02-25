@@ -428,6 +428,14 @@
       white-space: nowrap;
     }
 
+    @media (max-width: 640px) {
+      .stats-counter-value {
+        white-space: normal;
+        word-break: break-word;
+        font-size: clamp(3rem, 16vw, 5rem);
+      }
+    }
+
     .stats-counter-description {
       font-size: 1.125rem;
       color: rgba(255, 255, 255, 0.5);
@@ -685,6 +693,15 @@
       padding-bottom: 0.1em;
     }
 
+    /* Hero title white parts - same gradient as section titles */
+    .hero-title-text {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      padding-bottom: 0.15em;
+    }
+
     /* Social Icons */
     .social-icon {
       width: 40px;
@@ -889,8 +906,18 @@
       }
 
       .testimonial-card {
-        min-width: 340px;
-        max-width: 340px;
+        min-width: 300px;
+        max-width: 300px;
+      }
+
+      .testimonials-carousel {
+        margin-left: -1rem;
+        margin-right: -1rem;
+      }
+
+      .testimonials-carousel::before,
+      .testimonials-carousel::after {
+        display: none;
       }
 
       .mini-stats-grid {
@@ -999,9 +1026,9 @@
             Limited offer for early adopters
           </div>
 
-          <h1 class="text-4xl md:text-7xl font-bold leading-tight mb-6">
-            <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Clear</span> your Mind<br>
-            Get things <span class="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Done</span>
+          <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 hero-title-text">
+            Clear your Mind<br>
+            Get things Done
           </h1>
 
           <p class="text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 mb-10">
@@ -1578,7 +1605,8 @@
 
             // Adjust font size for the large number
             if (stageIndex === 3) {
-              statsValue.style.setProperty('font-size', 'clamp(3.5rem, 10vw, 6.5rem)', 'important');
+              const isMobile = window.innerWidth <= 640;
+              statsValue.style.setProperty('font-size', isMobile ? 'clamp(2.5rem, 12vw, 3.5rem)' : 'clamp(3.5rem, 10vw, 6.5rem)', 'important');
             } else {
               statsValue.style.removeProperty('font-size');
             }
