@@ -1,8 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://meliotasks.com</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://meliotasks.com/</loc>
+    <lastmod>2026-08-24</lastmod>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://meliotasks.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://meliotasks.com/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://meliotasks.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://meliotasks.com/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://meliotasks.com/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://meliotasks.com/"/>
+  </url>
+  <url>
+    <loc>https://meliotasks.com/pricing/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://meliotasks.com/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://meliotasks.com/pricing/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://meliotasks.com/pricing/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://meliotasks.com/pricing/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://meliotasks.com/pricing/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://meliotasks.com/pricing/"/>
+  </url>
+  <url>
+    <loc>https://meliotasks.com/our-story/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://meliotasks.com/our-story/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://meliotasks.com/our-story/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://meliotasks.com/our-story/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://meliotasks.com/our-story/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://meliotasks.com/our-story/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://meliotasks.com/our-story/"/>
+  </url>
+  <url>
+    <loc>https://meliotasks.com/privacy-policy/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://meliotasks.com/terms-of-use/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <priority>0.3</priority>
   </url>
 </urlset>

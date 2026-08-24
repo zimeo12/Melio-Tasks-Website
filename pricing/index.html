@@ -1,43 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="i18n-pending">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
 
-  <!-- SEO Meta Tags -->
-  <title>Pricing - Melio Tasks | Simple, Transparent Pricing for Everyone</title>
-  <meta name="description" content="Affordable pricing for Melio Tasks. Choose the plan that fits your needs. Free tier available, premium features to boost your productivity.">
-  <meta name="keywords" content="melio tasks pricing, task manager pricing, productivity app cost, task management subscription">
-  <meta name="author" content="Melio Tasks">
+  <title data-i18n="meta.pricing.title">Pricing - Melio Tasks</title>
+  <meta name="description" data-i18n-attr="content:meta.pricing.description" content="Melio Tasks Premium: unlimited tasks, shared projects, statistics and Melio AI. $7.99 a month or $79.90 a year, cancel anytime.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://meliotasks.com/pricing/">
 
-  <!-- Open Graph / Facebook -->
+  <link rel="alternate" hreflang="en" href="https://meliotasks.com/pricing/">
+  <link rel="alternate" hreflang="fr" href="https://meliotasks.com/pricing/?lang=fr">
+  <link rel="alternate" hreflang="es" href="https://meliotasks.com/pricing/?lang=es">
+  <link rel="alternate" hreflang="zh" href="https://meliotasks.com/pricing/?lang=zh">
+  <link rel="alternate" hreflang="ar" href="https://meliotasks.com/pricing/?lang=ar">
+  <link rel="alternate" hreflang="x-default" href="https://meliotasks.com/pricing/">
+
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://meliotasks.com/pricing/">
   <meta property="og:title" content="Pricing - Melio Tasks">
-  <meta property="og:description" content="Simple, transparent pricing. Choose the plan that works for you.">
+  <meta property="og:description" content="One plan, everything included: unlimited tasks, shared projects, statistics and Melio AI. 3-day free trial.">
   <meta property="og:image" content="/VisuelAccueil.png">
+  <meta property="og:site_name" content="Melio Tasks">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://meliotasks.com/pricing/">
-  <meta name="twitter:title" content="Pricing - Melio Tasks">
-  <meta name="twitter:description" content="Simple, transparent pricing. Choose the plan that works for you.">
-  <meta name="twitter:image" content="/VisuelAccueil.png">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="Melio Tasks" />
   <link rel="manifest" href="/site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
     * {
       margin: 0;
       padding: 0;
@@ -507,6 +505,18 @@
       }
     }
   </style>
+  <!-- Couche partagée : elle affine le bloc ci-dessus, elle doit rester après -->
+  <link rel="stylesheet" href="/assets/site.css?v=20260829">
+
+  <!-- Multilingue : dictionnaires puis moteur, en defer pour s'exécuter dans
+       l'ordre avant DOMContentLoaded -->
+  <script src="/assets/i18n/en.js?v=20260829" defer></script>
+  <script src="/assets/i18n/fr.js?v=20260829" defer></script>
+  <script src="/assets/i18n/es.js?v=20260829" defer></script>
+  <script src="/assets/i18n/zh.js?v=20260829" defer></script>
+  <script src="/assets/i18n/ar.js?v=20260829" defer></script>
+  <script src="/assets/i18n/core.js?v=20260829" defer></script>
+  <script src="/assets/site.js?v=20260829" defer></script>
 
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EK1HGFJYE"></script>
@@ -542,16 +552,17 @@
       <a href="/" class="logo-link">
         <img src="/MelioLogo.png" alt="Melio Tasks" class="h-8">
       </a>
-      <div class="hidden md:flex items-center gap-6">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/#features" class="nav-link">Features</a>
-        <a href="/#testimonials" class="nav-link">Reviews</a>
-        <a href="/#comparison" class="nav-link">Comparison</a>
-        <a href="/pricing/" class="nav-link">Pricing</a>
-        <a href="/our-story/" class="nav-link">Our Story</a>
-        <a href="/#download-section" class="btn-primary text-sm px-6 py-2.5">Download</a>
+      <div class="hidden md:flex items-center gap-4">
+        <a href="/" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="/#melio-ai" class="nav-link" data-i18n="nav.ai">Melio AI</a>
+        <a href="/#features" class="nav-link" data-i18n="nav.features">Features</a>
+        <a href="/#testimonials" class="nav-link" data-i18n="nav.reviews">Reviews</a>
+        <a href="/pricing/" class="nav-link is-active" data-i18n="nav.pricing">Pricing</a>
+        <a href="/our-story/" class="nav-link" data-i18n="nav.story">Our Story</a>
+        <div data-lang-switcher="nav"></div>
+        <a href="/#download-section" class="btn-primary text-sm px-6 py-2.5" data-i18n="nav.download">Download</a>
       </div>
-      <button class="hamburger md:hidden" id="menuBtn">
+      <button class="hamburger md:hidden" id="menuBtn" data-i18n-attr="aria-label:a11y.menu" aria-label="Menu">
         <span></span>
         <span></span>
         <span></span>
@@ -561,152 +572,159 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="/">Home</a>
-    <a href="/#features">Features</a>
-    <a href="/#testimonials">Reviews</a>
-    <a href="/#comparison">Comparison</a>
-    <a href="/pricing/">Pricing</a>
-    <a href="/our-story/">Our Story</a>
-    <a href="/#download-section">Download</a>
+    <a href="/" data-i18n="nav.home">Home</a>
+    <a href="/#melio-ai" data-i18n="nav.ai">Melio AI</a>
+    <a href="/#features" data-i18n="nav.features">Features</a>
+    <a href="/#testimonials" data-i18n="nav.reviews">Reviews</a>
+    <a href="/#comparison" data-i18n="nav.comparison">Comparison</a>
+    <a href="/pricing/" data-i18n="nav.pricing">Pricing</a>
+    <a href="/our-story/" data-i18n="nav.story">Our Story</a>
+    <a href="/#download-section" data-i18n="nav.download">Download</a>
+    <div data-lang-switcher="mobile"></div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen flex items-center justify-center px-4 pt-32 pb-8" style="position: relative; z-index: 1;">
+  <!-- Hero -->
+  <section class="flex items-center justify-center px-4 pt-40 pb-8" style="position: relative; z-index: 1;">
     <div class="max-w-5xl mx-auto w-full text-center">
       <div class="fade-in">
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full text-sm font-medium text-orange-500 mb-6">
-          Limited offer for early adopters
-        </div>
-
-        <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 section-title">
-          Simple, Transparent Pricing
+        <span class="badge-pill mb-6">
+          <span class="badge-dot"></span>
+          <span data-i18n="pricing.badge">Limited offer for early adopters</span>
+        </span>
+        <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 section-title" data-i18n="pricing.title">
+          Simple, transparent pricing
         </h1>
-
-        <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
-          Choose the plan that fits your needs. No hidden fees, cancel anytime.
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-8" data-i18n="pricing.sub">
+          One plan, everything included. No hidden fees, cancel anytime.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Pricing Cards -->
+  <!-- Plans -->
   <section class="py-8 px-4" style="position: relative; z-index: 1;">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-8 pricing-grid">
-
-        <!-- Premium Monthly Plan -->
+        <!-- Mensuel -->
         <div class="pricing-card fade-in">
-          <h3 class="text-2xl font-bold mb-2">Premium Monthly</h3>
-          <p class="text-gray-500 mb-4">Best for individuals</p>
-          <div class="price-tag">$4.99</div>
-          <div class="price-period">per month</div>
-
+          <h2 class="text-2xl font-bold mb-2" data-i18n="plan.monthly.name">Premium Monthly</h2>
+          <p class="text-gray-500 mb-4" data-i18n="plan.monthly.desc">Month to month, no commitment</p>
+          <div class="price-tag" data-i18n="plan.monthly.price">$7.99</div>
+          <div class="price-period" data-i18n="plan.monthly.period">per month</div>
           <ul class="feature-list">
-            <li>Unlimited tasks</li>
-            <li>Advanced task organization</li>
-            <li>Shared Tasks</li>
-            <li>Smart reminders</li>
-            <li>Project Management</li>
-            <li>Priority support</li>
-            <li>Cloud sync across devices</li>
-            <li>Advanced statistics</li>
+            <li data-i18n="plan.f1">Unlimited tasks</li>
+            <li data-i18n="plan.f2">Melio AI: 10 messages a day</li>
+            <li data-i18n="plan.f3">Advanced task organization</li>
+            <li data-i18n="plan.f4">Shared tasks</li>
+            <li data-i18n="plan.f5">Smart reminders</li>
+            <li data-i18n="plan.f6">Project management</li>
+            <li data-i18n="plan.f7">Cloud sync across devices</li>
+            <li data-i18n="plan.f8">Advanced statistics</li>
+            <li data-i18n="plan.f9">Priority support</li>
           </ul>
-
-          <a href="#cta" class="btn-primary w-full text-center">
-            Get Started
-          </a>
+          <a href="#cta" class="btn-primary w-full text-center" data-i18n="cta.start">Get Started</a>
         </div>
 
-        <!-- Premium Yearly Plan (Featured) -->
+        <!-- Annuel -->
         <div class="pricing-card featured fade-in">
-          <h3 class="text-2xl font-bold mb-2">Premium Yearly</h3>
-          <p class="text-gray-500 mb-4">For power users and teams</p>
-          <div class="price-tag">$49.90</div>
-          <div class="price-period">per year</div>
-
+          <span class="plan-badge" data-i18n="plan.yearly.badge">Best value</span>
+          <h2 class="text-2xl font-bold mb-2" data-i18n="plan.yearly.name">Premium Yearly</h2>
+          <p class="text-gray-500 mb-4" data-i18n="plan.yearly.desc">Two months free compared to monthly</p>
+          <div class="price-tag" data-i18n="plan.yearly.price">$79.90</div>
+          <div class="price-period" data-i18n="plan.yearly.period">per year</div>
           <ul class="feature-list">
-            <li>Unlimited tasks</li>
-            <li>Advanced task organization</li>
-            <li>Shared Tasks</li>
-            <li>Smart reminders</li>
-            <li>Project Management</li>
-            <li>Priority support</li>
-            <li>Cloud sync across devices</li>
-            <li>Advanced Statistics</li>
+            <li data-i18n="plan.f1">Unlimited tasks</li>
+            <li data-i18n="plan.f2">Melio AI: 10 messages a day</li>
+            <li data-i18n="plan.f3">Advanced task organization</li>
+            <li data-i18n="plan.f4">Shared tasks</li>
+            <li data-i18n="plan.f5">Smart reminders</li>
+            <li data-i18n="plan.f6">Project management</li>
+            <li data-i18n="plan.f7">Cloud sync across devices</li>
+            <li data-i18n="plan.f8">Advanced statistics</li>
+            <li data-i18n="plan.f9">Priority support</li>
           </ul>
-
-          <a href="#cta" class="btn-primary w-full text-center">
-            Get Started
-          </a>
+          <a href="#cta" class="btn-primary w-full text-center" data-i18n="cta.start">Get Started</a>
         </div>
-
       </div>
+
+      <!-- L'essai est une offre unique : il s'énonce une fois, sous les deux
+           formules, et pas une fois par carte. -->
+      <p class="pricing-trial fade-in" data-i18n="plan.trial">3-day free trial</p>
     </div>
   </section>
 
-  <!-- FAQ Section -->
+  <!-- FAQ -->
   <section class="py-32 px-4" style="position: relative; z-index: 1;">
     <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-16 fade-in">
-        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
-          Frequently Asked Questions
+      <div class="section-head fade-in">
+        <h2 class="text-4xl md:text-6xl font-bold mb-5 section-title" data-i18n="faq.title">
+          Frequently asked questions
         </h2>
-        <p class="text-xl text-gray-400">Everything you need to know about pricing</p>
+        <p class="section-sub" data-i18n="faq.sub">Everything you need to know before subscribing</p>
       </div>
 
       <div class="space-y-4">
         <div class="faq-item fade-in">
           <div class="faq-question">
-            <span>Is there a free trial?</span>
+            <span data-i18n="faq.q1">Is there a free trial?</span>
             <span class="faq-toggle">↓</span>
           </div>
-          <div class="faq-answer">
-            Yes! We offer a 7-day free trial for all plans. A credit card is required to start the trial, but you can cancel anytime before the trial ends with no charges.
+          <div class="faq-answer" data-i18n="faq.a1">
+            Yes. Three free days, once, on either plan. A payment method is required to start the trial, and you can cancel any time before it ends without being charged.
           </div>
         </div>
 
         <div class="faq-item fade-in">
           <div class="faq-question">
-            <span>What payment methods do you accept?</span>
+            <span data-i18n="faq.q2">What is included in Melio AI?</span>
             <span class="faq-toggle">↓</span>
           </div>
-          <div class="faq-answer">
-            We accept all major credit cards, Apple Pay, and Google Pay through the App Store and Google Play Store.
+          <div class="faq-answer" data-i18n="faq.a2">
+            Ten messages a day. Each one can produce a complete project with its tasks, its dates and its habits. Nothing is added to your app until you tap Create, and the counter resets every day.
           </div>
         </div>
 
         <div class="faq-item fade-in">
           <div class="faq-question">
-            <span>How do I cancel my subscription?</span>
+            <span data-i18n="faq.q3">Which payment methods do you accept?</span>
             <span class="faq-toggle">↓</span>
           </div>
-          <div class="faq-answer">
-            You can cancel your subscription anytime through the App Store or Google Play Store settings.
+          <div class="faq-answer" data-i18n="faq.a3">
+            All major cards, Apple Pay and Google Pay, handled through the App Store and Google Play.
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <span data-i18n="faq.q4">How do I cancel?</span>
+            <span class="faq-toggle">↓</span>
+          </div>
+          <div class="faq-answer" data-i18n="faq.a4">
+            From your App Store or Google Play subscription settings, any time. You keep Premium until the end of the period you already paid for.
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- CTA -->
   <section id="cta" class="py-32 px-4" style="position: relative; z-index: 1;">
     <div class="max-w-4xl mx-auto text-center fade-in">
       <div class="pricing-card" style="padding: 4rem 3rem;">
-        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 section-title" data-i18n="pricingCta.title">
           Ready to get started?
         </h2>
-        <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-          Join thousands who've transformed their productivity with Melio Tasks
+        <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto" data-i18n="pricingCta.sub">
+          Join the people who turned their goals into plans they actually follow.
         </p>
-
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="https://apps.apple.com/fr/app/melio-tasks-task-management/id6757226707"
-            class="btn-primary"
+            class="btn-primary" data-i18n="cta.ios"
             onclick="gtag('event', 'click_download', {'platform': 'iOS', 'source': 'pricing'});">
             Download for iOS
           </a>
           <a href="https://play.google.com/store/apps/details?id=com.eliozo.taskly"
-            class="btn-secondary"
+            class="btn-secondary" data-i18n="cta.android"
             onclick="gtag('event', 'click_download', {'platform': 'Android', 'source': 'pricing'});">
             Download for Android
           </a>
@@ -715,39 +733,42 @@
     </div>
   </section>
 
-  <!-- Footer - Clean & Professional -->
+  <!-- Footer -->
   <footer style="position: relative; z-index: 1;">
     <div class="footer-main">
       <div class="footer-column">
-        <h4>Product</h4>
+        <h4 data-i18n="footer.product">Product</h4>
         <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/#features">Features</a>
-          <a href="/pricing/">Pricing</a>
-          <a href="/our-story/">Our Story</a>
+          <a href="/" data-i18n="nav.home">Home</a>
+          <a href="/#melio-ai" data-i18n="nav.ai">Melio AI</a>
+          <a href="/#features" data-i18n="nav.features">Features</a>
+          <a href="/pricing/" data-i18n="nav.pricing">Pricing</a>
+          <a href="/our-story/" data-i18n="nav.story">Our Story</a>
         </div>
       </div>
 
       <div class="footer-column">
-        <h4>Legal</h4>
+        <h4 data-i18n="footer.legal">Legal</h4>
         <div class="footer-links">
-          <a href="/privacy-policy/">Privacy Policy</a>
-          <a href="/terms-of-use/">Terms of Use</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpQc-CVeX4ISTjQtTAvkw0olq1p1eplgRwo0QD_Y0nUD8Sg/viewform?usp=dialog" target="_blank">Contact Us</a>
+          <a href="/privacy-policy/" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="/terms-of-use/" data-i18n="footer.terms">Terms of Use</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpQc-CVeX4ISTjQtTAvkw0olq1p1eplgRwo0QD_Y0nUD8Sg/viewform?usp=dialog" target="_blank" rel="noopener" data-i18n="footer.contact">Contact us</a>
+          <a href="#" data-cookie-settings data-i18n="footer.cookieSettings">Cookie settings</a>
         </div>
+        <p class="footer-note" data-i18n="footer.legalNotice">Legal pages are published in English, the binding version.</p>
       </div>
 
       <div class="footer-column">
-        <h4>Social</h4>
+        <h4 data-i18n="footer.social">Social</h4>
         <div class="flex gap-3 mb-4">
-          <a href="https://twitter.com/melio_tasks_app" class="social-icon" target="_blank">
-            <img src="/twitter-icon.png" alt="Twitter">
+          <a href="https://twitter.com/melio_tasks_app" class="social-icon" target="_blank" rel="noopener" aria-label="X / Twitter">
+            <img src="/twitter-icon.png" alt="">
           </a>
-          <a href="https://instagram.com/melio.tasks.app" class="social-icon" target="_blank">
-            <img src="/instagram-icon.png" alt="Instagram">
+          <a href="https://instagram.com/melio.tasks.app" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="/instagram-icon.png" alt="">
           </a>
-          <a href="https://tiktok.com/@melio.tasks.app" class="social-icon" target="_blank">
-            <img src="/tiktok-icon.png" alt="TikTok">
+          <a href="https://tiktok.com/@melio.tasks.app" class="social-icon" target="_blank" rel="noopener" aria-label="TikTok">
+            <img src="/tiktok-icon.png" alt="">
           </a>
         </div>
       </div>
@@ -756,81 +777,9 @@
     <div class="footer-bottom">
       <div class="flex items-center gap-4">
         <img src="/MelioLogo.png" alt="Melio Tasks" class="h-8">
-        <span class="footer-copyright">© 2026 Melio Tasks. All rights reserved.</span>
+        <span class="footer-copyright" data-i18n="footer.rights">© 2026 Melio Tasks. All rights reserved.</span>
       </div>
     </div>
   </footer>
-
-  <script>
-    // Mobile Menu
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('active');
-      mobileMenu.classList.toggle('show');
-    });
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuBtn.classList.remove('active');
-        mobileMenu.classList.remove('show');
-      });
-    });
-
-    // Scroll Animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible', 'animating');
-          // Remove animating class after animation completes to avoid affecting hover
-          setTimeout(() => {
-            entry.target.classList.remove('animating');
-          }, 2000);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // FAQ Accordion - SMOOTH
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const wasActive = item.classList.contains('active');
-
-        // Close all other items
-        document.querySelectorAll('.faq-item').forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.classList.remove('active');
-          }
-        });
-
-        // Toggle current item
-        if (!wasActive) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
-      });
-    });
-
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        if (href === '#') return;
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-  </script>
 </body>
 </html>

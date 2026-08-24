@@ -1,0 +1,5 @@
+# macOS
+.DS_Store
+
+# Réglages Claude Code propres à cette machine (launch.json, lui, est partagé)
+.claude/settings.local.json

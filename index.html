@@ -1,33 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="i18n-pending">
 <head>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
 
   <!-- SEO Meta Tags -->
-  <title>Melio Tasks - Best Task Manager App for iOS & Android | Boost Your Productivity</title>
-  <meta name="description" content="Melio Tasks is the ultimate task management and productivity app. Organize projects, get smart notifications, collaborate with teams, and achieve more. Download on iOS & Android now!">
-  <meta name="keywords" content="task manager, productivity app, to-do list, project management, iOS app, Android app, smart notifications, team collaboration, task organizer, goal tracking, time management">
+  <title data-i18n="meta.home.title">Melio Tasks - AI task manager for iOS &amp; Android</title>
+  <meta name="description" data-i18n-attr="content:meta.home.description" content="Tell Melio your goal and its AI writes the whole plan: project, tasks, dates and habits. A calm, powerful task manager for iOS and Android.">
+  <meta name="keywords" content="AI task manager, AI planner, task manager, productivity app, to-do list, project management, habit tracker, iOS app, Android app, smart notifications, shared tasks, goal tracking">
   <meta name="author" content="Melio Tasks">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://meliotasks.com">
 
+  <!-- Versions linguistiques : le site sert la même page et bascule côté
+       client, la variante est donc portée par le paramètre ?lang= -->
+  <link rel="alternate" hreflang="en" href="https://meliotasks.com/">
+  <link rel="alternate" hreflang="fr" href="https://meliotasks.com/?lang=fr">
+  <link rel="alternate" hreflang="es" href="https://meliotasks.com/?lang=es">
+  <link rel="alternate" hreflang="zh" href="https://meliotasks.com/?lang=zh">
+  <link rel="alternate" hreflang="ar" href="https://meliotasks.com/?lang=ar">
+  <link rel="alternate" hreflang="x-default" href="https://meliotasks.com/">
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://meliotasks.com">
-  <meta property="og:title" content="Melio Tasks - Best Task Manager App for iOS & Android">
-  <meta property="og:description" content="Transform your productivity with Melio Tasks. The most intuitive task management app for iOS and Android. Organize tasks, track progress, and achieve your goals.">
+  <meta property="og:title" content="Melio Tasks - say the goal, Melio writes the plan">
+  <meta property="og:description" content="Melio AI turns one sentence into a full project: tasks, dates and the habits that hold it together. Nothing is saved until you tap Create.">
   <meta property="og:image" content="/VisuelAccueil.png">
   <meta property="og:image:alt" content="Melio Tasks App Interface - Task Management Made Simple">
   <meta property="og:site_name" content="Melio Tasks">
   <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:locale:alternate" content="ar_AR">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://meliotasks.com">
-  <meta name="twitter:title" content="Melio Tasks - Best Task Manager App for iOS & Android">
-  <meta name="twitter:description" content="Transform your productivity with Melio Tasks. The most intuitive task management app. Organize tasks, track progress, achieve your goals.">
+  <meta name="twitter:title" content="Melio Tasks - say the goal, Melio writes the plan">
+  <meta name="twitter:description" content="Melio AI turns one sentence into a full project: tasks, dates and habits. Organize, share, follow through.">
   <meta name="twitter:image" content="/VisuelAccueil.png">
 
   <!-- Favicon -->
@@ -38,15 +52,28 @@
   <meta name="apple-mobile-web-app-title" content="Melio Tasks" />
   <link rel="manifest" href="/site.webmanifest" />
 
+  <!-- Typographie : Outfit pour les titres, comme dans l'app -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "MobileApplication",
     "name": "Melio Tasks",
-    "description": "Premium task management and productivity app for iOS and Android",
+    "description": "Task and habit manager with a built-in AI assistant: say your goal and Melio drafts the project, its tasks, their dates and the habits that support them.",
     "url": "https://meliotasks.com",
     "logo": "https://meliotasks.com/web-app-manifest-512x512.png",
+    "inLanguage": ["en", "fr", "es", "zh", "ar"],
+    "featureList": [
+      "AI assistant that turns a goal into a full project",
+      "Tasks, projects and recurring habits",
+      "Shared tasks",
+      "Smart reminders",
+      "Advanced statistics"
+    ],
     "sameAs": [
       "https://twitter.com/melio.tasks.app",
       "https://instagram.com/melio.tasks.app",
@@ -56,7 +83,7 @@
     "operatingSystem": "iOS, Android",
     "offers": {
       "@type": "Offer",
-      "price": "4.99",
+      "price": "7.99",
       "priceCurrency": "USD"
     },
     "downloadUrl": "https://apps.apple.com/fr/app/melio-tasks/id6747993532",
@@ -70,8 +97,6 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
     * {
       margin: 0;
       padding: 0;
@@ -958,6 +983,19 @@
       }
     }
   </style>
+  <!-- Couche partagée : elle affine le bloc ci-dessus, elle doit rester après -->
+  <link rel="stylesheet" href="/assets/site.css?v=20260829">
+
+  <!-- Multilingue : dictionnaires puis moteur, en defer pour s'exécuter dans
+       l'ordre avant DOMContentLoaded -->
+  <script src="/assets/i18n/en.js?v=20260829" defer></script>
+  <script src="/assets/i18n/fr.js?v=20260829" defer></script>
+  <script src="/assets/i18n/es.js?v=20260829" defer></script>
+  <script src="/assets/i18n/zh.js?v=20260829" defer></script>
+  <script src="/assets/i18n/ar.js?v=20260829" defer></script>
+  <script src="/assets/i18n/core.js?v=20260829" defer></script>
+  <script src="/assets/site.js?v=20260829" defer></script>
+  <script src="/assets/home.js?v=20260829" defer></script>
 
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EK1HGFJYE"></script>
@@ -993,16 +1031,17 @@
       <a href="#hero" class="logo-link">
         <img src="MelioLogo.png" alt="Melio Tasks" class="h-8">
       </a>
-      <div class="hidden md:flex items-center gap-6">
-        <a href="/" class="nav-link">Home</a>
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#testimonials" class="nav-link">Reviews</a>
-        <a href="#comparison" class="nav-link">Comparison</a>
-        <a href="/pricing/" class="nav-link">Pricing</a>
-        <a href="/our-story/" class="nav-link">Our Story</a>
-        <a href="#download-section" class="btn-primary text-sm px-6 py-2.5">Download</a>
+      <div class="hidden md:flex items-center gap-4">
+        <a href="/" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="#melio-ai" class="nav-link" data-i18n="nav.ai">Melio AI</a>
+        <a href="#features" class="nav-link" data-i18n="nav.features">Features</a>
+        <a href="#testimonials" class="nav-link" data-i18n="nav.reviews">Reviews</a>
+        <a href="/pricing/" class="nav-link" data-i18n="nav.pricing">Pricing</a>
+        <a href="/our-story/" class="nav-link" data-i18n="nav.story">Our Story</a>
+        <div data-lang-switcher="nav"></div>
+        <a href="#download-section" class="btn-primary text-sm px-6 py-2.5" data-i18n="nav.download">Download</a>
       </div>
-      <button class="hamburger md:hidden" id="menuBtn">
+      <button class="hamburger md:hidden" id="menuBtn" data-i18n-attr="aria-label:a11y.menu" aria-label="Menu">
         <span></span>
         <span></span>
         <span></span>
@@ -1012,24 +1051,26 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="/">Home</a>
-    <a href="#features">Features</a>
-    <a href="#testimonials">Reviews</a>
-    <a href="#comparison">Comparison</a>
-    <a href="/pricing/">Pricing</a>
-    <a href="/our-story/">Our Story</a>
-    <a href="#download-section">Download</a>
+    <a href="/" data-i18n="nav.home">Home</a>
+    <a href="#melio-ai" data-i18n="nav.ai">Melio AI</a>
+    <a href="#features" data-i18n="nav.features">Features</a>
+    <a href="#testimonials" data-i18n="nav.reviews">Reviews</a>
+    <a href="#comparison" data-i18n="nav.comparison">Comparison</a>
+    <a href="/pricing/" data-i18n="nav.pricing">Pricing</a>
+    <a href="/our-story/" data-i18n="nav.story">Our Story</a>
+    <a href="#download-section" data-i18n="nav.download">Download</a>
+    <div data-lang-switcher="mobile"></div>
   </div>
 
   <!-- Cookie Banner -->
   <div class="custom-cookie-banner" id="cookieBanner">
     <div class="cookie-message">
-      We use cookies to analyze traffic and improve your experience.
-      <a href="/privacy-policy/">Learn More</a>
+      <span data-i18n="cookie.message">We use cookies to analyze traffic and improve your experience.</span>
+      <a href="/privacy-policy/" data-i18n="cookie.learnMore">Learn more</a>
     </div>
     <div class="cookie-buttons">
-      <button class="cookie-accept" id="acceptCookies">Accept All</button>
-      <button class="cookie-reject" id="rejectCookies">Reject</button>
+      <button class="cookie-accept" id="acceptCookies" data-i18n="cookie.accept">Accept all</button>
+      <button class="cookie-reject" id="rejectCookies" data-i18n="cookie.reject">Reject</button>
     </div>
   </div>
 
@@ -1038,28 +1079,30 @@
     <div class="max-w-7xl mx-auto w-full">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="text-center lg:text-left fade-in">
-          <div class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full text-sm font-medium text-orange-500 mb-6">
-            Limited offer for early adopters
-          </div>
+          <a href="#melio-ai" class="badge-pill mb-6">
+            <span class="badge-dot"></span>
+            <span data-i18n="hero.badge">New: Melio AI is here</span>
+          </a>
 
-          <h1 class="text-4xl md:text-7xl font-bold leading-tight mb-6 hero-title-text">
+          <h1 class="text-4xl md:text-7xl font-bold leading-tight mb-6 hero-title-text" data-i18n-html="hero.title">
             Clear your Mind<br>
             Get things Done
           </h1>
 
-          <p class="text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 mb-10">
-            Stop feeling overwhelmed. Start feeling accomplished.
-            The simple, powerful way to turn your goals into reality.
+          <p class="text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 mb-10" data-i18n="hero.subtitle">
+            Stop feeling overwhelmed. Start feeling accomplished. Say what you want to achieve, and Melio turns it into a plan you can actually follow.
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
             <a href="https://apps.apple.com/fr/app/melio-tasks-task-management/id6757226707"
               class="btn-primary"
+              data-i18n="cta.ios"
               onclick="gtag('event', 'click_download', {'platform': 'iOS'});">
               Download for iOS
             </a>
             <a href="https://play.google.com/store/apps/details?id=com.eliozo.taskly"
               class="btn-secondary"
+              data-i18n="cta.android"
               onclick="gtag('event', 'click_download', {'platform': 'Android'});">
               Download for Android
             </a>
@@ -1067,16 +1110,16 @@
 
           <div class="grid grid-cols-3 gap-6 pt-8">
             <div class="text-center">
-              <div class="stat-number" data-target="1467">0</div>
-              <div class="text-sm text-gray-500">Early Adopters</div>
+              <div class="stat-number" data-target="1063">0</div>
+              <div class="text-sm text-gray-500" data-i18n="hero.stat1">Early adopters</div>
             </div>
             <div class="text-center">
               <div class="stat-number" data-target="4.8">0</div>
-              <div class="text-sm text-gray-500">Rating</div>
+              <div class="text-sm text-gray-500" data-i18n="hero.stat2">Rating</div>
             </div>
             <div class="text-center">
-              <div class="stat-number" data-target="9347">0</div>
-              <div class="text-sm text-gray-500">Tasks Created</div>
+              <div class="stat-number" data-target="12534">0</div>
+              <div class="text-sm text-gray-500" data-i18n="hero.stat3">Tasks created</div>
             </div>
           </div>
         </div>
@@ -1088,99 +1131,212 @@
     </div>
   </section>
 
-  <!-- Progressive Text Section - LONGER -->
+  <!-- Progressive Text Section -->
   <div class="progressive-text-wrapper" style="position: relative; z-index: 1;">
     <div class="progressive-text-section">
-      <div class="progressive-text" id="progressiveText">
-        <span class="word">Most</span>
-        <span class="word">task</span>
-        <span class="word">apps</span>
-        <span class="word">make</span>
-        <span class="word">you</span>
-        <span class="word">feel</span>
-        <span class="word">more</span>
-        <span class="word">stressed.</span>
-        <span class="word">Melio</span>
-        <span class="word">Tasks</span>
-        <span class="word">brings</span>
-        <span class="word">you</span>
-        <span class="word">peace</span>
-        <span class="word">of</span>
-        <span class="word">mind.</span>
-      </div>
+      <!-- Les mots sont générés par home.js à partir de la phrase traduite -->
+      <div class="progressive-text" id="progressiveText"></div>
     </div>
   </div>
+
+  <!-- Melio AI -->
+  <section id="melio-ai" class="ai-section">
+    <div class="ai-inner">
+      <div class="ai-copy fade-in">
+        <span class="badge-pill">
+          <span class="badge-dot"></span>
+          <span data-i18n="ai.badge">Melio AI</span>
+        </span>
+
+        <h2 class="ai-title" data-i18n-html="ai.title">Say the goal.<br>Melio writes the plan.</h2>
+
+        <p class="ai-lede" data-i18n="ai.subtitle">
+          One sentence is enough. Melio drafts a full project, with its tasks, its dates and the habits that hold it together, then shows it to you before anything is saved.
+        </p>
+
+        <ol class="ai-steps">
+          <li class="ai-step">
+            <span class="ai-step-num">1</span>
+            <div>
+              <div class="ai-step-title" data-i18n="ai.step1.title">Say it in your own words</div>
+              <p class="ai-step-body" data-i18n="ai.step1.body">Type it or speak it: “Prepare my April marathon.” No forms, no templates to fill in.</p>
+            </div>
+          </li>
+          <li class="ai-step">
+            <span class="ai-step-num">2</span>
+            <div>
+              <div class="ai-step-title" data-i18n="ai.step2.title">Melio drafts the plan</div>
+              <p class="ai-step-body" data-i18n="ai.step2.body">A project with its tasks, their due dates, and the daily habits that make it hold.</p>
+            </div>
+          </li>
+          <li class="ai-step">
+            <span class="ai-step-num">3</span>
+            <div>
+              <div class="ai-step-title" data-i18n="ai.step3.title">You keep the last word</div>
+              <p class="ai-step-body" data-i18n="ai.step3.body">Read the summary and tap Create. Nothing enters your app until you do.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="ai-actions">
+          <a href="#download-section" class="btn-primary" data-i18n="ai.cta"
+             onclick="gtag('event', 'click_ai_cta');">Try Melio AI</a>
+          <span class="ai-note" data-i18n="ai.note">Included with Premium: 10 messages a day.</span>
+        </div>
+      </div>
+
+      <!-- Maquette animée du chat, rejouée en boucle par site.js -->
+      <div class="ai-demo fade-in">
+        <div class="ai-demo-inner">
+          <div class="ai-phone" id="aiDemo" role="img"
+               data-i18n-attr="aria-label:ai.subtitle">
+            <div class="ai-screen">
+              <div class="ai-chat-head">
+                <img src="/melio-mascot.png" alt="" class="ai-avatar" width="34" height="34">
+                <div>
+                  <span class="ai-chat-name" data-i18n="ai.chat.header">Melio AI</span>
+                  <span class="ai-chat-status" data-i18n="ai.chat.status">online</span>
+                </div>
+              </div>
+
+              <div class="ai-chat-body">
+                <div class="ai-turn ai-bubble ai-bubble--user" data-step="1" data-i18n="ai.chat.user">
+                  Build me a plan to learn guitar in 6 months, 30 min a day
+                </div>
+
+                <div class="ai-turn ai-typing" data-step="2" aria-hidden="true">
+                  <i></i><i></i><i></i>
+                </div>
+
+                <div class="ai-turn ai-bubble ai-bubble--melio" data-step="3" data-i18n="ai.chat.reply">
+                  Here is your six months. Practice every day, one milestone a month, and a check-in each Sunday to adjust.
+                </div>
+
+                <div class="ai-turn ai-card" data-step="4">
+                  <div class="ai-card-title" data-i18n="ai.chat.cardTitle">Melio will create</div>
+                  <ul class="ai-card-list">
+                    <li data-i18n="ai.chat.project">the “Learn guitar” project</li>
+                    <li data-i18n="ai.chat.tasks">14 tasks</li>
+                    <li data-i18n="ai.chat.habits">2 habits</li>
+                  </ul>
+                  <div class="ai-card-foot">
+                    <div class="ai-card-actions">
+                      <span class="ai-btn ai-btn--cancel" data-i18n="ai.chat.cancel">Cancel</span>
+                      <span class="ai-btn ai-btn--create">
+                        <span class="ai-btn-label" data-i18n="ai.chat.create">Create</span>
+                        <span class="ai-spinner" aria-hidden="true"></span>
+                      </span>
+                    </div>
+                    <div class="ai-card-done">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+                           stroke-linecap="round" stroke-linejoin="round" width="15" height="15" aria-hidden="true">
+                        <path d="m4 12.5 5 5 11-11"></path>
+                      </svg>
+                      <span data-i18n="ai.chat.created">Created</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ai-chat-foot">
+                <div class="ai-input-fake"></div>
+                <span class="ai-mic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                       stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="2" width="6" height="11" rx="3"></rect>
+                    <path d="M5 10a7 7 0 0 0 14 0"></path>
+                    <path d="M12 17v5"></path>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="ai-quota" data-i18n="ai.chat.quota">9 messages left today</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Feature Showcase -->
   <section id="features" class="feature-showcase px-4" style="position: relative; z-index: 1;">
     <div class="max-w-6xl mx-auto">
+      <div class="section-head fade-in">
+        <span class="section-eyebrow" data-i18n="features.eyebrow">Features</span>
+        <h2 class="text-4xl md:text-6xl font-bold mb-5 section-title" data-i18n="features.heading">
+          Everything you need. Nothing you don't.
+        </h2>
+        <p class="section-sub" data-i18n="features.sub">
+          Four things Melio does well, instead of forty it does badly.
+        </p>
+      </div>
+
       <!-- Feature 1 -->
       <div class="feature-item fade-in">
         <div class="feature-content">
-          <span class="feature-badge">Smart Organization</span>
-          <h2 class="feature-title">Find Your Flow</h2>
-          <p class="feature-description">
-            Stop wasting mental energy remembering tasks. Free your mind to focus on what truly matters and achieve more with less stress.
+          <span class="feature-badge" data-i18n="f1.badge">Smart organization</span>
+          <h3 class="feature-title" data-i18n="f1.title">Find your flow</h3>
+          <p class="feature-description" data-i18n="f1.desc">
+            Stop spending mental energy remembering things. Free your mind for what actually matters and get more done with less strain.
           </p>
-          <a href="#download-section" class="btn-primary">Get Started</a>
+          <a href="#download-section" class="btn-primary" data-i18n="cta.start">Get Started</a>
         </div>
         <div class="feature-visual">
-          <img src="1.png" alt="Smart Organization">
+          <img src="1.png" alt="Smart organization in Melio Tasks">
         </div>
       </div>
 
       <!-- Feature 2 -->
       <div class="feature-item fade-in">
         <div class="feature-content">
-          <span class="feature-badge">Smart Reminders</span>
-          <h2 class="feature-title">Never Miss What Matters</h2>
-          <p class="feature-description">
-            Smart reminders that understand your rhythm, so you stay on track without feeling overwhelmed or nagged.
+          <span class="feature-badge" data-i18n="f2.badge">Smart reminders</span>
+          <h3 class="feature-title" data-i18n="f2.title">Never miss what matters</h3>
+          <p class="feature-description" data-i18n="f2.desc">
+            Reminders that follow your rhythm, so you stay on track without being nagged all day.
           </p>
-          <a href="#download-section" class="btn-primary">Learn More</a>
+          <a href="#download-section" class="btn-primary" data-i18n="cta.learn">Learn More</a>
         </div>
         <div class="feature-visual">
-          <img src="2.png" alt="Smart Reminders">
+          <img src="2.png" alt="Smart reminders in Melio Tasks">
         </div>
       </div>
 
       <!-- Feature 3 -->
       <div class="feature-item fade-in">
         <div class="feature-content">
-          <span class="feature-badge">Team Collaboration</span>
-          <h2 class="feature-title">Achieve Together</h2>
-          <p class="feature-description">
-            Turn individual goals into team victories. Share progress, celebrate wins, and build momentum with those who matter most.
+          <span class="feature-badge" data-i18n="f3.badge">Shared tasks</span>
+          <h3 class="feature-title" data-i18n="f3.title">Achieve together</h3>
+          <p class="feature-description" data-i18n="f3.desc">
+            Turn personal goals into shared wins. Share a list, follow progress, and keep momentum with the people who count.
           </p>
-          <a href="#download-section" class="btn-primary">Start Now</a>
+          <a href="#download-section" class="btn-primary" data-i18n="cta.now">Start Now</a>
         </div>
         <div class="feature-visual">
-          <img src="3.png" alt="Team Collaboration">
+          <img src="3.png" alt="Shared tasks in Melio Tasks">
         </div>
       </div>
 
       <!-- Feature 4 -->
       <div class="feature-item fade-in">
         <div class="feature-content">
-          <span class="feature-badge">Advanced Statistics</span>
-          <h2 class="feature-title">Track your Progress</h2>
-          <p class="feature-description">
-            See your progress in real-time. Get insights into your productivity and see how you can improve.
+          <span class="feature-badge" data-i18n="f4.badge">Statistics</span>
+          <h3 class="feature-title" data-i18n="f4.title">Track your progress</h3>
+          <p class="feature-description" data-i18n="f4.desc">
+            See where your time goes, spot the streaks that hold, and understand what makes your weeks work.
           </p>
-          <a href="#download-section" class="btn-primary">Learn More</a>
+          <a href="#download-section" class="btn-primary" data-i18n="cta.learn">Learn More</a>
         </div>
         <div class="feature-visual">
-          <img src="4.png" alt="Advanced Statistics">
+          <img src="4.png" alt="Statistics in Melio Tasks">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Stats Counter Section - Longer -->
+  <!-- Stats Counter Section -->
   <section class="stats-counter-section" style="position: relative; z-index: 1;">
     <div class="stats-counter-sticky" id="statsCounter">
       <div class="stats-counter-content">
-        <div class="stats-counter-label">IMPACT</div>
+        <div class="stats-counter-label" data-i18n="stats.label">Impact</div>
         <div class="stats-counter-title" id="statsTitle">Tasks completed daily</div>
         <div class="stats-counter-value" id="statsValue">1 task</div>
         <div class="stats-counter-description" id="statsDescription">
@@ -1189,19 +1345,19 @@
 
         <div class="mini-stats-grid">
           <div class="mini-stat">
-            <div class="mini-stat-value">87%</div>
-            <div class="mini-stat-label">Less Stressed</div>
-            <div class="mini-stat-description">Feel more in control of your tasks</div>
+            <div class="mini-stat-value" data-i18n="mini1.value">87%</div>
+            <div class="mini-stat-label" data-i18n="mini1.label">Less stressed</div>
+            <div class="mini-stat-description" data-i18n="mini1.desc">Feel in control of the day again</div>
           </div>
           <div class="mini-stat">
-            <div class="mini-stat-value">92%</div>
-            <div class="mini-stat-label">More Productive</div>
-            <div class="mini-stat-description">Accomplish more in less time</div>
+            <div class="mini-stat-value" data-i18n="mini2.value">92%</div>
+            <div class="mini-stat-label" data-i18n="mini2.label">More productive</div>
+            <div class="mini-stat-description" data-i18n="mini2.desc">Get more done in less time</div>
           </div>
           <div class="mini-stat">
-            <div class="mini-stat-value">85%</div>
-            <div class="mini-stat-label">Better Balance</div>
-            <div class="mini-stat-description">Work and life in harmony</div>
+            <div class="mini-stat-value" data-i18n="mini3.value">85%</div>
+            <div class="mini-stat-label" data-i18n="mini3.label">Better balance</div>
+            <div class="mini-stat-description" data-i18n="mini3.desc">Work and life, back in proportion</div>
           </div>
         </div>
       </div>
@@ -1211,110 +1367,110 @@
   <!-- Testimonials Carousel -->
   <section id="testimonials" class="py-8 px-4" style="position: relative; z-index: 1;">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-20 fade-in">
-        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
+      <div class="section-head fade-in">
+        <h2 class="text-4xl md:text-6xl font-bold mb-5 section-title" data-i18n="testimonials.title">
           What our users say
         </h2>
-        <p class="text-xl text-gray-400">Rated 4.8 stars by our community</p>
+        <p class="section-sub" data-i18n="testimonials.sub">Rated 4.8 stars by our community</p>
       </div>
 
       <div class="testimonials-carousel">
         <div class="testimonials-track" id="testimonialsTrack">
-          <!-- First set of testimonials -->
+          <!-- Premier jeu -->
           <div class="testimonial-card">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-lg">⭐⭐⭐⭐⭐</span>
-            </div>
-            <p class="text-gray-300 mb-4 text-sm">
-              "This app is amazing! It helps me manage all my tasks and daily projects. Since using it, I never forget anything."
-            </p>
-            <div class="text-sm text-gray-400">
-              - Nathalie A., Designer
+            <div class="text-lg mb-3" aria-label="5 / 5">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-quote" data-i18n="tst1.quote">“This app is amazing. It helps me manage all my tasks and daily projects. Since I started using it, I never forget anything.”</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" aria-hidden="true">N</span>
+              <span>
+                <span class="testimonial-name" data-i18n="tst1.author">Nathalie A.</span>
+                <span class="testimonial-role" data-i18n="tst1.role">Designer</span>
+              </span>
             </div>
           </div>
 
           <div class="testimonial-card">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-lg">⭐⭐⭐⭐⭐</span>
-            </div>
-            <p class="text-gray-300 mb-4 text-sm">
-              "Excellent application that allows you to manage your days well and complete all the tasks you had planned."
-            </p>
-            <div class="text-sm text-gray-400">
-              - Alex J., Student
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-lg">⭐⭐⭐⭐⭐</span>
-            </div>
-            <p class="text-gray-300 mb-4 text-sm">
-              "Great app! Very easy to use and really helpful for remembering things on a daily basis. I use it every day, I highly recommend it!"
-            </p>
-            <div class="text-sm text-gray-400">
-              - Julien S., Video Editor
+            <div class="text-lg mb-3" aria-label="5 / 5">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-quote" data-i18n="tst2.quote">“Excellent app. It lets you plan your days properly and actually finish what you set out to do.”</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" aria-hidden="true">A</span>
+              <span>
+                <span class="testimonial-name" data-i18n="tst2.author">Alex J.</span>
+                <span class="testimonial-role" data-i18n="tst2.role">Student</span>
+              </span>
             </div>
           </div>
 
           <div class="testimonial-card">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-lg">⭐⭐⭐⭐⭐</span>
-            </div>
-            <p class="text-gray-300 mb-4 text-sm">
-              "I've been using Melio Task since its first version and it's truly the best in productivity; it's helped me tremendously on all my projects."
-            </p>
-            <div class="text-sm text-gray-400">
-              - Lucas R., Entrepreneur
-            </div>
-          </div>
-
-          <!-- Duplicate set for seamless infinite loop -->
-          <div class="testimonial-card">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-lg">⭐⭐⭐⭐⭐</span>
-            </div>
-            <p class="text-gray-300 mb-4 text-sm">
-              "This app is amazing! It helps me manage all my tasks and daily projects. Since using it, I never forget anything."
-            </p>
-            <div class="text-sm text-gray-400">
-              - Nathalie A., Designer
+            <div class="text-lg mb-3" aria-label="5 / 5">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-quote" data-i18n="tst3.quote">“Great app, very easy to use and genuinely helpful for remembering things day to day. I use it every day, highly recommended.”</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" aria-hidden="true">J</span>
+              <span>
+                <span class="testimonial-name" data-i18n="tst3.author">Julien S.</span>
+                <span class="testimonial-role" data-i18n="tst3.role">Video editor</span>
+              </span>
             </div>
           </div>
 
           <div class="testimonial-card">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-lg">⭐⭐⭐⭐⭐</span>
-            </div>
-            <p class="text-gray-300 mb-4 text-sm">
-              "Excellent application that allows you to manage your days well and complete all the tasks you had planned."
-            </p>
-            <div class="text-sm text-gray-400">
-              - Alex J., Student
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-lg">⭐⭐⭐⭐⭐</span>
-            </div>
-            <p class="text-gray-300 mb-4 text-sm">
-              "Great app! Very easy to use and really helpful for remembering things on a daily basis. I use it every day, I highly recommend it!"
-            </p>
-            <div class="text-sm text-gray-400">
-              - Julien S., Video Editor
+            <div class="text-lg mb-3" aria-label="5 / 5">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-quote" data-i18n="tst4.quote">“I have used Melio Tasks since its first version and it is truly the best in productivity. It has helped me enormously on all my projects.”</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" aria-hidden="true">L</span>
+              <span>
+                <span class="testimonial-name" data-i18n="tst4.author">Lucas R.</span>
+                <span class="testimonial-role" data-i18n="tst4.role">Entrepreneur</span>
+              </span>
             </div>
           </div>
 
-          <div class="testimonial-card">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-lg">⭐⭐⭐⭐⭐</span>
+          <!-- Jeu dupliqué : c'est lui qui rend la boucle invisible -->
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="text-lg mb-3">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-quote" data-i18n="tst1.quote">“This app is amazing. It helps me manage all my tasks and daily projects. Since I started using it, I never forget anything.”</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar">N</span>
+              <span>
+                <span class="testimonial-name" data-i18n="tst1.author">Nathalie A.</span>
+                <span class="testimonial-role" data-i18n="tst1.role">Designer</span>
+              </span>
             </div>
-            <p class="text-gray-300 mb-4 text-sm">
-              "I've been using Melio Task since its first version and it's truly the best in productivity; it's helped me tremendously on all my projects."
-            </p>
-            <div class="text-sm text-gray-400">
-              - Lucas R., Entrepreneur
+          </div>
+
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="text-lg mb-3">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-quote" data-i18n="tst2.quote">“Excellent app. It lets you plan your days properly and actually finish what you set out to do.”</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar">A</span>
+              <span>
+                <span class="testimonial-name" data-i18n="tst2.author">Alex J.</span>
+                <span class="testimonial-role" data-i18n="tst2.role">Student</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="text-lg mb-3">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-quote" data-i18n="tst3.quote">“Great app, very easy to use and genuinely helpful for remembering things day to day. I use it every day, highly recommended.”</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar">J</span>
+              <span>
+                <span class="testimonial-name" data-i18n="tst3.author">Julien S.</span>
+                <span class="testimonial-role" data-i18n="tst3.role">Video editor</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="testimonial-card" aria-hidden="true">
+            <div class="text-lg mb-3">⭐⭐⭐⭐⭐</div>
+            <p class="testimonial-quote" data-i18n="tst4.quote">“I have used Melio Tasks since its first version and it is truly the best in productivity. It has helped me enormously on all my projects.”</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar">L</span>
+              <span>
+                <span class="testimonial-name" data-i18n="tst4.author">Lucas R.</span>
+                <span class="testimonial-role" data-i18n="tst4.role">Entrepreneur</span>
+              </span>
             </div>
           </div>
         </div>
@@ -1325,40 +1481,24 @@
   <!-- Comparison -->
   <section id="comparison" class="py-32 px-4" style="position: relative; z-index: 1;">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-20 fade-in">
-        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
+      <div class="section-head fade-in">
+        <h2 class="text-4xl md:text-6xl font-bold mb-5 section-title" data-i18n-html="comparison.title">
           Why choose <span class="melio-highlight">Melio Tasks</span>?
         </h2>
-        <p class="text-xl text-gray-400">Built for results, not just features</p>
+        <p class="section-sub" data-i18n="comparison.sub">Built for results, not for a feature list</p>
       </div>
 
       <div class="comparison-table fade-in">
         <div class="comparison-row comparison-header">
-          <div class="comparison-cell comparison-feature">Features</div>
+          <div class="comparison-cell comparison-feature" data-i18n="comparison.features">Features</div>
           <div class="comparison-cell"><span class="melio-highlight">Melio</span></div>
           <div class="comparison-cell">Todoist</div>
           <div class="comparison-cell">Things 3</div>
           <div class="comparison-cell">Any.do</div>
         </div>
 
-        <div class="comparison-row">
-          <div class="comparison-cell comparison-feature">Modern Interface</div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-          <div class="comparison-cell"><span class="cross-icon">✕</span></div>
-        </div>
-
-        <div class="comparison-row">
-          <div class="comparison-cell comparison-feature">Team Collaboration</div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-          <div class="comparison-cell"><span class="cross-icon">✕</span></div>
-          <div class="comparison-cell"><span class="check-icon">✓</span></div>
-        </div>
-
-        <div class="comparison-row">
-          <div class="comparison-cell comparison-feature">Advanced Statistics</div>
+        <div class="comparison-row is-highlight">
+          <div class="comparison-cell comparison-feature" data-i18n="comparison.r1">AI that writes a full plan</div>
           <div class="comparison-cell"><span class="check-icon">✓</span></div>
           <div class="comparison-cell"><span class="cross-icon">✕</span></div>
           <div class="comparison-cell"><span class="cross-icon">✕</span></div>
@@ -1366,7 +1506,23 @@
         </div>
 
         <div class="comparison-row">
-          <div class="comparison-cell comparison-feature">Responsive Support</div>
+          <div class="comparison-cell comparison-feature" data-i18n="comparison.r2">Modern interface</div>
+          <div class="comparison-cell"><span class="check-icon">✓</span></div>
+          <div class="comparison-cell"><span class="check-icon">✓</span></div>
+          <div class="comparison-cell"><span class="check-icon">✓</span></div>
+          <div class="comparison-cell"><span class="cross-icon">✕</span></div>
+        </div>
+
+        <div class="comparison-row">
+          <div class="comparison-cell comparison-feature" data-i18n="comparison.r3">Shared tasks</div>
+          <div class="comparison-cell"><span class="check-icon">✓</span></div>
+          <div class="comparison-cell"><span class="check-icon">✓</span></div>
+          <div class="comparison-cell"><span class="cross-icon">✕</span></div>
+          <div class="comparison-cell"><span class="check-icon">✓</span></div>
+        </div>
+
+        <div class="comparison-row">
+          <div class="comparison-cell comparison-feature" data-i18n="comparison.r4">Advanced statistics</div>
           <div class="comparison-cell"><span class="check-icon">✓</span></div>
           <div class="comparison-cell"><span class="cross-icon">✕</span></div>
           <div class="comparison-cell"><span class="cross-icon">✕</span></div>
@@ -1374,7 +1530,15 @@
         </div>
 
         <div class="comparison-row">
-          <div class="comparison-cell comparison-feature">Unlimited Projects</div>
+          <div class="comparison-cell comparison-feature" data-i18n="comparison.r5">Responsive support</div>
+          <div class="comparison-cell"><span class="check-icon">✓</span></div>
+          <div class="comparison-cell"><span class="cross-icon">✕</span></div>
+          <div class="comparison-cell"><span class="cross-icon">✕</span></div>
+          <div class="comparison-cell"><span class="cross-icon">✕</span></div>
+        </div>
+
+        <div class="comparison-row">
+          <div class="comparison-cell comparison-feature" data-i18n="comparison.r6">Unlimited projects</div>
           <div class="comparison-cell"><span class="check-icon">✓</span></div>
           <div class="comparison-cell"><span class="cross-icon">✕</span></div>
           <div class="comparison-cell"><span class="check-icon">✓</span></div>
@@ -1388,21 +1552,23 @@
   <section id="download-section" class="py-32 px-4" style="position: relative; z-index: 1;">
     <div class="max-w-4xl mx-auto text-center fade-in">
       <div class="feature-card">
-        <h2 class="text-5xl md:text-6xl font-bold mb-6 section-title">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 section-title" data-i18n="download.title">
           Start your transformation today
         </h2>
-        <p class="text-xl text-gray-400 mb-8">
-          Join thousands who've discovered the peace of mind
+        <p class="text-xl text-gray-400 mb-8" data-i18n="download.sub">
+          Join the people who found their peace of mind, and their plan.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
           <a href="https://apps.apple.com/fr/app/melio-tasks-task-management/id6757226707"
             class="btn-primary"
+            data-i18n="cta.ios"
             onclick="gtag('event', 'click_download', {'platform': 'iOS'});">
             Download for iOS
           </a>
           <a href="https://play.google.com/store/apps/details?id=com.eliozo.taskly"
             class="btn-secondary"
+            data-i18n="cta.android"
             onclick="gtag('event', 'click_download', {'platform': 'Android'});">
             Download for Android
           </a>
@@ -1411,40 +1577,42 @@
     </div>
   </section>
 
-  <!-- Footer - Clean & Professional -->
+  <!-- Footer -->
   <footer style="position: relative; z-index: 1;">
     <div class="footer-main">
       <div class="footer-column">
-        <h4>Product</h4>
+        <h4 data-i18n="footer.product">Product</h4>
         <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="#features">Features</a>
-          <a href="/pricing/">Pricing</a>
-          <a href="/our-story/">Our Story</a>
+          <a href="/" data-i18n="nav.home">Home</a>
+          <a href="#melio-ai" data-i18n="nav.ai">Melio AI</a>
+          <a href="#features" data-i18n="nav.features">Features</a>
+          <a href="/pricing/" data-i18n="nav.pricing">Pricing</a>
+          <a href="/our-story/" data-i18n="nav.story">Our Story</a>
         </div>
       </div>
 
       <div class="footer-column">
-        <h4>Legal</h4>
+        <h4 data-i18n="footer.legal">Legal</h4>
         <div class="footer-links">
-          <a href="/privacy-policy/">Privacy Policy</a>
-          <a href="/terms-of-use/">Terms of Use</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpQc-CVeX4ISTjQtTAvkw0olq1p1eplgRwo0QD_Y0nUD8Sg/viewform?usp=dialog" target="_blank">Contact Us</a>
-          <a href="#" id="cookieSettingsFooter">Cookie Settings</a>
+          <a href="/privacy-policy/" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="/terms-of-use/" data-i18n="footer.terms">Terms of Use</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpQc-CVeX4ISTjQtTAvkw0olq1p1eplgRwo0QD_Y0nUD8Sg/viewform?usp=dialog" target="_blank" rel="noopener" data-i18n="footer.contact">Contact us</a>
+          <a href="#" id="cookieSettingsFooter" data-i18n="footer.cookieSettings">Cookie settings</a>
         </div>
+        <p class="footer-note" data-i18n="footer.legalNotice">Legal pages are published in English, the binding version.</p>
       </div>
 
       <div class="footer-column">
-        <h4>Social</h4>
+        <h4 data-i18n="footer.social">Social</h4>
         <div class="flex gap-3 mb-4">
-          <a href="https://twitter.com/melio_tasks_app" class="social-icon" target="_blank">
-            <img src="twitter-icon.png" alt="Twitter">
+          <a href="https://twitter.com/melio_tasks_app" class="social-icon" target="_blank" rel="noopener" aria-label="X / Twitter">
+            <img src="twitter-icon.png" alt="">
           </a>
-          <a href="https://instagram.com/melio.tasks.app" class="social-icon" target="_blank">
-            <img src="instagram-icon.png" alt="Instagram">
+          <a href="https://instagram.com/melio.tasks.app" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="instagram-icon.png" alt="">
           </a>
-          <a href="https://tiktok.com/@melio.tasks.app" class="social-icon" target="_blank">
-            <img src="tiktok-icon.png" alt="TikTok">
+          <a href="https://tiktok.com/@melio.tasks.app" class="social-icon" target="_blank" rel="noopener" aria-label="TikTok">
+            <img src="tiktok-icon.png" alt="">
           </a>
         </div>
       </div>
@@ -1453,291 +1621,9 @@
     <div class="footer-bottom">
       <div class="flex items-center gap-4">
         <img src="MelioLogo.png" alt="Melio Tasks" class="h-8">
-        <span class="footer-copyright">© 2026 Melio Tasks. All rights reserved.</span>
+        <span class="footer-copyright" data-i18n="footer.rights">© 2026 Melio Tasks. All rights reserved.</span>
       </div>
     </div>
   </footer>
-
-  <script>
-    // Mobile Menu
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('active');
-      mobileMenu.classList.toggle('show');
-    });
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuBtn.classList.remove('active');
-        mobileMenu.classList.remove('show');
-      });
-    });
-
-    // Scroll Animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible', 'animating');
-          // Remove animating class after animation completes to avoid affecting hover
-          setTimeout(() => {
-            entry.target.classList.remove('animating');
-          }, 2000);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Observe feature images for smooth animation
-    document.querySelectorAll('.feature-visual img').forEach(img => observer.observe(img));
-
-    // Stats Counter
-    function animateValue(element, start, end, duration) {
-      const range = end - start;
-      const increment = range / (duration / 16);
-      let current = start;
-
-      const timer = setInterval(() => {
-        current += increment;
-        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
-          current = end;
-          clearInterval(timer);
-        }
-
-        if (end < 100) {
-          element.textContent = current.toFixed(1);
-        } else {
-          element.textContent = Math.floor(current).toLocaleString('en-US');
-        }
-      }, 16);
-    }
-
-    const statsSection = document.querySelector('#hero');
-    const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          document.querySelectorAll('.stat-number').forEach(stat => {
-            const target = parseFloat(stat.getAttribute('data-target'));
-            animateValue(stat, 0, target, 2000);
-          });
-          statsObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    statsObserver.observe(statsSection);
-
-    // Progressive Text Animation - START EARLIER
-    const progressiveTextWrapper = document.querySelector('.progressive-text-wrapper');
-    const progressiveText = document.getElementById('progressiveText');
-    const words = progressiveText.querySelectorAll('.word');
-
-    window.addEventListener('scroll', () => {
-      const wrapperTop = progressiveTextWrapper.offsetTop;
-      const wrapperHeight = progressiveTextWrapper.offsetHeight;
-      const scrollPosition = window.scrollY;
-
-      if (scrollPosition > wrapperTop && scrollPosition < wrapperTop + wrapperHeight) {
-        // Start coloring immediately when entering the section
-        const progress = Math.max(0, (scrollPosition - wrapperTop) / (wrapperHeight * 0.5));
-        const activeIndex = Math.floor(progress * words.length);
-
-        words.forEach((word, index) => {
-          if (index <= activeIndex) {
-            word.classList.add('active');
-          } else {
-            word.classList.remove('active');
-          }
-        });
-      }
-    });
-
-    // Stats Counter Section Animation - 100% RELIABLE
-    const statsCounterSection = document.querySelector('.stats-counter-section');
-    const statsTitle = document.getElementById('statsTitle');
-    const statsValue = document.getElementById('statsValue');
-    const statsDescription = document.getElementById('statsDescription');
-
-    const statsStages = [
-      {
-        title: 'Tasks completed daily',
-        value: '1 task',
-        description: 'One small win every day builds unstoppable momentum'
-      },
-      {
-        title: 'Tasks completed monthly',
-        value: '30 tasks',
-        description: 'Thirty accomplishments each month add up to real progress'
-      },
-      {
-        title: 'Tasks completed yearly',
-        value: '365 tasks',
-        description: 'Three hundred sixty-five goals achieved - imagine the transformation'
-      },
-      {
-        title: 'Tasks completed over 50 years',
-        value: '18,250 tasks',
-        description: 'Small daily actions compound into extraordinary lifetime achievements'
-      }
-    ];
-
-    let currentStatsStage = -1;
-    let isTransitioning = false;
-
-    window.addEventListener('scroll', () => {
-      const sectionTop = statsCounterSection.offsetTop;
-      const sectionHeight = statsCounterSection.offsetHeight;
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-      if (scrollPosition > sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        // Stages happen in first 70% of section, leaving 30% to view last stage
-        const progress = (scrollPosition - sectionTop) / (sectionHeight * 0.7);
-        const stageIndex = Math.min(Math.floor(progress * 4), statsStages.length - 1);
-
-        if (stageIndex !== currentStatsStage && stageIndex >= 0 && !isTransitioning) {
-          isTransitioning = true;
-          currentStatsStage = stageIndex;
-
-          // Step 1: Hide completely with visibility
-          statsTitle.style.opacity = '0';
-          statsValue.style.opacity = '0';
-          statsDescription.style.opacity = '0';
-          statsTitle.style.visibility = 'hidden';
-          statsValue.style.visibility = 'hidden';
-          statsDescription.style.visibility = 'hidden';
-
-          setTimeout(() => {
-            // Step 2: Update content while hidden
-            statsTitle.textContent = statsStages[stageIndex].title;
-            statsValue.textContent = statsStages[stageIndex].value;
-            statsDescription.textContent = statsStages[stageIndex].description;
-
-            // Adjust font size for the large number
-            if (stageIndex === 3) {
-              const isMobile = window.innerWidth <= 640;
-              statsValue.style.setProperty('font-size', isMobile ? 'clamp(2.5rem, 12vw, 3.5rem)' : 'clamp(3.5rem, 10vw, 6.5rem)', 'important');
-            } else {
-              statsValue.style.removeProperty('font-size');
-            }
-
-            // Step 3: Show new content
-            statsTitle.style.visibility = 'visible';
-            statsValue.style.visibility = 'visible';
-            statsDescription.style.visibility = 'visible';
-
-            // Force reflow
-            statsTitle.offsetHeight;
-            statsValue.offsetHeight;
-            statsDescription.offsetHeight;
-
-            statsTitle.style.opacity = '1';
-            statsValue.style.opacity = '1';
-            statsDescription.style.opacity = '1';
-
-            setTimeout(() => {
-              isTransitioning = false;
-            }, 250);
-          }, 250);
-        }
-      }
-    });
-
-    // Infinite Testimonials Carousel
-    const testimonialsTrack = document.getElementById('testimonialsTrack');
-    let scrollPosition = 0;
-    let isPaused = false;
-    let animationId = null;
-
-    function scrollTestimonials() {
-      if (!isPaused) {
-        scrollPosition -= 0.5; // Speed of scroll
-
-        // Get the width of one card + gap
-        const cardWidth = 420 + 32; // 420px card + 2rem gap (32px)
-        const totalCards = testimonialsTrack.children.length / 2; // We have duplicates
-        const resetPoint = -(cardWidth * totalCards);
-
-        // Reset position seamlessly when we've scrolled through the first set
-        if (scrollPosition <= resetPoint) {
-          scrollPosition = 0;
-        }
-
-        testimonialsTrack.style.transform = `translateX(${scrollPosition}px)`;
-      }
-
-      animationId = requestAnimationFrame(scrollTestimonials);
-    }
-
-    // Start animation
-    scrollTestimonials();
-
-    // Pause on hover
-    testimonialsTrack.addEventListener('mouseenter', () => {
-      isPaused = true;
-    });
-
-    testimonialsTrack.addEventListener('mouseleave', () => {
-      isPaused = false;
-    });
-
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        if (href === '#hero') {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }
-      });
-    });
-
-    // Cookie Banner
-    const cookieBanner = document.getElementById('cookieBanner');
-    const acceptBtn = document.getElementById('acceptCookies');
-    const rejectBtn = document.getElementById('rejectCookies');
-    const cookieSettingsFooter = document.getElementById('cookieSettingsFooter');
-
-    const cookieConsent = localStorage.getItem('cookieConsent');
-
-    if (!cookieConsent) {
-      setTimeout(() => {
-        cookieBanner.classList.add('show');
-      }, 1000);
-    }
-
-    acceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookieConsent', 'accepted');
-      cookieBanner.classList.remove('show');
-      gtag('consent', 'update', {
-        'analytics_storage': 'granted'
-      });
-    });
-
-    rejectBtn.addEventListener('click', () => {
-      localStorage.setItem('cookieConsent', 'rejected');
-      cookieBanner.classList.remove('show');
-      gtag('consent', 'update', {
-        'analytics_storage': 'denied'
-      });
-    });
-
-    cookieSettingsFooter.addEventListener('click', (e) => {
-      e.preventDefault();
-      cookieBanner.classList.add('show');
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    });
-  </script>
 </body>
 </html>

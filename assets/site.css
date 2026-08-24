@@ -1,0 +1,854 @@
+/* ==========================================================================
+   Melio Tasks : couche partagée
+   --------------------------------------------------------------------------
+   Chargée APRÈS le <style> de chaque page : ce qui est ici affine ou remplace
+   l'existant sans qu'il faille toucher aux blocs inline page par page.
+   ========================================================================== */
+
+:root {
+  --brand-1: #FFA500;
+  --brand-2: #FF5537;
+  --brand-soft: rgba(255, 133, 40, 0.14);
+  --brand-line: rgba(255, 133, 40, 0.28);
+
+  --ink: #FFFFFF;
+  --ink-2: rgba(255, 255, 255, 0.72);
+  --ink-3: rgba(255, 255, 255, 0.52);
+  --ink-4: rgba(255, 255, 255, 0.34);
+
+  --surface: rgba(22, 22, 24, 0.55);
+  --surface-2: rgba(30, 30, 33, 0.72);
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+
+  --radius: 22px;
+  --radius-lg: 28px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Anti-scintillement : la page reste masquée le temps que les traductions
+   soient posées, avec un filet de sécurité côté JS (1,5 s). */
+html.i18n-pending body { opacity: 0; }
+body { opacity: 1; transition: opacity .35s ease; }
+
+/* Bascule de langue : la page s'estompe pendant l'échange des textes, puis
+   revient un peu plus lentement qu'elle n'est partie. On joue sur l'opacité
+   seule, jamais sur `transform` : un transform sur `body` ferait de lui le
+   bloc conteneur des éléments en `position: fixed`, et la barre de navigation
+   comme le bandeau cookies sauteraient à chaque changement de langue. */
+html.lang-swapping body {
+  opacity: .12;
+  transition: opacity .19s ease;
+}
+
+/* Le sélecteur, lui, reste net : c'est le point de repère de l'utilisateur
+   pendant que le reste de la page se rafraîchit. */
+html.lang-swapping .lang-switcher {
+  opacity: 1;
+  transition: none;
+}
+
+/* Le libellé de langue prend le nouveau code avec une petite impulsion, ce qui
+   confirme le clic au moment précis où le texte change. */
+.lang-trigger-label { display: inline-block; }
+html.lang-swapping .lang-trigger-label { animation: lang-pop .38s var(--ease); }
+
+@keyframes lang-pop {
+  0%   { transform: translateY(0) scale(1); }
+  40%  { transform: translateY(-2px) scale(1.12); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* --------------------------------------------------------------- type ---- */
+
+h1, h2, h3, h4,
+.section-title, .hero-title-text, .feature-title,
+.stats-counter-value, .stat-number, .mini-stat-value,
+.price-tag, .value-title {
+  font-family: 'Outfit', 'Inter', ui-sans-serif, system-ui,
+               'Noto Sans Arabic', 'Geeza Pro', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui,
+               'Noto Sans Arabic', 'Geeza Pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: rgba(255, 133, 40, 0.32); color: #fff; }
+
+:where(a, button, [role="button"]):focus-visible {
+  outline: 2px solid var(--brand-1);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Le grain de fond était un peu trop appuyé : on le calme pour laisser la
+   place aux halos de la section IA. */
+body::before { background-size: 30px 30px; opacity: .55; }
+
+/* ------------------------------------------------------ barre de scroll -- */
+
+.scroll-progress {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  z-index: 2000;
+  pointer-events: none;
+}
+[dir="rtl"] .scroll-progress { transform-origin: 100% 50%; }
+
+/* ---------------------------------------------------------------- nav ---- */
+
+nav {
+  transition: background .4s var(--ease), border-color .4s var(--ease),
+              padding .4s var(--ease), box-shadow .4s var(--ease);
+}
+
+nav.scrolled {
+  background: rgba(8, 8, 9, 0.72);
+  border-color: rgba(255, 255, 255, 0.09);
+  padding-top: .65rem;
+  padding-bottom: .65rem;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .45);
+}
+
+.nav-link { border-radius: 999px; }
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: .25rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  transform: scaleX(0);
+  transform-origin: 50%;
+  transition: transform .35s var(--ease);
+}
+.nav-link:hover::after { transform: scaleX(1); }
+
+.nav-link.is-active { color: #fff; }
+.nav-link.is-active::after { transform: scaleX(1); }
+
+/* --------------------------------------------------- sélecteur de langue -- */
+
+.lang-switcher { position: relative; }
+
+.lang-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .45rem .75rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink-2);
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s var(--ease);
+}
+
+.lang-trigger:hover {
+  color: #fff;
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.lang-trigger svg { width: 16px; height: 16px; }
+.lang-chevron { width: 13px !important; height: 13px !important; transition: transform .3s var(--ease); }
+.lang-switcher.open .lang-chevron { transform: rotate(180deg); }
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + .6rem);
+  inset-inline-end: 0;
+  min-width: 170px;
+  padding: .4rem;
+  margin: 0;
+  list-style: none;
+  background: rgba(14, 14, 16, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .55);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: all .28s var(--ease);
+  z-index: 1200;
+}
+
+.lang-switcher.open .lang-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: .6rem .75rem;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: .92rem;
+  text-align: start;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+
+.lang-option:hover { background: rgba(255, 255, 255, 0.06); color: #fff; }
+.lang-option-check { opacity: 0; color: var(--brand-1); font-size: .85rem; }
+.lang-option.active { color: #fff; }
+.lang-option.active .lang-option-check { opacity: 1; }
+
+/* Dans le menu mobile, le sélecteur se déplie vers le haut de la liste. */
+.lang-switcher--mobile { display: block; margin-top: .5rem; padding-top: .75rem; border-top: 1px solid var(--line); }
+.lang-switcher--mobile .lang-trigger { width: 100%; justify-content: center; }
+.lang-switcher--mobile .lang-menu { inset-inline: 0; min-width: 0; }
+
+/* -------------------------------------------------------------- boutons -- */
+
+.btn-primary {
+  isolation: isolate;
+  box-shadow: 0 6px 24px rgba(255, 120, 40, .28);
+}
+
+/* Reflet qui traverse le bouton au survol. Purement décoratif : il passe
+   derrière le texte grâce au z-index négatif. */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, .55) 45%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform .8s var(--ease);
+}
+.btn-primary:hover::after { transform: translateX(120%); }
+
+/* ---------------------------------------------------------- badge pulse -- */
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .5rem 1rem .5rem .85rem;
+  border-radius: 999px;
+  background: var(--brand-soft);
+  border: 1px solid var(--brand-line);
+  font-size: .85rem;
+  font-weight: 600;
+  color: #FFB061;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand-1);
+  box-shadow: 0 0 0 0 rgba(255, 165, 0, .6);
+  animation: badge-pulse 2.4s infinite;
+}
+
+@keyframes badge-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 165, 0, .55); }
+  70%  { box-shadow: 0 0 0 9px rgba(255, 165, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 165, 0, 0); }
+}
+
+/* ---------------------------------------------------- en-tête de section -- */
+
+.section-head { max-width: 720px; margin: 0 auto 4.5rem; text-align: center; }
+
+.section-eyebrow {
+  display: block;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 1rem;
+}
+
+.section-sub { font-size: 1.15rem; color: var(--ink-3); line-height: 1.6; }
+
+/* ======================================================================== */
+/*  Section Melio AI                                                        */
+/* ======================================================================== */
+
+/* Le bloc de texte progressif se termine par `margin-bottom: -16rem`, pour que
+   la section suivante remonte sous son texte collant. La section IA, elle, doit
+   commencer nette : cette marge annule exactement la précédente (les deux se
+   fusionnent à zéro), sans quoi un clic sur « Melio AI » dans le menu atterrit
+   au milieu de la phrase collante. */
+.ai-section {
+  position: relative;
+  margin-top: 16rem;
+  padding: 7rem 1rem 8rem;
+  overflow: hidden;
+  z-index: 1;
+
+  /* Les halos sont deux calques de fond, pas deux pseudo-éléments floutés.
+     Un flou de 120 px débordant de la section était tranché net par
+     `overflow: hidden`, d'où la coupure en haut à gauche et en bas à droite.
+     Ici, `closest-side` fait tomber l'ellipse à zéro exactement sur les bords
+     de son propre calque, et les `background-position` gardent ces calques
+     entièrement à l'intérieur de la section : plus rien à trancher. */
+  background-image:
+    radial-gradient(closest-side, rgba(255, 165, 0, .17), rgba(255, 165, 0, 0)),
+    radial-gradient(closest-side, rgba(255, 85, 55, .14), rgba(255, 85, 55, 0));
+  background-repeat: no-repeat;
+  background-size: 62% 58%, 56% 52%;
+  background-position: 6% 8%, 92% 90%;
+}
+
+/* La barre de navigation est fixe : sans cette marge, une ancre place le titre
+   de section juste derrière elle. */
+section[id] { scroll-margin-top: 7rem; }
+
+.ai-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.ai-title {
+  font-size: clamp(2.3rem, 4.6vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 1.25rem 0 1.25rem;
+  background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, .68) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: .1em;
+}
+
+.ai-lede { font-size: 1.15rem; line-height: 1.7; color: var(--ink-3); max-width: 34rem; }
+
+.ai-steps { list-style: none; margin: 2.5rem 0 2.25rem; padding: 0; display: grid; gap: 1.35rem; }
+
+.ai-step { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; }
+
+.ai-step-num {
+  display: grid;
+  place-items: center;
+  width: 32px; height: 32px;
+  border-radius: 11px;
+  background: var(--brand-soft);
+  border: 1px solid var(--brand-line);
+  color: #FFB061;
+  font-size: .85rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.ai-step-title { font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: .3rem; }
+.ai-step-body { font-size: .98rem; line-height: 1.6; color: var(--ink-3); }
+
+.ai-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; }
+.ai-note { font-size: .9rem; color: var(--ink-4); }
+
+/* ------------------------------------------------------- maquette chat --- */
+
+.ai-demo { display: flex; justify-content: center; }
+
+/* Le téléphone et sa légende sont empilés et centrés l'un sur l'autre. Sans ce
+   conteneur, la colonne prenait la largeur de la légende et le téléphone, qui
+   est un bloc, se calait sur le bord de départ au lieu du milieu. */
+.ai-demo-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Proportions d'un vrai téléphone : 9/19,5, celles d'un iPhone récent. La
+   maquette tirait sa hauteur d'une valeur fixe, ce qui l'écrasait dès que la
+   colonne s'élargissait. */
+.ai-phone {
+  position: relative;
+  width: min(100%, 330px);
+  margin-inline: auto;
+  aspect-ratio: 9 / 19.5;
+  padding: 11px;
+  border-radius: 3.2rem;
+  background: linear-gradient(150deg, #4a4a50 0%, #1b1b1f 22%, #0d0d10 55%, #1b1b1f 78%, #45454b 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .07),
+    0 1px 0 rgba(255, 255, 255, .16) inset,
+    0 30px 60px -12px rgba(0, 0, 0, .75),
+    0 60px 110px -30px rgba(255, 120, 40, .18);
+}
+
+/* L'écran est sorti du flux et calé sur la zone intérieure du châssis.
+
+   En `height: 100%`, le pourcentage ne se résolvait pas : la hauteur du parent
+   vient de son `aspect-ratio`, que le navigateur considère alors comme
+   indéfinie. L'écran retombait donc sur sa hauteur de contenu, qu'il imposait
+   au châssis, et le ratio 9/19,5 sautait dès que la largeur descendait sous
+   340 px. Hors du flux, le châssis n'a plus aucun contenu à mesurer : son ratio
+   est exact à toutes les largeurs, et la conversation se recadre dedans. */
+.ai-screen {
+  position: absolute;
+  inset: 11px;
+  border-radius: 2.55rem;
+  background: #0B0B0C;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .9) inset;
+}
+
+/* L'îlot dynamique. */
+.ai-screen::before {
+  content: '';
+  position: absolute;
+  top: 10px; left: 50%;
+  transform: translateX(-50%);
+  width: 84px; height: 25px;
+  background: #000;
+  border-radius: 999px;
+  z-index: 3;
+}
+
+.ai-chat-head {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: 3rem 1.1rem .9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .07);
+  background: rgba(255, 255, 255, .02);
+}
+
+.ai-avatar {
+  width: 34px; height: 34px;
+  object-fit: contain;
+  flex-shrink: 0;
+  animation: mascot-float 3.4s ease-in-out infinite;
+}
+
+@keyframes mascot-float {
+  0%, 100% { transform: translateY(-2px); }
+  50%      { transform: translateY(2px); }
+}
+
+.ai-chat-name { display: block; font-size: .92rem; font-weight: 600; color: #fff; }
+.ai-chat-status { display: flex; align-items: center; gap: .35rem; font-size: .74rem; color: var(--ink-4); }
+.ai-chat-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #00C95A; }
+
+.ai-chat-body {
+  flex: 1;
+  /* Un élément flex ne descend pas sous la hauteur de son contenu tant que son
+     `min-height` vaut `auto`. Sous 340 px de large, la conversation devenait
+     donc plus haute que le châssis et cassait le ratio 9/19,5. En autorisant la
+     compression, c'est le haut de la conversation qui se masque, exactement
+     comme dans une vraie discussion. */
+  min-height: 0;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: .7rem;
+  overflow: hidden;
+}
+
+/* Chaque tour arrive du bas avec un léger grossissement, comme une bulle qui
+   se pose. La courbe déborde volontairement (retour élastique discret). */
+.ai-turn {
+  opacity: 0;
+  transform: translateY(16px) scale(.96);
+  transform-origin: bottom center;
+  transition: opacity .42s ease, transform .52s cubic-bezier(.22, 1.2, .36, 1);
+}
+.ai-turn.show { opacity: 1; transform: translateY(0) scale(1); }
+
+.ai-bubble {
+  max-width: 84%;
+  padding: .7rem .9rem;
+  font-size: .87rem;
+  line-height: 1.5;
+  border-radius: 18px;
+}
+
+.ai-bubble--user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  color: #180D04;
+  border-end-end-radius: 6px;
+  font-weight: 500;
+}
+
+.ai-bubble--melio {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(255, 255, 255, .07);
+  color: rgba(255, 255, 255, .88);
+  border-end-start-radius: 6px;
+}
+
+.ai-typing {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .7rem .95rem;
+  background: rgba(255, 255, 255, .06);
+  border-radius: 18px;
+  border-end-start-radius: 6px;
+}
+.ai-typing i {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .55);
+  animation: typing 1.3s infinite;
+}
+.ai-typing i:nth-child(2) { animation-delay: .18s; }
+.ai-typing i:nth-child(3) { animation-delay: .36s; }
+
+@keyframes typing {
+  0%, 60%, 100% { opacity: .3; transform: translateY(0); }
+  30%           { opacity: 1;  transform: translateY(-3px); }
+}
+
+/* Une fois la réponse arrivée, l'indicateur ne doit pas laisser un trou : il se
+   replie au lieu de simplement devenir transparent. La marge négative reprend
+   l'écart de la colonne flex, qui subsisterait sinon. */
+.ai-turn.ai-typing {
+  transition: opacity .28s ease, transform .28s ease,
+              height .34s var(--ease), margin .34s var(--ease),
+              padding .34s var(--ease);
+}
+.ai-turn.ai-typing:not(.show) {
+  height: 0;
+  padding-block: 0;
+  margin-block: -.35rem;
+  overflow: hidden;
+}
+
+/* La carte de confirmation, reprise de l'app : c'est elle qui porte la
+   promesse « rien n'est créé sans ton accord ». */
+.ai-card {
+  align-self: stretch;
+  padding: .95rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 133, 40, .22);
+}
+
+.ai-card-title { font-size: .74rem; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-4); margin-bottom: .7rem; }
+.ai-card-list { list-style: none; margin: 0 0 .9rem; padding: 0; display: grid; gap: .45rem; }
+.ai-card-list li {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .86rem;
+  color: rgba(255, 255, 255, .85);
+  opacity: 0;
+  transform: translateX(-6px);
+}
+.ai-card-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--brand-1); flex-shrink: 0; }
+
+/* Les trois lignes se posent l'une après l'autre : on voit le plan s'écrire. */
+.ai-card.show .ai-card-list li { animation: card-item .45s var(--ease) forwards; }
+.ai-card.show .ai-card-list li:nth-child(1) { animation-delay: .18s; }
+.ai-card.show .ai-card-list li:nth-child(2) { animation-delay: .34s; }
+.ai-card.show .ai-card-list li:nth-child(3) { animation-delay: .50s; }
+
+@keyframes card-item {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Les deux états du pied de carte sont empilés dans la même cellule de grille :
+   le fondu de l'un vers l'autre ne fait donc pas sauter la hauteur. */
+.ai-card-foot { display: grid; }
+.ai-card-foot > * {
+  grid-area: 1 / 1;
+  transition: opacity .34s var(--ease), transform .34s var(--ease);
+}
+
+.ai-card-actions { display: flex; gap: .5rem; }
+
+.ai-btn {
+  flex: 1;
+  position: relative;
+  padding: .55rem;
+  border-radius: 999px;
+  font-size: .84rem;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: transform .18s var(--ease);
+}
+.ai-btn--create { background: linear-gradient(135deg, var(--brand-1), var(--brand-2)); color: #180D04; }
+.ai-btn--cancel { border-color: rgba(255, 255, 255, .16); color: var(--ink-3); }
+
+/* Enfoncement au « clic » simulé. */
+.ai-btn--create.pressed { transform: scale(.94); }
+
+.ai-btn-label { transition: opacity .18s ease; }
+.ai-btn--create.loading .ai-btn-label { opacity: 0; }
+
+.ai-spinner {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 15px; height: 15px;
+  border-radius: 50%;
+  border: 2px solid rgba(24, 13, 4, .28);
+  border-top-color: #180D04;
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+.ai-btn--create.loading .ai-spinner { opacity: 1; animation: ai-spin .68s linear infinite; }
+
+@keyframes ai-spin { to { transform: rotate(360deg); } }
+
+.ai-card-done {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  padding: .55rem;
+  font-size: .86rem;
+  font-weight: 600;
+  color: #21D177;
+  opacity: 0;
+  transform: scale(.9);
+  pointer-events: none;
+}
+
+.ai-card.done .ai-card-actions { opacity: 0; transform: scale(.96); pointer-events: none; }
+.ai-card.done .ai-card-done { opacity: 1; transform: scale(1); }
+
+.ai-chat-foot {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .8rem 1.1rem 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, .07);
+}
+
+.ai-input-fake {
+  flex: 1;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .07);
+}
+
+.ai-mic {
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  color: #180D04;
+  flex-shrink: 0;
+}
+.ai-mic svg { width: 16px; height: 16px; }
+
+.ai-quota {
+  margin-top: 1.1rem;
+  text-align: center;
+  font-size: .8rem;
+  color: var(--ink-4);
+}
+
+/* ======================================================================== */
+/*  Retouches sur l'existant                                                */
+/* ======================================================================== */
+
+.feature-badge { background: var(--brand-soft); border-color: var(--brand-line); color: #FFB061; }
+
+.feature-visual::after {
+  content: '';
+  position: absolute;
+  inset: 12% 8%;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(70px);
+  background: radial-gradient(circle, rgba(255, 140, 45, .18), transparent 70%);
+}
+.feature-visual { z-index: 1; }
+
+.mini-stat, .testimonial-card, .comparison-table, .feature-card {
+  background: var(--surface);
+  border-color: var(--line);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.testimonial-card { display: flex; flex-direction: column; }
+.testimonial-quote { flex: 1; font-size: .98rem; line-height: 1.65; color: rgba(255, 255, 255, .82); }
+
+.testimonial-author { display: flex; align-items: center; gap: .75rem; margin-top: 1.25rem; }
+
+.testimonial-avatar {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 165, 0, .25), rgba(255, 85, 55, .25));
+  border: 1px solid var(--brand-line);
+  font-weight: 700;
+  font-size: .9rem;
+  color: #FFB061;
+  flex-shrink: 0;
+}
+
+.testimonial-name { font-size: .92rem; font-weight: 600; color: #fff; }
+.testimonial-role { font-size: .82rem; color: var(--ink-4); }
+
+.comparison-header { background: rgba(255, 255, 255, .035); }
+.comparison-row:hover { background: rgba(255, 255, 255, .035); }
+.comparison-row.is-highlight .comparison-feature { color: #fff; font-weight: 600; }
+
+/* Les croix étaient à peine visibles (blanc 15 %) : impossible de lire le
+   tableau d'un coup d'œil. Elles reprennent le rouge chaud de la charte, celui
+   du dégradé de marque, qui tranche sans jurer avec le vert des coches. */
+.cross-icon { color: #FF5537; font-weight: 700; }
+.check-icon { color: #21D177; }
+
+.footer-links a { position: relative; }
+.footer-links a:hover { color: #fff; }
+
+.footer-note { font-size: .8rem; color: var(--ink-4); margin-top: 1rem; line-height: 1.5; }
+
+/* ------------------------------------------------------------- tarifs --- */
+
+/* Le badge « BEST VALUE » était écrit dans un `content:` CSS, donc intraduisible.
+   Il vit maintenant dans le HTML, où le moteur i18n peut l'atteindre. */
+.pricing-card.featured::before { content: none; }
+
+/* L'essai gratuit : une seule mention, centrée sous les deux formules. */
+.pricing-trial {
+  margin: 2.5rem auto 0;
+  text-align: center;
+  font-size: .95rem;
+  color: var(--ink-3);
+}
+.pricing-trial::before {
+  content: '';
+  display: inline-block;
+  width: 7px; height: 7px;
+  margin-inline-end: .55rem;
+  border-radius: 50%;
+  background: var(--brand-1);
+  vertical-align: middle;
+}
+
+.plan-badge {
+  position: absolute;
+  top: -13px;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  padding: .375rem 1rem;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  color: #180D04;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------- FAQ ---- */
+
+.faq-item { transition: border-color .3s var(--ease), background .3s var(--ease); }
+.faq-item:hover { border-color: var(--line-strong); }
+
+/* -------------------------------------------------------- pages légales -- */
+
+.legal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.legal-top .back-link { margin-bottom: 0; }
+
+.legal-notice {
+  margin-bottom: 2.5rem;
+  padding: .75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .03);
+  font-size: .85rem;
+  color: var(--ink-3);
+}
+
+/* --------------------------------------------------------------- RTL ----- */
+
+[dir="rtl"] .feature-content,
+[dir="rtl"] .comparison-feature { text-align: right; }
+
+[dir="rtl"] .ai-bubble--user { border-end-end-radius: 18px; border-end-start-radius: 6px; }
+[dir="rtl"] .ai-bubble--melio { border-end-start-radius: 18px; border-end-end-radius: 6px; }
+
+[dir="rtl"] .progressive-text .word { direction: rtl; }
+
+/* En chinois chaque caractère est un « mot » : la marge de 0,2em prévue pour
+   des mots latins disloquerait la phrase. */
+html[lang="zh"] .progressive-text .word { margin: 0; }
+
+/* Le carrousel est animé par un translateX négatif. En RTL, la piste partirait
+   de la droite et l'animation l'éloignerait de l'écran : on force le sens de
+   lecture du rail, et on rend le sien à chaque carte. */
+[dir="rtl"] .testimonials-carousel,
+[dir="rtl"] .testimonials-track { direction: ltr; }
+[dir="rtl"] .testimonial-card { direction: rtl; text-align: right; }
+
+/* ---------------------------------------------------------- responsive -- */
+
+@media (max-width: 1024px) {
+  .ai-inner { grid-template-columns: 1fr; gap: 3.5rem; }
+  .ai-copy { text-align: center; }
+  .ai-lede { margin-inline: auto; }
+  .ai-step { text-align: start; }
+  .ai-steps { max-width: 30rem; margin-inline: auto; }
+  .ai-actions { justify-content: center; }
+}
+
+@media (max-width: 768px) {
+  .ai-section { padding: 5rem 1rem 5.5rem; }
+  .section-head { margin-bottom: 3rem; }
+  /* Sur mobile la barre passe au menu hamburger, qui a son propre sélecteur ;
+     celui des pages légales, hors <nav>, doit rester visible. */
+  nav .lang-switcher--nav { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  html.lang-swapping body { opacity: 1 !important; }
+  .fade-in { opacity: 1 !important; transform: none !important; filter: none !important; }
+  .feature-visual img { opacity: 1 !important; transform: none !important; filter: none !important; }
+  .ai-turn { opacity: 1 !important; transform: none !important; }
+}
