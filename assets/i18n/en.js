@@ -152,7 +152,7 @@ window.MELIO_I18N.en = {
 
   /* ---- Pricing ---- */
   'meta.pricing.title': 'Pricing - Melio Tasks',
-  'meta.pricing.description': 'Melio Tasks Premium: unlimited tasks, shared projects, statistics and Melio AI. $7.99 a month or $79.90 a year, cancel anytime.',
+  'meta.pricing.description': 'Melio Tasks Premium: unlimited tasks, shared projects, statistics and Melio AI. $7.99 a month or $39.90 a year, cancel anytime.',
   'pricing.badge': 'Limited offer for early adopters',
   'pricing.title': 'Simple, transparent pricing',
   'pricing.sub': 'One plan, everything included. No hidden fees, cancel anytime.',
@@ -161,8 +161,8 @@ window.MELIO_I18N.en = {
   'plan.monthly.price': '$7.99',
   'plan.monthly.period': 'per month',
   'plan.yearly.name': 'Premium Yearly',
-  'plan.yearly.desc': 'Two months free compared to monthly',
-  'plan.yearly.price': '$79.90',
+  'plan.yearly.desc': 'Save 58% compared to monthly',
+  'plan.yearly.price': '$39.90',
   'plan.yearly.period': 'per year',
   'plan.yearly.badge': 'Best value',
   'plan.f1': 'Unlimited tasks',

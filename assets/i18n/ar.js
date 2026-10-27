@@ -155,7 +155,7 @@ window.MELIO_I18N.ar = {
 
   /* ---- الأسعار ---- */
   'meta.pricing.title': 'الأسعار - Melio Tasks',
-  'meta.pricing.description': 'Melio Tasks Premium: مهام بلا حدود، مشاريع مشتركة، إحصاءات، وميليو الذكي. 7.99 دولار شهريًا أو 79.90 دولارًا سنويًا، وإلغاء متى شئت.',
+  'meta.pricing.description': 'Melio Tasks Premium: مهام بلا حدود، مشاريع مشتركة، إحصاءات، وميليو الذكي. 7.99 دولار شهريًا أو 39.90 دولارًا سنويًا، وإلغاء متى شئت.',
   'pricing.badge': 'عرض محدود للمستخدمين الأوائل',
   'pricing.title': 'أسعار بسيطة وواضحة',
   'pricing.sub': 'خطة واحدة، وكل شيء مشمول. بلا رسوم خفية، وإلغاء متى شئت.',
@@ -164,8 +164,8 @@ window.MELIO_I18N.ar = {
   'plan.monthly.price': '7.99 $',
   'plan.monthly.period': 'شهريًا',
   'plan.yearly.name': 'Premium سنوي',
-  'plan.yearly.desc': 'شهران مجانًا مقارنةً بالشهري',
-  'plan.yearly.price': '79.90 $',
+  'plan.yearly.desc': 'وفّر 58% مقارنةً بالشهري',
+  'plan.yearly.price': '39.90 $',
   'plan.yearly.period': 'سنويًا',
   'plan.yearly.badge': 'الأفضل قيمةً',
   'plan.f1': 'مهام بلا حدود',

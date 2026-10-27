@@ -155,7 +155,7 @@ window.MELIO_I18N.fr = {
 
   /* ---- Tarifs ---- */
   'meta.pricing.title': 'Tarifs - Melio Tasks',
-  'meta.pricing.description': 'Melio Tasks Premium : tâches illimitées, projets partagés, statistiques et Melio AI. 7,99 $ par mois ou 79,90 $ par an, résiliable à tout moment.',
+  'meta.pricing.description': 'Melio Tasks Premium : tâches illimitées, projets partagés, statistiques et Melio AI. 7,99 $ par mois ou 39,90 $ par an, résiliable à tout moment.',
   'pricing.badge': 'Offre limitée pour les premiers utilisateurs',
   'pricing.title': 'Des tarifs simples et transparents',
   'pricing.sub': 'Une seule formule, tout est inclus. Aucun frais caché, résiliable à tout moment.',
@@ -164,8 +164,8 @@ window.MELIO_I18N.fr = {
   'plan.monthly.price': '7,99 $',
   'plan.monthly.period': 'par mois',
   'plan.yearly.name': 'Premium annuel',
-  'plan.yearly.desc': 'Deux mois offerts par rapport au mensuel',
-  'plan.yearly.price': '79,90 $',
+  'plan.yearly.desc': 'Économisez 58 % par rapport au mensuel',
+  'plan.yearly.price': '39,90 $',
   'plan.yearly.period': 'par an',
   'plan.yearly.badge': 'Le meilleur rapport',
   'plan.f1': 'Tâches illimitées',

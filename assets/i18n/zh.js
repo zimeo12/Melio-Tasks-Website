@@ -152,7 +152,7 @@ window.MELIO_I18N.zh = {
 
   /* ---- 价格 ---- */
   'meta.pricing.title': '价格 - Melio Tasks',
-  'meta.pricing.description': 'Melio Tasks Premium：无限任务、共享项目、统计与 Melio AI。每月 7.99 美元或每年 79.90 美元，随时可取消。',
+  'meta.pricing.description': 'Melio Tasks Premium：无限任务、共享项目、统计与 Melio AI。每月 7.99 美元或每年 39.90 美元，随时可取消。',
   'pricing.badge': '早期用户限时优惠',
   'pricing.title': '简单透明的价格',
   'pricing.sub': '只有一种方案，功能全含。没有隐藏费用，随时可以取消。',
@@ -161,8 +161,8 @@ window.MELIO_I18N.zh = {
   'plan.monthly.price': '$7.99',
   'plan.monthly.period': '每月',
   'plan.yearly.name': 'Premium 年付',
-  'plan.yearly.desc': '相当于比月付省下两个月',
-  'plan.yearly.price': '$79.90',
+  'plan.yearly.desc': '比月付节省 58%',
+  'plan.yearly.price': '$39.90',
   'plan.yearly.period': '每年',
   'plan.yearly.badge': '最划算',
   'plan.f1': '无限任务',
