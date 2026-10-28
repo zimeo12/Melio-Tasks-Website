@@ -39,18 +39,18 @@ window.MELIO_I18N.fr = {
   'legal.englishOnly': 'Cette page n\'est publiée qu\'en anglais. C\'est la version qui fait foi.',
 
   /* ---- Accueil / meta ---- */
-  'meta.home.title': 'Melio Tasks - le gestionnaire de tâches avec IA, iOS et Android',
-  'meta.home.description': 'Dis ton objectif, l\'IA de Melio écrit le plan complet : projet, tâches, dates et habitudes. Une app de tâches calme et puissante, sur iOS et Android.',
+  'meta.home.title': 'Melio Tasks - Atteins tes objectifs avec un planificateur IA',
+  'meta.home.description': 'Dis ton objectif à Melio. Son IA en fait un plan avec tâches, dates et habitudes quotidiennes, puis t\'accompagne jusqu\'au bout. Sur iOS et Android.',
 
   /* ---- Accueil / hero ---- */
-  'hero.badge': 'Nouveau : Melio AI est là',
-  'hero.title': 'Libère ton esprit<br>Avance vraiment',
-  'hero.subtitle': 'Arrête de te sentir débordé. Dis ce que tu veux accomplir : Melio en fait un plan que tu peux réellement suivre.',
+  'hero.badge': 'Nouveau : Melio AI écrit ton plan',
+  'hero.title': 'Tes objectifs.<br>Enfin atteints.',
+  'hero.subtitle': 'Dis à Melio ce que tu veux accomplir. Il en fait un plan clair, puis te fait avancer d\'un petit pas par jour, jusqu\'au bout.',
   'hero.stat1': 'Premiers utilisateurs',
   'hero.stat2': 'Note moyenne',
   'hero.stat3': 'Tâches créées',
 
-  'progressive.sentence': 'La plupart des applis de tâches te stressent davantage. Melio Tasks te rend l\'esprit tranquille.',
+  'progressive.sentence': 'La plupart des objectifs ne quittent jamais ta tête. Melio donne aux tiens un plan, une date et l\'élan pour les finir.',
 
   /* ---- Accueil / Melio AI ---- */
   'ai.badge': 'Melio AI',
@@ -81,21 +81,21 @@ window.MELIO_I18N.fr = {
 
   /* ---- Accueil / fonctionnalités ---- */
   'features.eyebrow': 'Fonctionnalités',
-  'features.heading': 'Tout ce qu\'il te faut. Rien de plus.',
+  'features.heading': 'Pensé pour t\'emmener jusqu\'au bout.',
   'features.sub': 'Quatre choses que Melio fait bien, plutôt que quarante qu\'elle ferait mal.',
 
   'f1.badge': 'Organisation',
-  'f1.title': 'Retrouve ton élan',
-  'f1.desc': 'Arrête de dépenser ton énergie à te souvenir. Libère ta tête pour ce qui compte vraiment et avance davantage, avec moins de tension.',
+  'f1.title': 'Vide ta tête',
+  'f1.desc': 'Tout ce que tu as à faire, au même endroit, au calme. Arrête de tout garder en tête et mets cette énergie dans l\'action.',
   'f2.badge': 'Rappels intelligents',
   'f2.title': 'Ne rate plus l\'essentiel',
-  'f2.desc': 'Des rappels qui suivent ton rythme, pour rester dans les temps sans être harcelé toute la journée.',
+  'f2.desc': 'Des rappels qui arrivent au bon moment, pas toute la journée.',
   'f3.badge': 'Tâches partagées',
-  'f3.title': 'Avancez ensemble',
-  'f3.desc': 'Transforme un objectif personnel en victoire commune. Partage une liste, suis l\'avancée, garde l\'élan avec ceux qui comptent.',
+  'f3.title': 'Allez plus loin ensemble',
+  'f3.desc': 'Partage un projet avec ton partenaire, ton équipe ou ton binôme de sport. Tout le monde voit l\'avancée, personne ne lâche.',
   'f4.badge': 'Statistiques',
-  'f4.title': 'Mesure tes progrès',
-  'f4.desc': 'Vois où passe ton temps, repère les séries qui tiennent, et comprends ce qui fait tes bonnes semaines.',
+  'f4.title': 'Vois le chemin parcouru',
+  'f4.desc': 'Séries, tâches terminées, semaines réussies. La preuve que tu avances, surtout les jours où tu en doutes.',
 
   /* ---- Accueil / compteur ---- */
   'stats.label': 'Impact',
@@ -123,7 +123,7 @@ window.MELIO_I18N.fr = {
   'mini3.desc': 'Le travail et la vie, remis à leur place',
 
   /* ---- Accueil / avis ---- */
-  'testimonials.title': 'Ce qu\'en disent nos utilisateurs',
+  'testimonials.title': 'Adopté par ceux qui vont au bout',
   'testimonials.sub': '4,8 étoiles données par notre communauté',
   'tst1.quote': '« Cette app est géniale. Elle m\'aide à gérer toutes mes tâches et mes projets du quotidien. Depuis que je l\'utilise, je n\'oublie plus rien. »',
   'tst1.author': 'Nathalie A.',
@@ -150,8 +150,8 @@ window.MELIO_I18N.fr = {
   'comparison.r6': 'Projets illimités',
 
   /* ---- Accueil / téléchargement ---- */
-  'download.title': 'Commence ta transformation aujourd\'hui',
-  'download.sub': 'Rejoins ceux qui ont trouvé l\'esprit tranquille, et leur plan.',
+  'download.title': 'Ton prochain objectif commence aujourd\'hui',
+  'download.sub': 'Écris-le en une phrase. Melio s\'occupe du plan, toi de la prochaine étape.',
 
   /* ---- Tarifs ---- */
   'meta.pricing.title': 'Tarifs - Melio Tasks',

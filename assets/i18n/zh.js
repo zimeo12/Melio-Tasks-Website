@@ -36,18 +36,18 @@ window.MELIO_I18N.zh = {
   'legal.englishOnly': '本页面仅以英文发布，英文版本为准。',
 
   /* ---- 首页 / meta ---- */
-  'meta.home.title': 'Melio Tasks - 带 AI 的任务管理应用，支持 iOS 与 Android',
-  'meta.home.description': '说出目标，Melio 的 AI 会写好整套计划：项目、任务、日期和习惯。一款让人安心又好用的任务管理应用，支持 iOS 和 Android。',
+  'meta.home.title': 'Melio Tasks - 用 AI 规划，真正实现你的目标',
+  'meta.home.description': '告诉 Melio 你的目标，它的 AI 会生成包含任务、日期和每日习惯的完整计划，并陪你一路走到完成。支持 iOS 和 Android。',
 
   /* ---- 首页 / hero ---- */
-  'hero.badge': '全新：Melio AI 已上线',
-  'hero.title': '清空大脑<br>把事做成',
-  'hero.subtitle': '别再被待办压着走。说出你想完成的事，Melio 把它变成一份你真能照做的计划。',
+  'hero.badge': '全新：Melio AI 为你写好计划',
+  'hero.title': '你的目标，<br>终于实现。',
+  'hero.subtitle': '告诉 Melio 你想完成什么。它会把目标变成清晰的计划，再陪你每天迈出一小步，直到完成。',
   'hero.stat1': '早期用户',
   'hero.stat2': '评分',
   'hero.stat3': '已创建任务',
 
-  'progressive.sentence': '大多数待办应用只会让你更焦虑。Melio Tasks 让你安心。',
+  'progressive.sentence': '大多数目标从未离开过你的脑海。Melio 给你的目标一份计划、一个日期，和完成它的动力。',
 
   /* ---- 首页 / Melio AI ---- */
   'ai.badge': 'Melio AI',
@@ -78,21 +78,21 @@ window.MELIO_I18N.zh = {
 
   /* ---- 首页 / 功能 ---- */
   'features.eyebrow': '功能',
-  'features.heading': '需要的都有，多余的都没有。',
+  'features.heading': '为了让你走到终点而设计。',
   'features.sub': '四件 Melio 做得好的事，而不是四十件做得马虎的事。',
 
   'f1.badge': '整理',
-  'f1.title': '找回你的节奏',
-  'f1.desc': '别再花力气去记住每件事。把脑子留给真正重要的事，用更少的紧绷完成更多。',
+  'f1.title': '把事情从脑子里清出去',
+  'f1.desc': '所有要做的事，都放在一个安静的地方。别再在脑子里来回记，把精力留给真正去做。',
   'f2.badge': '智能提醒',
   'f2.title': '重要的事不再漏掉',
-  'f2.desc': '提醒跟着你的节奏走，让你按时完成，而不是一整天被催。',
+  'f2.desc': '提醒在对的时刻出现，而不是一整天响个不停。',
   'f3.badge': '共享任务',
-  'f3.title': '一起把事做成',
-  'f3.desc': '把个人目标变成共同的成果。共享一份清单，跟进进度，和重要的人一起保持势头。',
+  'f3.title': '一起走得更远',
+  'f3.desc': '和伴侣、团队或训练搭档共享一个项目。每个人都看得到进度，谁也不会掉链子。',
   'f4.badge': '统计',
-  'f4.title': '看见你的进步',
-  'f4.desc': '看清时间去了哪里，找出真正坚持下来的连续记录，明白什么让你的一周变好。',
+  'f4.title': '看见你走了多远',
+  'f4.desc': '连续记录、已完成的任务、顺利的每一周。这是你在前进的证据，尤其在你怀疑自己的日子里。',
 
   /* ---- 首页 / 影响 ---- */
   'stats.label': '影响',
@@ -120,7 +120,7 @@ window.MELIO_I18N.zh = {
   'mini3.desc': '工作与生活，各归其位',
 
   /* ---- 首页 / 评价 ---- */
-  'testimonials.title': '用户怎么说',
+  'testimonials.title': '说到做到的人，都在用',
   'testimonials.sub': '社区给出 4.8 星评分',
   'tst1.quote': '「这个应用太棒了。它帮我管理所有任务和日常项目，用了以后我什么都不会忘。」',
   'tst1.author': 'Nathalie A.',
@@ -147,8 +147,8 @@ window.MELIO_I18N.zh = {
   'comparison.r6': '无限项目',
 
   /* ---- 首页 / 下载 ---- */
-  'download.title': '今天就开始改变',
-  'download.sub': '加入那些找回了安心，也找到了计划的人。',
+  'download.title': '你的下一个目标，从今天开始',
+  'download.sub': '用一句话写下来。计划交给 Melio，你只管迈出下一步。',
 
   /* ---- 价格 ---- */
   'meta.pricing.title': '价格 - Melio Tasks',

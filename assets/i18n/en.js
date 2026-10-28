@@ -36,18 +36,18 @@ window.MELIO_I18N.en = {
   'legal.englishOnly': 'This page is published in English only. It is the binding version.',
 
   /* ---- Home / meta ---- */
-  'meta.home.title': 'Melio Tasks - AI task manager for iOS & Android',
-  'meta.home.description': 'Tell Melio your goal and its AI writes the whole plan: project, tasks, dates and habits. A calm, powerful task manager for iOS and Android.',
+  'meta.home.title': 'Melio Tasks - Reach your goals with an AI planner',
+  'meta.home.description': 'Tell Melio your goal. Its AI turns it into a plan with tasks, dates and daily habits, then keeps you going until it is done. For iOS and Android.',
 
   /* ---- Home / hero ---- */
-  'hero.badge': 'New: Melio AI is here',
-  'hero.title': 'Clear your Mind<br>Get things Done',
-  'hero.subtitle': 'Stop feeling overwhelmed. Start feeling accomplished. Say what you want to achieve, and Melio turns it into a plan you can actually follow.',
+  'hero.badge': 'New: Melio AI writes your plan',
+  'hero.title': 'Your goals.<br>Finally reached.',
+  'hero.subtitle': 'Tell Melio what you want to achieve. It turns it into a clear plan, then keeps you moving one small step a day until it is done.',
   'hero.stat1': 'Early adopters',
   'hero.stat2': 'Rating',
   'hero.stat3': 'Tasks created',
 
-  'progressive.sentence': 'Most task apps make you feel more stressed. Melio Tasks brings you peace of mind.',
+  'progressive.sentence': 'Most goals never leave your head. Melio gives yours a plan, a date and the push to finish them.',
 
   /* ---- Home / Melio AI ---- */
   'ai.badge': 'Melio AI',
@@ -78,21 +78,21 @@ window.MELIO_I18N.en = {
 
   /* ---- Home / features ---- */
   'features.eyebrow': 'Features',
-  'features.heading': 'Everything you need. Nothing you don\'t.',
+  'features.heading': 'Built to get you to the finish line.',
   'features.sub': 'Four things Melio does well, instead of forty it does badly.',
 
   'f1.badge': 'Smart organization',
-  'f1.title': 'Find your flow',
-  'f1.desc': 'Stop spending mental energy remembering things. Free your mind for what actually matters and get more done with less strain.',
+  'f1.title': 'Get it out of your head',
+  'f1.desc': 'Everything you have to do, in one calm place. Stop juggling it in your mind and put that energy into the work itself.',
   'f2.badge': 'Smart reminders',
   'f2.title': 'Never miss what matters',
-  'f2.desc': 'Reminders that follow your rhythm, so you stay on track without being nagged all day.',
+  'f2.desc': 'Reminders that show up at the right moment, not all day long.',
   'f3.badge': 'Shared tasks',
-  'f3.title': 'Achieve together',
-  'f3.desc': 'Turn personal goals into shared wins. Share a list, follow progress, and keep momentum with the people who count.',
+  'f3.title': 'Go further together',
+  'f3.desc': 'Share a project with your partner, your team or your training buddy. Everyone sees the progress, nobody drops the ball.',
   'f4.badge': 'Statistics',
-  'f4.title': 'Track your progress',
-  'f4.desc': 'See where your time goes, spot the streaks that hold, and understand what makes your weeks work.',
+  'f4.title': 'See how far you have come',
+  'f4.desc': 'Streaks, finished tasks and the weeks that worked. Proof you are moving forward, especially on the days you doubt it.',
 
   /* ---- Home / impact counter ---- */
   'stats.label': 'Impact',
@@ -120,7 +120,7 @@ window.MELIO_I18N.en = {
   'mini3.desc': 'Work and life, back in proportion',
 
   /* ---- Home / testimonials ---- */
-  'testimonials.title': 'What our users say',
+  'testimonials.title': 'Loved by people who finish what they start',
   'testimonials.sub': 'Rated 4.8 stars by our community',
   'tst1.quote': '“This app is amazing. It helps me manage all my tasks and daily projects. Since I started using it, I never forget anything.”',
   'tst1.author': 'Nathalie A.',
@@ -147,8 +147,8 @@ window.MELIO_I18N.en = {
   'comparison.r6': 'Unlimited projects',
 
   /* ---- Home / download ---- */
-  'download.title': 'Start your transformation today',
-  'download.sub': 'Join the people who found their peace of mind, and their plan.',
+  'download.title': 'Your next goal starts today',
+  'download.sub': 'Write it in one sentence. Melio takes care of the plan, you take care of the next step.',
 
   /* ---- Pricing ---- */
   'meta.pricing.title': 'Pricing - Melio Tasks',

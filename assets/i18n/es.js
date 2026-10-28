@@ -37,18 +37,18 @@ window.MELIO_I18N.es = {
   'legal.englishOnly': 'Esta página solo se publica en inglés. Es la versión que prevalece.',
 
   /* ---- Inicio / meta ---- */
-  'meta.home.title': 'Melio Tasks - gestor de tareas con IA para iOS y Android',
-  'meta.home.description': 'Di tu objetivo y la IA de Melio escribe el plan completo: proyecto, tareas, fechas y hábitos. Un gestor de tareas tranquilo y potente para iOS y Android.',
+  'meta.home.title': 'Melio Tasks - Alcanza tus metas con un planificador con IA',
+  'meta.home.description': 'Dile tu meta a Melio. Su IA la convierte en un plan con tareas, fechas y hábitos diarios, y te acompaña hasta el final. Para iOS y Android.',
 
   /* ---- Inicio / hero ---- */
-  'hero.badge': 'Nuevo: Melio AI ya está aquí',
-  'hero.title': 'Libera tu mente<br>Avanza de verdad',
-  'hero.subtitle': 'Deja de sentirte desbordado. Di lo que quieres conseguir: Melio lo convierte en un plan que sí puedes seguir.',
+  'hero.badge': 'Nuevo: Melio AI escribe tu plan',
+  'hero.title': 'Tus metas.<br>Por fin alcanzadas.',
+  'hero.subtitle': 'Dile a Melio lo que quieres conseguir. Lo convierte en un plan claro y te hace avanzar un pequeño paso al día, hasta el final.',
   'hero.stat1': 'Primeros usuarios',
   'hero.stat2': 'Valoración',
   'hero.stat3': 'Tareas creadas',
 
-  'progressive.sentence': 'La mayoría de las apps de tareas te estresan más. Melio Tasks te devuelve la tranquilidad.',
+  'progressive.sentence': 'La mayoría de las metas nunca salen de tu cabeza. Melio les da a las tuyas un plan, una fecha y el empujón para cumplirlas.',
 
   /* ---- Inicio / Melio AI ---- */
   'ai.badge': 'Melio AI',
@@ -79,21 +79,21 @@ window.MELIO_I18N.es = {
 
   /* ---- Inicio / funciones ---- */
   'features.eyebrow': 'Funciones',
-  'features.heading': 'Todo lo que necesitas. Nada más.',
+  'features.heading': 'Pensado para llevarte hasta el final.',
   'features.sub': 'Cuatro cosas que Melio hace bien, en lugar de cuarenta que haría mal.',
 
   'f1.badge': 'Organización',
-  'f1.title': 'Recupera tu ritmo',
-  'f1.desc': 'Deja de gastar energía en acordarte de todo. Libera la cabeza para lo que de verdad importa y avanza más, con menos tensión.',
+  'f1.title': 'Sácalo de tu cabeza',
+  'f1.desc': 'Todo lo que tienes que hacer, en un solo lugar tranquilo. Deja de hacer malabares mentales y pon esa energía en la acción.',
   'f2.badge': 'Recordatorios inteligentes',
   'f2.title': 'No se te escapa lo importante',
-  'f2.desc': 'Recordatorios que siguen tu ritmo, para llegar a tiempo sin que te agobien todo el día.',
+  'f2.desc': 'Recordatorios que llegan en el momento justo, no a todas horas.',
   'f3.badge': 'Tareas compartidas',
-  'f3.title': 'Avanzad juntos',
-  'f3.desc': 'Convierte un objetivo personal en una victoria común. Comparte una lista, sigue el avance y mantén el impulso con quien te importa.',
+  'f3.title': 'Llegad más lejos juntos',
+  'f3.desc': 'Comparte un proyecto con tu pareja, tu equipo o tu compañero de entreno. Todos ven el avance y nadie se descuelga.',
   'f4.badge': 'Estadísticas',
-  'f4.title': 'Mide tu progreso',
-  'f4.desc': 'Ve en qué se va tu tiempo, detecta las rachas que aguantan y entiende qué hace buenas tus semanas.',
+  'f4.title': 'Mira cuánto has avanzado',
+  'f4.desc': 'Rachas, tareas terminadas y semanas que funcionaron. La prueba de que avanzas, sobre todo los días en que lo dudas.',
 
   /* ---- Inicio / contador ---- */
   'stats.label': 'Impacto',
@@ -121,7 +121,7 @@ window.MELIO_I18N.es = {
   'mini3.desc': 'El trabajo y la vida, en su sitio',
 
   /* ---- Inicio / opiniones ---- */
-  'testimonials.title': 'Lo que dicen quienes la usan',
+  'testimonials.title': 'La eligen quienes terminan lo que empiezan',
   'testimonials.sub': '4,8 estrellas según nuestra comunidad',
   'tst1.quote': '«Esta app es genial. Me ayuda a llevar todas mis tareas y proyectos del día a día; desde que la uso, no se me olvida nada.»',
   'tst1.author': 'Nathalie A.',
@@ -148,8 +148,8 @@ window.MELIO_I18N.es = {
   'comparison.r6': 'Proyectos ilimitados',
 
   /* ---- Inicio / descarga ---- */
-  'download.title': 'Empieza tu cambio hoy',
-  'download.sub': 'Únete a quienes encontraron la tranquilidad, y su plan.',
+  'download.title': 'Tu próxima meta empieza hoy',
+  'download.sub': 'Escríbela en una frase. Melio se encarga del plan; tú, del siguiente paso.',
 
   /* ---- Precios ---- */
   'meta.pricing.title': 'Precios - Melio Tasks',
